@@ -1,0 +1,17 @@
+{
+  "name": "next-strapi-tailwind-graphql-template",
+  "version": "1.0",
+  "private": true,
+  "workspaces": [
+    "site",
+    "strapi"
+  ],
+  "dependencies": {
+    "concurrently": "^7.2.0"
+  },
+  "scripts": {
+    "dev": "concurrently --names \"SITE,STRAPI\" --prefix \"({name})\" --prefix-colors \"cyan.bold,yellow.bold\"  \"yarn workspace next-strapi-tailwind-graphql-template-site dev\" \"yarn workspace next-strapi-tailwind-graphql-template-strapi develop\"",
+    "build": "yarn workspace next-strapi-tailwind-graphql-template-strapi build",
+    "start": "yarn workspace next-strapi-tailwind-graphql-template-strapi start"
+  }
+}
