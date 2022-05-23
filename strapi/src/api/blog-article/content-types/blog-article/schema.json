@@ -45,6 +45,11 @@
     "slug": {
       "type": "uid",
       "targetField": "articleTitle"
+    },
+    "meta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "meta.meta"
     }
   }
 }
