@@ -15,7 +15,7 @@
     "firstName": {
       "type": "string"
     },
-    "name": {
+    "lastName": {
       "type": "string"
     },
     "bio": {
