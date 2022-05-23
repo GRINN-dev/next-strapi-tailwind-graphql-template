@@ -2,11 +2,18 @@
   "collectionName": "components_meta_metas",
   "info": {
     "displayName": "meta",
-    "icon": "angle-double-left"
+    "icon": "angle-double-left",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "meta": {
+    "metaName": {
+      "type": "string"
+    },
+    "metaContent": {
+      "type": "string"
+    },
+    "metaProperty": {
       "type": "string"
     }
   }
