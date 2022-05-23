@@ -1,0 +1,10 @@
+query Test {
+  tests {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}
