@@ -1,8 +1,9 @@
 {
-  "collectionName": "components_social_network_facebooks",
+  "collectionName": "components_social_network",
   "info": {
-    "displayName": "Facebook",
-    "icon": "user-friends"
+    "displayName": "socialNetworkName",
+    "icon": "user-friends",
+    "description": ""
   },
   "options": {},
   "attributes": {
