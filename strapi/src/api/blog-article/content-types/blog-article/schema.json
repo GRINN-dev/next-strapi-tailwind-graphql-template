@@ -36,14 +36,15 @@
     "publishingDate": {
       "type": "date"
     },
-    "slug": {
-      "type": "string"
-    },
     "team_member": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::team-member.team-member",
       "mappedBy": "blog_article"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "articleTitle"
     }
   }
 }
