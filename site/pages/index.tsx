@@ -1,13 +1,13 @@
 import type { GetStaticProps, NextPage } from "next";
+import { Layout } from "../components";
 import { TestDocument, TestQuery } from "../graphql";
 import { client } from "../lib/apolloClient";
 
 const Home: NextPage<TestQuery> = ({ tests }) => {
   return (
-    <div>
-      <h1 className="text-2xl">Hello world</h1>
+    <Layout>
       <p>{tests?.data[0]?.attributes?.title}</p>
-    </div>
+    </Layout>
   );
 };
 
