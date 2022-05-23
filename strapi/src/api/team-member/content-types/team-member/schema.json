@@ -29,6 +29,12 @@
       ],
       "type": "media",
       "multiple": true
+    },
+    "blog_article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-article.blog-article",
+      "inversedBy": "team_member"
     }
   }
 }

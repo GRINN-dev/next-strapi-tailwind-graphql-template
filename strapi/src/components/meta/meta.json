@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_meta_metas",
+  "info": {
+    "displayName": "meta",
+    "icon": "angle-double-left"
+  },
+  "options": {},
+  "attributes": {
+    "meta": {
+      "type": "string"
+    }
+  }
+}
