@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_social_network_twitters",
+  "info": {
+    "displayName": "Twitter",
+    "icon": "users"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_social_network_facebooks",
+  "info": {
+    "displayName": "Facebook",
+    "icon": "user-friends"
+  },
+  "options": {},
+  "attributes": {
+    "socialNetworkName": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}
