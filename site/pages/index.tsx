@@ -6,6 +6,7 @@ import { client } from "../lib/apolloClient";
 const Home: NextPage<TestQuery> = ({ tests }) => {
   return (
     <Layout>
+      <h1 className="text-2xl">Hello world</h1>
       <p>{tests?.data[0]?.attributes?.title}</p>
     </Layout>
   );

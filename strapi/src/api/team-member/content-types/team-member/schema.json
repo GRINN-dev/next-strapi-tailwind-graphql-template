@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "team_members",
+  "info": {
+    "singularName": "team-member",
+    "pluralName": "team-members",
+    "displayName": "Team member",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "text"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "blog_article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-article.blog-article",
+      "inversedBy": "team_member"
+    },
+    "Facebook": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social-network.facebook"
+    },
+    "Twitter": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social-network.facebook"
+    },
+    "LinkedIn": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social-network.facebook"
+    },
+    "Instagram": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social-network.facebook"
+    },
+    "TikTok": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social-network.facebook"
+    },
+    "Snapchat": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social-network.facebook"
+    }
+  }
+}

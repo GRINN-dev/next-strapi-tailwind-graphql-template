@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_social_network",
+  "info": {
+    "displayName": "socialNetworkItem",
+    "icon": "user-friends",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "socialNetworkName": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}
