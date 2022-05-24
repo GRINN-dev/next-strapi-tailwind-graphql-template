@@ -1,11 +1,11 @@
-import type { GetStaticProps, NextPage } from "next";
-import { TestDocument, TestQuery } from "../graphql";
-import { client } from "../lib/apolloClient";
+import type { GetStaticProps, NextPage } from 'next';
+import { TestDocument, TestQuery } from '../graphql';
+import { client } from '../lib/apolloClient';
 
 const Home: NextPage<TestQuery> = ({ tests }) => {
   return (
     <div>
-      <h1 className="text-2xl">Hello world</h1>
+      <h1 className='text-2xl'>Hello world</h1>
       <p>{tests?.data[0]?.attributes?.title}</p>
     </div>
   );
