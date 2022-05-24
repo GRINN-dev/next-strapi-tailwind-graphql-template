@@ -1216,6 +1216,11 @@ export type TeamQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type TeamQuery = { __typename?: 'Query', teams?: { __typename?: 'TeamEntityResponseCollection', data: Array<{ __typename?: 'TeamEntity', id?: string | null, attributes?: { __typename?: 'Team', teamTitle?: string | null, teamParagraph?: string | null, teamMeta?: { __typename?: 'ComponentMetaMeta', id: string, metaName?: string | null, metaProperty?: string | null, metaContent?: string | null } | null } | null }> } | null };
 
+export type TeamMemberQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TeamMemberQuery = { __typename?: 'Query', teamMembers?: { __typename?: 'TeamMemberEntityResponseCollection', data: Array<{ __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, bio?: string | null, avatar?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null }> } | null, LinkedIn?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null, Facebook?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null, Twitter?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null, Instagram?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null, TikTok?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null, Snapchat?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null } | null }> } | null };
+
 export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1268,6 +1273,87 @@ export function useTeamLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TeamQ
 export type TeamQueryHookResult = ReturnType<typeof useTeamQuery>;
 export type TeamLazyQueryHookResult = ReturnType<typeof useTeamLazyQuery>;
 export type TeamQueryResult = Apollo.QueryResult<TeamQuery, TeamQueryVariables>;
+export const TeamMemberDocument = gql`
+    query TeamMember {
+  teamMembers {
+    data {
+      id
+      attributes {
+        firstName
+        lastName
+        avatar {
+          data {
+            id
+            attributes {
+              name
+              alternativeText
+              url
+            }
+          }
+        }
+        bio
+        LinkedIn {
+          id
+          socialNetworkName
+          link
+        }
+        Facebook {
+          id
+          socialNetworkName
+          link
+        }
+        Twitter {
+          id
+          socialNetworkName
+          link
+        }
+        Instagram {
+          id
+          socialNetworkName
+          link
+        }
+        TikTok {
+          id
+          socialNetworkName
+          link
+        }
+        Snapchat {
+          id
+          socialNetworkName
+          link
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useTeamMemberQuery__
+ *
+ * To run a query within a React component, call `useTeamMemberQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTeamMemberQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTeamMemberQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTeamMemberQuery(baseOptions?: Apollo.QueryHookOptions<TeamMemberQuery, TeamMemberQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TeamMemberQuery, TeamMemberQueryVariables>(TeamMemberDocument, options);
+      }
+export function useTeamMemberLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TeamMemberQuery, TeamMemberQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TeamMemberQuery, TeamMemberQueryVariables>(TeamMemberDocument, options);
+        }
+export type TeamMemberQueryHookResult = ReturnType<typeof useTeamMemberQuery>;
+export type TeamMemberLazyQueryHookResult = ReturnType<typeof useTeamMemberLazyQuery>;
+export type TeamMemberQueryResult = Apollo.QueryResult<TeamMemberQuery, TeamMemberQueryVariables>;
 export const TestDocument = gql`
     query Test {
   tests {

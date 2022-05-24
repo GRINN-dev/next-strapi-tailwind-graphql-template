@@ -1,0 +1,52 @@
+query TeamMember {
+  teamMembers {
+    data {
+      id
+      attributes {
+        firstName
+        lastName
+        avatar {
+          data {
+            id
+            attributes {
+              name
+              alternativeText
+              url
+            }
+          }
+        }
+        bio
+        LinkedIn {
+          id
+          socialNetworkName
+          link
+        }
+        Facebook {
+          id
+          socialNetworkName
+          link
+        }
+        Twitter {
+          id
+          socialNetworkName
+          link
+        }
+        Instagram {
+          id
+          socialNetworkName
+          link
+        }
+        TikTok {
+          id
+          socialNetworkName
+          link
+        }
+        Snapchat {
+          id
+          socialNetworkName
+          link
+        }
+      }
+    }
+  }
+}
