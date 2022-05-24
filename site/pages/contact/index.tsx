@@ -5,13 +5,13 @@ import {
   TeamDocument,
   TeamQuery,
   TeamMemberQuery,
-  TeamMemberDocument,
   useTeamMemberQuery,
 } from '../../graphql';
 import { client } from '../../lib/apolloClient';
 
 const Contact: NextPage<TeamQuery, TeamMemberQuery> = ({ teams }) => {
   const teamMembers = useTeamMemberQuery({});
+  const imageSrc = `https://localhost:1337/${teamMembers?.data?.teamMembers?.data[0].attributes?.avatar?.data[0].attributes?.url}`;
   return (
     <div>
       <Head>
@@ -35,11 +35,12 @@ const Contact: NextPage<TeamQuery, TeamMemberQuery> = ({ teams }) => {
           return (
             <div key={teamMember.id}>
               <Image
+                loader={() => imageSrc}
+                src={imageSrc}
                 width={50}
                 height={50}
-                src={`http://localhost:1337/${teamMember?.attributes?.avatar?.data[0]?.attributes?.url}`}
                 alt={teamMember.attributes?.avatar?.data[0]?.attributes?.alternativeText?.toString()}
-              ></Image>
+              />
               <span>{teamMember.attributes?.firstName}</span>
               <span> </span>
               <span>{teamMember.attributes?.lastName}</span>
