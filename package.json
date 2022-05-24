@@ -10,7 +10,7 @@
     "concurrently": "^7.2.0"
   },
   "scripts": {
-    "dev": "concurrently --names \"SITE,STRAPI\" --prefix \"({name})\" --prefix-colors \"cyan.bold,yellow.bold\"  \"yarn workspace site dev\" \"yarn workspace strapi develop\"",
+    "dev": "concurrently --names \"SITE,STRAPI,STORYBOOK\" --prefix \"({name})\" --prefix-colors \"cyan.bold,yellow.bold,lightGreen.bold\"  \"yarn workspace site dev\" \"yarn workspace strapi develop\" \"yarn workspace site storybook\"",
     "build": "yarn strapi build",
     "start": "yarn strapi start"
   }
