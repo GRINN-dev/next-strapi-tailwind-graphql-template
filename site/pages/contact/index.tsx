@@ -65,7 +65,7 @@ const Contact: NextPage<TeamQuery, TeamMemberQuery> = ({ teams }) => {
                     {teamMember.attributes?.Facebook?.map((rs) => {
                       return (
                         <li key={rs?.id}>
-                          <a href=''>{rs?.link}</a>
+                          <a href=''></a>
                         </li>
                       );
                     })}

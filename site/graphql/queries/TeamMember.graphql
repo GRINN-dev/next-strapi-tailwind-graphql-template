@@ -20,31 +20,57 @@ query TeamMember {
           id
           socialNetworkName
           link
+          icon {
+            attributes {
+              url
+            }
+          }
         }
         Facebook {
           id
           socialNetworkName
           link
+          icon {
+            attributes {
+              url
+            }
+          }
         }
         Twitter {
           id
           socialNetworkName
           link
+          icon
         }
         Instagram {
           id
           socialNetworkName
           link
+          icon {
+            attributes {
+              url
+            }
+          }
         }
         TikTok {
           id
           socialNetworkName
           link
+          icon {
+            attributes {
+              url
+            }
+          }
         }
         Snapchat {
           id
           socialNetworkName
           link
+          icon {
+            attributes {
+              url
+            }
+          }
         }
       }
     }
