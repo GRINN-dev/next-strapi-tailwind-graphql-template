@@ -133,6 +133,7 @@ export type ComponentMetaMetaInput = {
 
 export type ComponentSocialNetworkFacebook = {
   __typename?: 'ComponentSocialNetworkFacebook';
+  icon?: Maybe<UploadFileEntityResponse>;
   id: Scalars['ID'];
   link?: Maybe<Scalars['String']>;
   socialNetworkName?: Maybe<Scalars['String']>;
@@ -147,6 +148,7 @@ export type ComponentSocialNetworkFacebookFiltersInput = {
 };
 
 export type ComponentSocialNetworkFacebookInput = {
+  icon?: InputMaybe<Scalars['ID']>;
   id?: InputMaybe<Scalars['ID']>;
   link?: InputMaybe<Scalars['String']>;
   socialNetworkName?: InputMaybe<Scalars['String']>;
@@ -1219,7 +1221,7 @@ export type TeamQuery = { __typename?: 'Query', teams?: { __typename?: 'TeamEnti
 export type TeamMemberQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TeamMemberQuery = { __typename?: 'Query', teamMembers?: { __typename?: 'TeamMemberEntityResponseCollection', data: Array<{ __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, bio?: string | null, avatar?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null }> } | null, LinkedIn?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null, Facebook?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null, Twitter?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null, Instagram?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null, TikTok?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null, Snapchat?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null } | null> | null } | null }> } | null };
+export type TeamMemberQuery = { __typename?: 'Query', teamMembers?: { __typename?: 'TeamMemberEntityResponseCollection', data: Array<{ __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, bio?: string | null, avatar?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null }> } | null, LinkedIn?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, Facebook?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, Twitter?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, Instagram?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, TikTok?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, Snapchat?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null } | null }> } | null };
 
 export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1296,31 +1298,79 @@ export const TeamMemberDocument = gql`
           id
           socialNetworkName
           link
+          icon {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
         }
         Facebook {
           id
           socialNetworkName
           link
+          icon {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
         }
         Twitter {
           id
           socialNetworkName
           link
+          icon {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
         }
         Instagram {
           id
           socialNetworkName
           link
+          icon {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
         }
         TikTok {
           id
           socialNetworkName
           link
+          icon {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
         }
         Snapchat {
           id
           socialNetworkName
           link
+          icon {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
         }
       }
     }

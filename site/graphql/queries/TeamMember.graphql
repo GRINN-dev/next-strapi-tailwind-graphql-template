@@ -21,8 +21,11 @@ query TeamMember {
           socialNetworkName
           link
           icon {
-            attributes {
-              url
+            data {
+              attributes {
+                url
+                alternativeText
+              }
             }
           }
         }
@@ -31,8 +34,11 @@ query TeamMember {
           socialNetworkName
           link
           icon {
-            attributes {
-              url
+            data {
+              attributes {
+                url
+                alternativeText
+              }
             }
           }
         }
@@ -40,15 +46,25 @@ query TeamMember {
           id
           socialNetworkName
           link
-          icon
+          icon {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
         }
         Instagram {
           id
           socialNetworkName
           link
           icon {
-            attributes {
-              url
+            data {
+              attributes {
+                url
+                alternativeText
+              }
             }
           }
         }
@@ -57,8 +73,11 @@ query TeamMember {
           socialNetworkName
           link
           icon {
-            attributes {
-              url
+            data {
+              attributes {
+                url
+                alternativeText
+              }
             }
           }
         }
@@ -67,8 +86,11 @@ query TeamMember {
           socialNetworkName
           link
           icon {
-            attributes {
-              url
+            data {
+              attributes {
+                url
+                alternativeText
+              }
             }
           }
         }
