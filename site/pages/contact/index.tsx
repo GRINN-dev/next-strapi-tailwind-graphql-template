@@ -8,7 +8,8 @@ import {
   useTeamMemberQuery,
 } from '../../graphql';
 import { client } from '../../lib/apolloClient';
-import linkedIn from '../../public/linkedIn.png';
+import logo_linkedIn from '../../public/logo_linkedIn.svg';
+import twitter from '../../public/twitter.svg';
 
 const Contact: NextPage<TeamPageQuery, TeamMemberQuery> = ({ teamPage }) => {
   const teamMembers = useTeamMemberQuery({});
@@ -36,7 +37,7 @@ const Contact: NextPage<TeamPageQuery, TeamMemberQuery> = ({ teamPage }) => {
           {teamMembers.data?.teamMembers?.data.map((teamMember) => {
             return (
               <li key={teamMember.id} className='space-y-4 '>
-                <div className='relative w-40 h-40'>
+                <div className='relative rounded-lg shadow-lg h-60 w-80'>
                   <Image
                     src={
                       teamMember?.attributes?.avatar?.data?.attributes?.url
@@ -48,7 +49,7 @@ const Contact: NextPage<TeamPageQuery, TeamMemberQuery> = ({ teamPage }) => {
                       teamMember.attributes?.avatar?.data?.attributes
                         ?.alternativeText || ''
                     }
-                    className='absolute inset-0 object-cover space-x-2 rounded-lg shadow-lg'
+                    className='absolute inset-0 object-cover space-x-2 rounded-lg'
                   />
                 </div>
 
@@ -62,25 +63,32 @@ const Contact: NextPage<TeamPageQuery, TeamMemberQuery> = ({ teamPage }) => {
                     <p className='text-indigo-600'>
                       {teamMember.attributes?.bio}
                     </p>
-                    <div className='relative w-10 h-10'>
-                      <a
-                        href={
-                          teamMember?.attributes?.socialNetworks
-                            ? teamMember?.attributes?.socialNetworks[0]?.link?.toString()
-                            : ''
-                        }
-                      >
-                        <Image
-                          src={linkedIn}
-                          alt={
+                    <div className='flex space-x-4'>
+                      <div className='relative w-5 h-5'>
+                        <a
+                          href={
                             teamMember?.attributes?.socialNetworks
-                              ? teamMember?.attributes?.socialNetworks[0]
-                                  ?.socialNetworkName || ''
+                              ? teamMember?.attributes?.socialNetworks[0]?.link?.toString()
                               : ''
                           }
-                          layout='fill'
-                        />
-                      </a>
+                        >
+                          <Image
+                            src={logo_linkedIn}
+                            alt={
+                              teamMember?.attributes?.socialNetworks
+                                ? teamMember?.attributes?.socialNetworks[0]
+                                    ?.socialNetworkName || ''
+                                : ''
+                            }
+                            layout='fill'
+                          />
+                        </a>
+                      </div>
+                      <div className='relative w-5 h-5'>
+                        <a href=''>
+                          <Image src={twitter} alt='twitter' layout='fill' />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
