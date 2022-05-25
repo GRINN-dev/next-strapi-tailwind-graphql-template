@@ -8,11 +8,11 @@ import {
   useTeamMemberQuery,
 } from '../../graphql';
 import { client } from '../../lib/apolloClient';
+import linkedIn from '../../public/linkedIn.png';
 
 const Contact: NextPage<TeamPageQuery, TeamMemberQuery> = ({ teamPage }) => {
   const teamMembers = useTeamMemberQuery({});
-  // const imageSrc = 'https://i.pravatar.cc/300';
-  // || `https://localhost:1337/${teamMembers?.data?.teamMembers?.data[0].attributes?.avatar?.data[0].attributes?.url}`;
+
   return (
     <div className='px-4 py-10 mx-auto space-y-2 bg-white sm:px-8 lg:py-24 max-w-7xl'>
       <Head>
@@ -38,7 +38,6 @@ const Contact: NextPage<TeamPageQuery, TeamMemberQuery> = ({ teamPage }) => {
               <li key={teamMember.id} className='space-y-4 '>
                 <div className='relative w-40 h-40'>
                   <Image
-                    // loader={() => imageSrc}
                     src={
                       teamMember?.attributes?.avatar?.data?.attributes?.url
                         ? `http://localhost:1337${teamMember?.attributes?.avatar?.data?.attributes?.url}`
@@ -63,25 +62,27 @@ const Contact: NextPage<TeamPageQuery, TeamMemberQuery> = ({ teamPage }) => {
                     <p className='text-indigo-600'>
                       {teamMember.attributes?.bio}
                     </p>
+                    <div className='relative w-10 h-10'>
+                      <a
+                        href={
+                          teamMember?.attributes?.socialNetworks
+                            ? teamMember?.attributes?.socialNetworks[0]?.link?.toString()
+                            : ''
+                        }
+                      >
+                        <Image
+                          src={linkedIn}
+                          alt={
+                            teamMember?.attributes?.socialNetworks
+                              ? teamMember?.attributes?.socialNetworks[0]
+                                  ?.socialNetworkName || ''
+                              : ''
+                          }
+                          layout='fill'
+                        />
+                      </a>
+                    </div>
                   </div>
-
-                  <ul>
-                    {teamMember.attributes?.socialNetworks?.map((rs) => {
-                      return (
-                        <li key={rs?.id}>
-                          <a href={rs?.link?.toString()}>
-                            <Image
-                              src={`https://localhost:1337/rs?.icon?.data?.attributes?.url`}
-                              alt={rs?.__typename}
-                              width={50}
-                              height={50}
-                              layout='fixed'
-                            />
-                          </a>
-                        </li>
-                      );
-                    })}
-                  </ul>
                 </div>
               </li>
             );
