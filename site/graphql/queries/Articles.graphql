@@ -1,0 +1,29 @@
+query Articles {
+  blogArticles {
+    data {
+      id
+      attributes {
+        pageTitle
+        pageDescription
+        keyWord
+        ogTag
+        articleTitle
+        articleContent
+        articleAuthor
+        publishingDate
+        articleMedia {
+          data {
+            id
+            attributes {
+              name
+              url
+              alternativeText
+            }
+          }
+        }
+        slug
+        updatedAt
+      }
+    }
+  }
+}

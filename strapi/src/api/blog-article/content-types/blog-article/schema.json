@@ -51,11 +51,15 @@
       "repeatable": false,
       "component": "meta.meta"
     },
-    "labels": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::label.label",
-      "inversedBy": "blog_articles"
+    "articleMedia": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

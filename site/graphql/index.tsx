@@ -37,10 +37,10 @@ export type BlogArticle = {
   __typename?: 'BlogArticle';
   articleAuthor?: Maybe<Scalars['String']>;
   articleContent?: Maybe<Scalars['String']>;
+  articleMedia?: Maybe<UploadFileEntityResponse>;
   articleTitle?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   keyWord?: Maybe<Scalars['String']>;
-  labels?: Maybe<LabelRelationResponseCollection>;
   meta?: Maybe<ComponentMetaMeta>;
   ogTag?: Maybe<Scalars['String']>;
   pageDescription?: Maybe<Scalars['String']>;
@@ -50,14 +50,6 @@ export type BlogArticle = {
   slug?: Maybe<Scalars['String']>;
   team_member?: Maybe<TeamMemberEntityResponse>;
   updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type BlogArticleLabelsArgs = {
-  filters?: InputMaybe<LabelFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type BlogArticleEntity = {
@@ -85,7 +77,6 @@ export type BlogArticleFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   keyWord?: InputMaybe<StringFilterInput>;
-  labels?: InputMaybe<LabelFiltersInput>;
   not?: InputMaybe<BlogArticleFiltersInput>;
   ogTag?: InputMaybe<StringFilterInput>;
   or?: InputMaybe<Array<InputMaybe<BlogArticleFiltersInput>>>;
@@ -101,9 +92,9 @@ export type BlogArticleFiltersInput = {
 export type BlogArticleInput = {
   articleAuthor?: InputMaybe<Scalars['String']>;
   articleContent?: InputMaybe<Scalars['String']>;
+  articleMedia?: InputMaybe<Scalars['ID']>;
   articleTitle?: InputMaybe<Scalars['String']>;
   keyWord?: InputMaybe<Scalars['String']>;
-  labels?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   meta?: InputMaybe<ComponentMetaMetaInput>;
   ogTag?: InputMaybe<Scalars['String']>;
   pageDescription?: InputMaybe<Scalars['String']>;
@@ -112,11 +103,6 @@ export type BlogArticleInput = {
   publishingDate?: InputMaybe<Scalars['Date']>;
   slug?: InputMaybe<Scalars['String']>;
   team_member?: InputMaybe<Scalars['ID']>;
-};
-
-export type BlogArticleRelationResponseCollection = {
-  __typename?: 'BlogArticleRelationResponseCollection';
-  data: Array<BlogArticleEntity>;
 };
 
 export type BlogEntity = {
@@ -389,21 +375,12 @@ export type JsonFilterInput = {
 
 export type Label = {
   __typename?: 'Label';
-  blog_articles?: Maybe<BlogArticleRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   labelColor?: Maybe<Scalars['String']>;
   labelName?: Maybe<Scalars['String']>;
   labelSlug?: Maybe<Scalars['String']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type LabelBlog_ArticlesArgs = {
-  filters?: InputMaybe<BlogArticleFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type LabelEntity = {
@@ -425,7 +402,6 @@ export type LabelEntityResponseCollection = {
 
 export type LabelFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<LabelFiltersInput>>>;
-  blog_articles?: InputMaybe<BlogArticleFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   labelColor?: InputMaybe<StringFilterInput>;
@@ -438,16 +414,10 @@ export type LabelFiltersInput = {
 };
 
 export type LabelInput = {
-  blog_articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   labelColor?: InputMaybe<Scalars['String']>;
   labelName?: InputMaybe<Scalars['String']>;
   labelSlug?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type LabelRelationResponseCollection = {
-  __typename?: 'LabelRelationResponseCollection';
-  data: Array<LabelEntity>;
 };
 
 export type Mutation = {
@@ -1278,6 +1248,11 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type ArticlesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ArticlesQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', pageTitle?: string | null, pageDescription?: string | null, keyWord?: string | null, ogTag?: string | null, articleTitle?: string | null, articleContent?: string | null, articleAuthor?: string | null, publishingDate?: any | null, slug?: string | null, updatedAt?: any | null, articleMedia?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null } | null }> } | null };
+
 export type BlogQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1299,6 +1274,64 @@ export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 export type TestQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', title: string } | null }> } | null };
 
 
+export const ArticlesDocument = gql`
+    query Articles {
+  blogArticles {
+    data {
+      id
+      attributes {
+        pageTitle
+        pageDescription
+        keyWord
+        ogTag
+        articleTitle
+        articleContent
+        articleAuthor
+        publishingDate
+        articleMedia {
+          data {
+            id
+            attributes {
+              name
+              url
+              alternativeText
+            }
+          }
+        }
+        slug
+        updatedAt
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useArticlesQuery__
+ *
+ * To run a query within a React component, call `useArticlesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useArticlesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useArticlesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useArticlesQuery(baseOptions?: Apollo.QueryHookOptions<ArticlesQuery, ArticlesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ArticlesQuery, ArticlesQueryVariables>(ArticlesDocument, options);
+      }
+export function useArticlesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ArticlesQuery, ArticlesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ArticlesQuery, ArticlesQueryVariables>(ArticlesDocument, options);
+        }
+export type ArticlesQueryHookResult = ReturnType<typeof useArticlesQuery>;
+export type ArticlesLazyQueryHookResult = ReturnType<typeof useArticlesLazyQuery>;
+export type ArticlesQueryResult = Apollo.QueryResult<ArticlesQuery, ArticlesQueryVariables>;
 export const BlogDocument = gql`
     query Blog {
   blog {

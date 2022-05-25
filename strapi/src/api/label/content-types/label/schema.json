@@ -20,12 +20,6 @@
     "labelSlug": {
       "type": "uid",
       "targetField": "labelName"
-    },
-    "blog_articles": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::blog-article.blog-article",
-      "inversedBy": "labels"
     }
   }
 }
