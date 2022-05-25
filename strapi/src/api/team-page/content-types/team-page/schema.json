@@ -1,10 +1,11 @@
 {
-  "kind": "collectionType",
-  "collectionName": "teams",
+  "kind": "singleType",
+  "collectionName": "team_pages",
   "info": {
-    "singularName": "team",
-    "pluralName": "teams",
-    "displayName": "Team"
+    "singularName": "team-page",
+    "pluralName": "team-pages",
+    "displayName": "Team Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +16,7 @@
       "type": "string"
     },
     "teamParagraph": {
-      "type": "text"
+      "type": "string"
     },
     "teamMeta": {
       "type": "component",

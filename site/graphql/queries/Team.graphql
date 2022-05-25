@@ -1,12 +1,11 @@
-query Team {
-  teams {
+query TeamPage {
+  teamPage {
     data {
       id
       attributes {
         teamTitle
         teamParagraph
         teamMeta {
-          id
           metaName
           metaProperty
           metaContent

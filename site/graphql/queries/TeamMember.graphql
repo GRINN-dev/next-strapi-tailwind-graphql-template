@@ -5,92 +5,19 @@ query TeamMember {
       attributes {
         firstName
         lastName
+        bio
+        socialNetworks {
+          socialNetworkName
+          link
+
+          id
+        }
         avatar {
           data {
-            id
             attributes {
-              name
-              alternativeText
               url
-            }
-          }
-        }
-        bio
-        LinkedIn {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-        }
-        Facebook {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-        }
-        Twitter {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-        }
-        Instagram {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-        }
-        TikTok {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-        }
-        Snapchat {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
+              alternativeText
+              name
             }
           }
         }

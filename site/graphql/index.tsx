@@ -136,7 +136,7 @@ export type ComponentSocialNetworkFacebook = {
   icon?: Maybe<UploadFileEntityResponse>;
   id: Scalars['ID'];
   link?: Maybe<Scalars['String']>;
-  socialNetworkName?: Maybe<Scalars['String']>;
+  socialNetworkName?: Maybe<Enum_Componentsocialnetworkfacebook_Socialnetworkname>;
 };
 
 export type ComponentSocialNetworkFacebookFiltersInput = {
@@ -151,7 +151,7 @@ export type ComponentSocialNetworkFacebookInput = {
   icon?: InputMaybe<Scalars['ID']>;
   id?: InputMaybe<Scalars['ID']>;
   link?: InputMaybe<Scalars['String']>;
-  socialNetworkName?: InputMaybe<Scalars['String']>;
+  socialNetworkName?: InputMaybe<Enum_Componentsocialnetworkfacebook_Socialnetworkname>;
 };
 
 export type DateFilterInput = {
@@ -200,6 +200,13 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']>;
 };
 
+export enum Enum_Componentsocialnetworkfacebook_Socialnetworkname {
+  Facebook = 'Facebook',
+  Instagram = 'Instagram',
+  LinkedIn = 'LinkedIn',
+  Twitter = 'Twitter'
+}
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
   caption?: InputMaybe<Scalars['String']>;
@@ -229,7 +236,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = BlogArticle | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | Team | TeamMember | Test | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = BlogArticle | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | TeamMember | TeamPage | Test | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -339,7 +346,6 @@ export type JsonFilterInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   createBlogArticle?: Maybe<BlogArticleEntityResponse>;
-  createTeam?: Maybe<TeamEntityResponse>;
   createTeamMember?: Maybe<TeamMemberEntityResponse>;
   createTest?: Maybe<TestEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -348,8 +354,8 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteBlogArticle?: Maybe<BlogArticleEntityResponse>;
-  deleteTeam?: Maybe<TeamEntityResponse>;
   deleteTeamMember?: Maybe<TeamMemberEntityResponse>;
+  deleteTeamPage?: Maybe<TeamPageEntityResponse>;
   deleteTest?: Maybe<TestEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Delete an existing role */
@@ -369,8 +375,8 @@ export type Mutation = {
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateBlogArticle?: Maybe<BlogArticleEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
-  updateTeam?: Maybe<TeamEntityResponse>;
   updateTeamMember?: Maybe<TeamMemberEntityResponse>;
+  updateTeamPage?: Maybe<TeamPageEntityResponse>;
   updateTest?: Maybe<TestEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Update an existing role */
@@ -383,11 +389,6 @@ export type Mutation = {
 
 export type MutationCreateBlogArticleArgs = {
   data: BlogArticleInput;
-};
-
-
-export type MutationCreateTeamArgs = {
-  data: TeamInput;
 };
 
 
@@ -417,11 +418,6 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 
 export type MutationDeleteBlogArticleArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationDeleteTeamArgs = {
   id: Scalars['ID'];
 };
 
@@ -503,15 +499,14 @@ export type MutationUpdateFileInfoArgs = {
 };
 
 
-export type MutationUpdateTeamArgs = {
-  data: TeamInput;
+export type MutationUpdateTeamMemberArgs = {
+  data: TeamMemberInput;
   id: Scalars['ID'];
 };
 
 
-export type MutationUpdateTeamMemberArgs = {
-  data: TeamMemberInput;
-  id: Scalars['ID'];
+export type MutationUpdateTeamPageArgs = {
+  data: TeamPageInput;
 };
 
 
@@ -574,10 +569,9 @@ export type Query = {
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
-  team?: Maybe<TeamEntityResponse>;
   teamMember?: Maybe<TeamMemberEntityResponse>;
   teamMembers?: Maybe<TeamMemberEntityResponseCollection>;
-  teams?: Maybe<TeamEntityResponseCollection>;
+  teamPage?: Maybe<TeamPageEntityResponse>;
   test?: Maybe<TestEntityResponse>;
   tests?: Maybe<TestEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
@@ -614,11 +608,6 @@ export type QueryI18NLocalesArgs = {
 };
 
 
-export type QueryTeamArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
 export type QueryTeamMemberArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
@@ -632,11 +621,8 @@ export type QueryTeamMembersArgs = {
 };
 
 
-export type QueryTeamsArgs = {
-  filters?: InputMaybe<TeamFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
+export type QueryTeamPageArgs = {
   publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -716,115 +702,22 @@ export type StringFilterInput = {
   startsWith?: InputMaybe<Scalars['String']>;
 };
 
-export type Team = {
-  __typename?: 'Team';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  teamMeta?: Maybe<ComponentMetaMeta>;
-  teamParagraph?: Maybe<Scalars['String']>;
-  teamTitle?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type TeamEntity = {
-  __typename?: 'TeamEntity';
-  attributes?: Maybe<Team>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type TeamEntityResponse = {
-  __typename?: 'TeamEntityResponse';
-  data?: Maybe<TeamEntity>;
-};
-
-export type TeamEntityResponseCollection = {
-  __typename?: 'TeamEntityResponseCollection';
-  data: Array<TeamEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type TeamFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<TeamFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<TeamFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<TeamFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  teamParagraph?: InputMaybe<StringFilterInput>;
-  teamTitle?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type TeamInput = {
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  teamMeta?: InputMaybe<ComponentMetaMetaInput>;
-  teamParagraph?: InputMaybe<Scalars['String']>;
-  teamTitle?: InputMaybe<Scalars['String']>;
-};
-
 export type TeamMember = {
   __typename?: 'TeamMember';
-  Facebook?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  Instagram?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  LinkedIn?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  Snapchat?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  TikTok?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  Twitter?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  avatar?: Maybe<UploadFileRelationResponseCollection>;
+  avatar?: Maybe<UploadFileEntityResponse>;
   bio?: Maybe<Scalars['String']>;
   blog_article?: Maybe<BlogArticleEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']>;
   firstName?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
+  socialNetworks?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 
-export type TeamMemberFacebookArgs = {
+export type TeamMemberSocialNetworksArgs = {
   filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberInstagramArgs = {
-  filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberLinkedInArgs = {
-  filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberSnapchatArgs = {
-  filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberTikTokArgs = {
-  filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberTwitterArgs = {
-  filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberAvatarArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -861,18 +754,41 @@ export type TeamMemberFiltersInput = {
 };
 
 export type TeamMemberInput = {
-  Facebook?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  Instagram?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  LinkedIn?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  Snapchat?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  TikTok?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  Twitter?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  avatar?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  avatar?: InputMaybe<Scalars['ID']>;
   bio?: InputMaybe<Scalars['String']>;
   blog_article?: InputMaybe<Scalars['ID']>;
   firstName?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+  socialNetworks?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
+};
+
+export type TeamPage = {
+  __typename?: 'TeamPage';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  teamMeta?: Maybe<ComponentMetaMeta>;
+  teamParagraph?: Maybe<Scalars['String']>;
+  teamTitle?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type TeamPageEntity = {
+  __typename?: 'TeamPageEntity';
+  attributes?: Maybe<TeamPage>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type TeamPageEntityResponse = {
+  __typename?: 'TeamPageEntityResponse';
+  data?: Maybe<TeamPageEntity>;
+};
+
+export type TeamPageInput = {
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  teamMeta?: InputMaybe<ComponentMetaMetaInput>;
+  teamParagraph?: InputMaybe<Scalars['String']>;
+  teamTitle?: InputMaybe<Scalars['String']>;
 };
 
 export type Test = {
@@ -992,11 +908,6 @@ export type UploadFileInput = {
   size?: InputMaybe<Scalars['Float']>;
   url?: InputMaybe<Scalars['String']>;
   width?: InputMaybe<Scalars['Int']>;
-};
-
-export type UploadFileRelationResponseCollection = {
-  __typename?: 'UploadFileRelationResponseCollection';
-  data: Array<UploadFileEntity>;
 };
 
 export type UsersPermissionsCreateRolePayload = {
@@ -1213,15 +1124,15 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type TeamQueryVariables = Exact<{ [key: string]: never; }>;
+export type TeamPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TeamQuery = { __typename?: 'Query', teams?: { __typename?: 'TeamEntityResponseCollection', data: Array<{ __typename?: 'TeamEntity', id?: string | null, attributes?: { __typename?: 'Team', teamTitle?: string | null, teamParagraph?: string | null, teamMeta?: { __typename?: 'ComponentMetaMeta', id: string, metaName?: string | null, metaProperty?: string | null, metaContent?: string | null } | null } | null }> } | null };
+export type TeamPageQuery = { __typename?: 'Query', teamPage?: { __typename?: 'TeamPageEntityResponse', data?: { __typename?: 'TeamPageEntity', id?: string | null, attributes?: { __typename?: 'TeamPage', teamTitle?: string | null, teamParagraph?: string | null, teamMeta?: { __typename?: 'ComponentMetaMeta', metaName?: string | null, metaProperty?: string | null, metaContent?: string | null } | null } | null } | null } | null };
 
 export type TeamMemberQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TeamMemberQuery = { __typename?: 'Query', teamMembers?: { __typename?: 'TeamMemberEntityResponseCollection', data: Array<{ __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, bio?: string | null, avatar?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null }> } | null, LinkedIn?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, Facebook?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, Twitter?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, Instagram?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, TikTok?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, Snapchat?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', id: string, socialNetworkName?: string | null, link?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null } | null }> } | null };
+export type TeamMemberQuery = { __typename?: 'Query', teamMembers?: { __typename?: 'TeamMemberEntityResponseCollection', data: Array<{ __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, bio?: string | null, socialNetworks?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', socialNetworkName?: Enum_Componentsocialnetworkfacebook_Socialnetworkname | null, link?: string | null, id: string } | null> | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, name: string } | null } | null } | null } | null }> } | null };
 
 export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1229,16 +1140,15 @@ export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 export type TestQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', title: string } | null }> } | null };
 
 
-export const TeamDocument = gql`
-    query Team {
-  teams {
+export const TeamPageDocument = gql`
+    query TeamPage {
+  teamPage {
     data {
       id
       attributes {
         teamTitle
         teamParagraph
         teamMeta {
-          id
           metaName
           metaProperty
           metaContent
@@ -1250,31 +1160,31 @@ export const TeamDocument = gql`
     `;
 
 /**
- * __useTeamQuery__
+ * __useTeamPageQuery__
  *
- * To run a query within a React component, call `useTeamQuery` and pass it any options that fit your needs.
- * When your component renders, `useTeamQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useTeamPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTeamPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useTeamQuery({
+ * const { data, loading, error } = useTeamPageQuery({
  *   variables: {
  *   },
  * });
  */
-export function useTeamQuery(baseOptions?: Apollo.QueryHookOptions<TeamQuery, TeamQueryVariables>) {
+export function useTeamPageQuery(baseOptions?: Apollo.QueryHookOptions<TeamPageQuery, TeamPageQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<TeamQuery, TeamQueryVariables>(TeamDocument, options);
+        return Apollo.useQuery<TeamPageQuery, TeamPageQueryVariables>(TeamPageDocument, options);
       }
-export function useTeamLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TeamQuery, TeamQueryVariables>) {
+export function useTeamPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TeamPageQuery, TeamPageQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<TeamQuery, TeamQueryVariables>(TeamDocument, options);
+          return Apollo.useLazyQuery<TeamPageQuery, TeamPageQueryVariables>(TeamPageDocument, options);
         }
-export type TeamQueryHookResult = ReturnType<typeof useTeamQuery>;
-export type TeamLazyQueryHookResult = ReturnType<typeof useTeamLazyQuery>;
-export type TeamQueryResult = Apollo.QueryResult<TeamQuery, TeamQueryVariables>;
+export type TeamPageQueryHookResult = ReturnType<typeof useTeamPageQuery>;
+export type TeamPageLazyQueryHookResult = ReturnType<typeof useTeamPageLazyQuery>;
+export type TeamPageQueryResult = Apollo.QueryResult<TeamPageQuery, TeamPageQueryVariables>;
 export const TeamMemberDocument = gql`
     query TeamMember {
   teamMembers {
@@ -1283,92 +1193,18 @@ export const TeamMemberDocument = gql`
       attributes {
         firstName
         lastName
+        bio
+        socialNetworks {
+          socialNetworkName
+          link
+          id
+        }
         avatar {
           data {
-            id
             attributes {
-              name
-              alternativeText
               url
-            }
-          }
-        }
-        bio
-        LinkedIn {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-        }
-        Facebook {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-        }
-        Twitter {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-        }
-        Instagram {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-        }
-        TikTok {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-        }
-        Snapchat {
-          id
-          socialNetworkName
-          link
-          icon {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
+              alternativeText
+              name
             }
           }
         }

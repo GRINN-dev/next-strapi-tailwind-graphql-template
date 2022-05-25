@@ -23,13 +23,10 @@
     },
     "avatar": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "blog_article": {
@@ -38,32 +35,7 @@
       "target": "api::blog-article.blog-article",
       "inversedBy": "team_member"
     },
-    "Facebook": {
-      "type": "component",
-      "repeatable": true,
-      "component": "social-network.facebook"
-    },
-    "Twitter": {
-      "type": "component",
-      "repeatable": true,
-      "component": "social-network.facebook"
-    },
-    "LinkedIn": {
-      "type": "component",
-      "repeatable": true,
-      "component": "social-network.facebook"
-    },
-    "Instagram": {
-      "type": "component",
-      "repeatable": true,
-      "component": "social-network.facebook"
-    },
-    "TikTok": {
-      "type": "component",
-      "repeatable": true,
-      "component": "social-network.facebook"
-    },
-    "Snapchat": {
+    "socialNetworks": {
       "type": "component",
       "repeatable": true,
       "component": "social-network.facebook"

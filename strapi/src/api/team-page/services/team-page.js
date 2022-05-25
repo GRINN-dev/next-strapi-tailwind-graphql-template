@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * team service.
+ * team-page service.
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::team.team');
+module.exports = createCoreService('api::team-page.team-page');

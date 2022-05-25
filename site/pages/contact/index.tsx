@@ -2,34 +2,33 @@ import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import {
-  TeamDocument,
-  TeamQuery,
+  TeamPageDocument,
+  TeamPageQuery,
   TeamMemberQuery,
   useTeamMemberQuery,
 } from '../../graphql';
 import { client } from '../../lib/apolloClient';
 
-const Contact: NextPage<TeamQuery, TeamMemberQuery> = ({ teams }) => {
+const Contact: NextPage<TeamPageQuery, TeamMemberQuery> = ({ teamPage }) => {
   const teamMembers = useTeamMemberQuery({});
-  const imageSrc =
-    'https://i.pravatar.cc/300' ||
-    `https://localhost:1337/${teamMembers?.data?.teamMembers?.data[0].attributes?.avatar?.data[0].attributes?.url}`;
+  // const imageSrc = 'https://i.pravatar.cc/300';
+  // || `https://localhost:1337/${teamMembers?.data?.teamMembers?.data[0].attributes?.avatar?.data[0].attributes?.url}`;
   return (
-    <div className='px-4 py-12 space-y-2 bg-white sm:px-8 lg:py-24 max-w-7xl'>
+    <div className='px-4 py-10 mx-auto space-y-2 bg-white sm:px-8 lg:py-24 max-w-7xl'>
       <Head>
         <title>Our team</title>
         <meta
-          name={teams?.data[0]?.attributes?.teamMeta?.metaName?.toString()}
-          property={teams?.data[0]?.attributes?.teamMeta?.metaProperty?.toString()}
-          content={teams?.data[0]?.attributes?.teamMeta?.metaContent?.toString()}
+          name={teamPage?.data?.attributes?.teamMeta?.metaName?.toString()}
+          property={teamPage?.data?.attributes?.teamMeta?.metaProperty?.toString()}
+          content={teamPage?.data?.attributes?.teamMeta?.metaContent?.toString()}
         />
       </Head>
       <section className='flex flex-col mb-10 space-y-6'>
         <h1 className='text-3xl font-bold '>
-          {teams?.data[0]?.attributes?.teamTitle}
+          {teamPage?.data?.attributes?.teamTitle}
         </h1>
         <p className='text-xl text-gray-500 '>
-          {teams?.data[0]?.attributes?.teamParagraph}
+          {teamPage?.data?.attributes?.teamParagraph}
         </p>
       </section>
       <section className='w-full'>
@@ -37,15 +36,20 @@ const Contact: NextPage<TeamQuery, TeamMemberQuery> = ({ teams }) => {
           {teamMembers.data?.teamMembers?.data.map((teamMember) => {
             return (
               <li key={teamMember.id} className='space-y-4 '>
-                <div className=''>
+                <div className='relative w-40 h-40'>
                   <Image
-                    loader={() => imageSrc}
-                    src={imageSrc}
-                    width={407}
-                    height={280}
-                    layout='fixed'
-                    alt={teamMember.attributes?.avatar?.data[0]?.attributes?.alternativeText?.toString()}
-                    className='object-cover space-x-2 rounded-lg shadow-lg'
+                    // loader={() => imageSrc}
+                    src={
+                      teamMember?.attributes?.avatar?.data?.attributes?.url
+                        ? `http://localhost:1337${teamMember?.attributes?.avatar?.data?.attributes?.url}`
+                        : `https://i.pravatar.cc/300`
+                    }
+                    layout='fill'
+                    alt={
+                      teamMember.attributes?.avatar?.data?.attributes
+                        ?.alternativeText || ''
+                    }
+                    className='absolute inset-0 object-cover space-x-2 rounded-lg shadow-lg'
                   />
                 </div>
 
@@ -62,10 +66,18 @@ const Contact: NextPage<TeamQuery, TeamMemberQuery> = ({ teams }) => {
                   </div>
 
                   <ul>
-                    {teamMember.attributes?.Facebook?.map((rs) => {
+                    {teamMember.attributes?.socialNetworks?.map((rs) => {
                       return (
                         <li key={rs?.id}>
-                          <a href={rs?.icon?.data?.attributes?.url}></a>
+                          <a href={rs?.link?.toString()}>
+                            <Image
+                              src={`https://localhost:1337/rs?.icon?.data?.attributes?.url`}
+                              alt={rs?.__typename}
+                              width={50}
+                              height={50}
+                              layout='fixed'
+                            />
+                          </a>
                         </li>
                       );
                     })}
@@ -82,9 +94,9 @@ const Contact: NextPage<TeamQuery, TeamMemberQuery> = ({ teams }) => {
 
 export default Contact;
 
-export const getStaticProps: GetStaticProps<TeamQuery> = async ({}) => {
-  const { data, error } = await client.query<TeamQuery>({
-    query: TeamDocument,
+export const getStaticProps: GetStaticProps<TeamPageQuery> = async ({}) => {
+  const { data, error } = await client.query<TeamPageQuery>({
+    query: TeamPageDocument,
   });
   return {
     props: data,
