@@ -8,6 +8,7 @@ const Home: NextPage<TestQuery> = ({ tests }) => {
     <Layout>
       <h1 className="text-2xl">Hello world</h1>
       <p>{tests?.data[0]?.attributes?.title}</p>
+      <div className="h-96" />
     </Layout>
   );
 };
