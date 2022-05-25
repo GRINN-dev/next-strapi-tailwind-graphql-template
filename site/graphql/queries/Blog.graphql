@@ -1,0 +1,17 @@
+query Blog {
+  blog {
+    data {
+      id
+      attributes {
+        blogTitle
+        blogIntroduction
+        createdAt
+        blogMeta {
+          metaName
+          metaContent
+          metaProperty
+        }
+      }
+    }
+  }
+}

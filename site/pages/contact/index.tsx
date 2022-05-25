@@ -17,7 +17,9 @@ const Contact: NextPage<TeamPageQuery, TeamMemberQuery> = ({ teamPage }) => {
   return (
     <div className='px-4 py-10 mx-auto space-y-2 bg-white sm:px-8 lg:py-24 max-w-7xl'>
       <Head>
-        <title>Our team</title>
+        <title>
+          {teamPage?.data?.attributes?.teamMeta?.metaName?.toString()}
+        </title>
         <meta
           name={teamPage?.data?.attributes?.teamMeta?.metaName?.toString()}
           property={teamPage?.data?.attributes?.teamMeta?.metaProperty?.toString()}

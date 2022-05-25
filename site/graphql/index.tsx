@@ -23,6 +23,16 @@ export type Scalars = {
   Upload: any;
 };
 
+export type Blog = {
+  __typename?: 'Blog';
+  blogIntroduction?: Maybe<Scalars['String']>;
+  blogMeta?: Maybe<ComponentMetaMeta>;
+  blogTitle?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
 export type BlogArticle = {
   __typename?: 'BlogArticle';
   articleAuthor?: Maybe<Scalars['String']>;
@@ -30,6 +40,7 @@ export type BlogArticle = {
   articleTitle?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   keyWord?: Maybe<Scalars['String']>;
+  labels?: Maybe<LabelRelationResponseCollection>;
   meta?: Maybe<ComponentMetaMeta>;
   ogTag?: Maybe<Scalars['String']>;
   pageDescription?: Maybe<Scalars['String']>;
@@ -39,6 +50,14 @@ export type BlogArticle = {
   slug?: Maybe<Scalars['String']>;
   team_member?: Maybe<TeamMemberEntityResponse>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type BlogArticleLabelsArgs = {
+  filters?: InputMaybe<LabelFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type BlogArticleEntity = {
@@ -66,6 +85,7 @@ export type BlogArticleFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   keyWord?: InputMaybe<StringFilterInput>;
+  labels?: InputMaybe<LabelFiltersInput>;
   not?: InputMaybe<BlogArticleFiltersInput>;
   ogTag?: InputMaybe<StringFilterInput>;
   or?: InputMaybe<Array<InputMaybe<BlogArticleFiltersInput>>>;
@@ -83,6 +103,7 @@ export type BlogArticleInput = {
   articleContent?: InputMaybe<Scalars['String']>;
   articleTitle?: InputMaybe<Scalars['String']>;
   keyWord?: InputMaybe<Scalars['String']>;
+  labels?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   meta?: InputMaybe<ComponentMetaMetaInput>;
   ogTag?: InputMaybe<Scalars['String']>;
   pageDescription?: InputMaybe<Scalars['String']>;
@@ -91,6 +112,29 @@ export type BlogArticleInput = {
   publishingDate?: InputMaybe<Scalars['Date']>;
   slug?: InputMaybe<Scalars['String']>;
   team_member?: InputMaybe<Scalars['ID']>;
+};
+
+export type BlogArticleRelationResponseCollection = {
+  __typename?: 'BlogArticleRelationResponseCollection';
+  data: Array<BlogArticleEntity>;
+};
+
+export type BlogEntity = {
+  __typename?: 'BlogEntity';
+  attributes?: Maybe<Blog>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type BlogEntityResponse = {
+  __typename?: 'BlogEntityResponse';
+  data?: Maybe<BlogEntity>;
+};
+
+export type BlogInput = {
+  blogIntroduction?: InputMaybe<Scalars['String']>;
+  blogMeta?: InputMaybe<ComponentMetaMetaInput>;
+  blogTitle?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type BooleanFilterInput = {
@@ -236,7 +280,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = BlogArticle | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | TeamMember | TeamPage | Test | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Blog | BlogArticle | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | Label | TeamMember | TeamPage | Test | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -343,9 +387,73 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']>;
 };
 
+export type Label = {
+  __typename?: 'Label';
+  blog_articles?: Maybe<BlogArticleRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  labelColor?: Maybe<Scalars['String']>;
+  labelName?: Maybe<Scalars['String']>;
+  labelSlug?: Maybe<Scalars['String']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type LabelBlog_ArticlesArgs = {
+  filters?: InputMaybe<BlogArticleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type LabelEntity = {
+  __typename?: 'LabelEntity';
+  attributes?: Maybe<Label>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type LabelEntityResponse = {
+  __typename?: 'LabelEntityResponse';
+  data?: Maybe<LabelEntity>;
+};
+
+export type LabelEntityResponseCollection = {
+  __typename?: 'LabelEntityResponseCollection';
+  data: Array<LabelEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type LabelFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<LabelFiltersInput>>>;
+  blog_articles?: InputMaybe<BlogArticleFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  labelColor?: InputMaybe<StringFilterInput>;
+  labelName?: InputMaybe<StringFilterInput>;
+  labelSlug?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<LabelFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<LabelFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type LabelInput = {
+  blog_articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  labelColor?: InputMaybe<Scalars['String']>;
+  labelName?: InputMaybe<Scalars['String']>;
+  labelSlug?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type LabelRelationResponseCollection = {
+  __typename?: 'LabelRelationResponseCollection';
+  data: Array<LabelEntity>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createBlogArticle?: Maybe<BlogArticleEntityResponse>;
+  createLabel?: Maybe<LabelEntityResponse>;
   createTeamMember?: Maybe<TeamMemberEntityResponse>;
   createTest?: Maybe<TestEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -353,7 +461,9 @@ export type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteBlog?: Maybe<BlogEntityResponse>;
   deleteBlogArticle?: Maybe<BlogArticleEntityResponse>;
+  deleteLabel?: Maybe<LabelEntityResponse>;
   deleteTeamMember?: Maybe<TeamMemberEntityResponse>;
   deleteTeamPage?: Maybe<TeamPageEntityResponse>;
   deleteTest?: Maybe<TestEntityResponse>;
@@ -373,8 +483,10 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateBlog?: Maybe<BlogEntityResponse>;
   updateBlogArticle?: Maybe<BlogArticleEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updateLabel?: Maybe<LabelEntityResponse>;
   updateTeamMember?: Maybe<TeamMemberEntityResponse>;
   updateTeamPage?: Maybe<TeamPageEntityResponse>;
   updateTest?: Maybe<TestEntityResponse>;
@@ -389,6 +501,11 @@ export type Mutation = {
 
 export type MutationCreateBlogArticleArgs = {
   data: BlogArticleInput;
+};
+
+
+export type MutationCreateLabelArgs = {
+  data: LabelInput;
 };
 
 
@@ -418,6 +535,11 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 
 export type MutationDeleteBlogArticleArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteLabelArgs = {
   id: Scalars['ID'];
 };
 
@@ -487,6 +609,11 @@ export type MutationResetPasswordArgs = {
 };
 
 
+export type MutationUpdateBlogArgs = {
+  data: BlogInput;
+};
+
+
 export type MutationUpdateBlogArticleArgs = {
   data: BlogArticleInput;
   id: Scalars['ID'];
@@ -496,6 +623,12 @@ export type MutationUpdateBlogArticleArgs = {
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
+};
+
+
+export type MutationUpdateLabelArgs = {
+  data: LabelInput;
+  id: Scalars['ID'];
 };
 
 
@@ -564,10 +697,13 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  blog?: Maybe<BlogEntityResponse>;
   blogArticle?: Maybe<BlogArticleEntityResponse>;
   blogArticles?: Maybe<BlogArticleEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
+  label?: Maybe<LabelEntityResponse>;
+  labels?: Maybe<LabelEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
   teamMember?: Maybe<TeamMemberEntityResponse>;
   teamMembers?: Maybe<TeamMemberEntityResponseCollection>;
@@ -580,6 +716,11 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
+};
+
+
+export type QueryBlogArgs = {
+  publicationState?: InputMaybe<PublicationState>;
 };
 
 
@@ -604,6 +745,19 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryLabelArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryLabelsArgs = {
+  filters?: InputMaybe<LabelFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -1124,6 +1278,11 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type BlogQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type BlogQuery = { __typename?: 'Query', blog?: { __typename?: 'BlogEntityResponse', data?: { __typename?: 'BlogEntity', id?: string | null, attributes?: { __typename?: 'Blog', blogTitle?: string | null, blogIntroduction?: string | null, createdAt?: any | null, blogMeta?: { __typename?: 'ComponentMetaMeta', metaName?: string | null, metaContent?: string | null, metaProperty?: string | null } | null } | null } | null } | null };
+
 export type TeamPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1140,6 +1299,52 @@ export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 export type TestQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', title: string } | null }> } | null };
 
 
+export const BlogDocument = gql`
+    query Blog {
+  blog {
+    data {
+      id
+      attributes {
+        blogTitle
+        blogIntroduction
+        createdAt
+        blogMeta {
+          metaName
+          metaContent
+          metaProperty
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useBlogQuery__
+ *
+ * To run a query within a React component, call `useBlogQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useBlogQuery(baseOptions?: Apollo.QueryHookOptions<BlogQuery, BlogQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogQuery, BlogQueryVariables>(BlogDocument, options);
+      }
+export function useBlogLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogQuery, BlogQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogQuery, BlogQueryVariables>(BlogDocument, options);
+        }
+export type BlogQueryHookResult = ReturnType<typeof useBlogQuery>;
+export type BlogLazyQueryHookResult = ReturnType<typeof useBlogLazyQuery>;
+export type BlogQueryResult = Apollo.QueryResult<BlogQuery, BlogQueryVariables>;
 export const TeamPageDocument = gql`
     query TeamPage {
   teamPage {
