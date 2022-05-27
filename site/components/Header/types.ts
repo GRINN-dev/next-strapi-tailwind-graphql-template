@@ -7,13 +7,7 @@ export interface HeaderProps {
   seeMore?: SeeMoreProps;
 }
 
-interface SubHeaderProps {
-  label: string;
-  href: string;
-  icon?: any;
-}
-
-interface SeeMoreProps {
+export interface SeeMoreProps {
   subHeader?: {
     label: string;
     href: string;
@@ -25,4 +19,10 @@ interface SeeMoreProps {
     description: string;
     imageUrl: string;
   }[];
+}
+
+interface SubHeaderProps {
+  label: string;
+  href: string;
+  icon?: any;
 }
