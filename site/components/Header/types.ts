@@ -1,5 +1,9 @@
 export interface HeaderProps {
-  header: { label: string; href: string }[];
+  logo?: string | null | undefined;
+  header?: {
+    label: string | null | undefined;
+    href: string | null | undefined;
+  }[];
   seeMore?: SeeMoreProps;
 }
 

@@ -2,6 +2,7 @@ import { FooterProps, HeaderProps } from "../components";
 import { NewspaperIcon, OfficeBuildingIcon } from "@heroicons/react/outline";
 
 export const HeaderPropsExample: HeaderProps = {
+  logo: "https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg",
   header: [
     { label: "Notre histoire", href: "" },
     { label: "Qui sommes nous", href: "" },
