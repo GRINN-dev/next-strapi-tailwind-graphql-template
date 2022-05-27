@@ -38,10 +38,7 @@ export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
         <div className="relative z-20">
           <div className="flex items-center justify-between px-4 py-5 mx-auto max-w-7xl sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10">
             <div>
-              <div className="flex items-center justify-center w-16 h-16 bg-yellow-300 rounded-full">
-                Logo
-              </div>
-              {/* <a href="#" className="flex">
+              <a href="#" className="flex">
                 <span className="sr-only">Workflow</span>
                 <div className="relative w-10 h-8 sm:h-10">
                   <Image
@@ -51,7 +48,7 @@ export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
                     className="object-contain"
                   />
                 </div>
-              </a> */}
+              </a>
             </div>
             <div className="-my-2 -mr-2 md:hidden">
               <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -146,16 +143,16 @@ export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
                                             href={post.href}
                                             className="flex p-3 -m-3 rounded-lg hover:bg-gray-100"
                                           >
-                                            {/* <div className="flex-shrink-0 hidden sm:block">
-                                          <div className="relative w-32 h-20">
-                                            <Image
-                                              className="object-cover rounded-md"
-                                              src={post.imageUrl}
-                                              alt=""
-                                              layout="fill"
-                                            />
-                                          </div>
-                                        </div> */}
+                                            <div className="flex-shrink-0 hidden sm:block">
+                                              <div className="relative w-32 h-20">
+                                                <Image
+                                                  className="object-cover rounded-md"
+                                                  src={post.imageUrl}
+                                                  alt=""
+                                                  layout="fill"
+                                                />
+                                              </div>
+                                            </div>
                                             <div className="flex-1 w-0 sm:ml-8">
                                               <h4 className="text-base font-medium text-gray-900 truncate">
                                                 {post.title}
@@ -228,35 +225,7 @@ export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
                     </Popover.Button>
                   </div>
                 </div>
-                <div className="mt-6 sm:mt-8">
-                  {/* <nav>
-                    <div className="grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
-                      {solutions.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-50"
-                        >
-                          <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white bg-indigo-500 rounded-md sm:h-12 sm:w-12">
-                            <item.icon className="w-6 h-6" aria-hidden="true" />
-                          </div>
-                          <div className="ml-4 text-base font-medium text-gray-900">
-                            {item.name}
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                    <div className="mt-8 text-base">
-                      <a
-                        href="#"
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
-                      >
-                        {" "}
-                        View all products <span aria-hidden="true">&rarr;</span>
-                      </a>
-                    </div>
-                  </nav> */}
-                </div>
+                <div className="mt-6 sm:mt-8"></div>
               </div>
               <div className="px-5 py-6">
                 <div className="grid grid-cols-2 gap-4">
@@ -288,20 +257,6 @@ export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
                     </a>
                   )}
                 </div>
-                {/* <div className="mt-6">
-                  <a
-                    href="#"
-                    className="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700"
-                  >
-                    Sign up
-                  </a>
-                  <p className="mt-6 text-base font-medium text-center text-gray-500">
-                    Existing customer?{" "}
-                    <a href="#" className="text-indigo-600 hover:text-indigo-500">
-                      Sign in
-                    </a>
-                  </p>
-                </div> */}
               </div>
             </div>
           </Popover.Panel>
