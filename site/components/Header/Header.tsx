@@ -9,7 +9,7 @@ const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(" ");
 };
 
-export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
+export const Header: FC<HeaderProps> = ({ logo, header, seeMore }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +42,10 @@ export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
                 <span className="sr-only">Workflow</span>
                 <div className="relative w-10 h-8 sm:h-10">
                   <Image
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                    src={
+                      logo ||
+                      "https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                    }
                     alt=""
                     layout="fill"
                     className="object-contain"
@@ -61,13 +64,13 @@ export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
                 as="nav"
                 className="flex justify-center flex-grow space-x-10"
               >
-                {header.map((x, index) => (
+                {header?.map((x, index) => (
                   <a
                     key={index}
-                    href={x.href}
+                    href={x.href || ""}
                     className="text-base font-medium text-gray-500 hover:text-gray-900"
                   >
-                    {x.label}
+                    {x.label || ""}
                   </a>
                 ))}
                 {seeMore && (
@@ -217,8 +220,16 @@ export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
               <div className="px-5 pt-5 pb-6 sm:pb-8">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="flex items-center justify-center w-16 h-16 bg-yellow-300 rounded-full">
-                      Logo
+                    <div className="relative w-10 h-8 sm:h-10">
+                      <Image
+                        src={
+                          logo ||
+                          "https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        }
+                        alt=""
+                        layout="fill"
+                        className="object-contain"
+                      />
                     </div>
                   </div>
                   <div className="-mr-2">
@@ -232,13 +243,13 @@ export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
               </div>
               <div className="px-5 py-6">
                 <div className="grid grid-cols-2 gap-4">
-                  {header.map((x, index) => (
+                  {header?.map((x, index) => (
                     <a
                       key={index}
-                      href={x.href}
+                      href={x.href || ""}
                       className="text-base font-medium text-gray-900 rounded-md hover:text-gray-700"
                     >
-                      {x.label}
+                      {x.label || ""}
                     </a>
                   ))}
                   {seeMore?.subHeader &&

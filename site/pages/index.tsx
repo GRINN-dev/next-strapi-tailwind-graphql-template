@@ -1,14 +1,18 @@
 import type { GetStaticProps, NextPage } from "next";
 import { Layout } from "../components";
-import { GetLayoutDocument, GetLayoutQuery } from "../graphql";
-import { client } from "../lib/apolloClient";
-import { FooterPropsExample, HeaderPropsExample } from "../lib/fakeDatas";
+import {
+  GetLayoutDocument,
+  GetLayoutQuery,
+  LayoutEntityResponse,
+} from "../graphql";
+import { client, footerContent, headerContent } from "../lib";
 
 const Home: NextPage<GetLayoutQuery> = ({ layout }) => {
-  console.log(layout);
-
   return (
-    <Layout header={HeaderPropsExample} footer={FooterPropsExample}>
+    <Layout
+      header={headerContent(layout as LayoutEntityResponse)}
+      footer={footerContent(layout as LayoutEntityResponse)}
+    >
       <h1 className="text-2xl">Hello world</h1>
       <div className="h-96" />
     </Layout>
