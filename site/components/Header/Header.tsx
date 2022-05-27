@@ -57,7 +57,10 @@ export const Header: FC<HeaderProps> = ({ header, seeMore }) => {
               </Popover.Button>
             </div>
             <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
-              <Popover.Group as="nav" className="flex space-x-10">
+              <Popover.Group
+                as="nav"
+                className="flex justify-center flex-grow space-x-10"
+              >
                 {header.map((x, index) => (
                   <a
                     key={index}
