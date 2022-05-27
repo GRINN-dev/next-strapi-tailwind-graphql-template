@@ -1,0 +1,45 @@
+{
+  "kind": "singleType",
+  "collectionName": "layouts",
+  "info": {
+    "singularName": "layout",
+    "pluralName": "layouts",
+    "displayName": "Layout",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "headerMainNavigation": {
+      "displayName": "headerMainNavigation",
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.header-main-navigation"
+    },
+    "footerNavigation": {
+      "displayName": "footerNavigation",
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.footer-navigation"
+    },
+    "socials": {
+      "displayName": "socials",
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.socials"
+    }
+  }
+}

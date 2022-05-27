@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_layout_header_main_navigations",
+  "info": {
+    "displayName": "headerMainNavigation",
+    "icon": "apple-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "unique": false
+    },
+    "href": {
+      "type": "string",
+      "unique": false
+    }
+  }
+}

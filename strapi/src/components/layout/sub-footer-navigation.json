@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layout_sub_footer_navigations",
+  "info": {
+    "displayName": "subFooterNavigation",
+    "icon": "blender"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}
