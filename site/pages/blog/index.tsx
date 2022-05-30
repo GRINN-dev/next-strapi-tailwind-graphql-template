@@ -8,6 +8,19 @@ import article1 from '../../public/article1.jpg';
 const Blog: NextPage<BlogQuery> = ({ blog }) => {
   const articles = useArticlesQuery({});
 
+  const readingTime = (text: any) => {
+    const wordPerMinute = 200;
+    const words = text.split(/\s/g).length;
+    const min = words / wordPerMinute;
+    const readTime = Math.ceil(min);
+    return `${readTime} minute read`;
+  };
+
+  const post = 'This is a very very very very very long test post';
+  readingTime(post);
+  console.log(readingTime(post));
+  //returns 1 min !
+
   return (
     <div>
       <div>
@@ -38,13 +51,18 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
                   />
                 </div>
                 <div className='mx-4'>
-                  <h4 className='text-indigo-600'>
+                  <h4 className='mb-2 text-indigo-600 cursor-pointer hover:underline'>
                     {article?.attributes?.pageTitle}
                   </h4>
-                  <h3 className='text-lg font-medium'>
+                  <h3 className='mb-3 text-xl font-medium cursor-pointer'>
                     {article?.attributes?.articleTitle}
                   </h3>
-                  <p className='mb-8'>{article?.attributes?.articleContent}</p>
+                  <article
+                    id='article'
+                    className='mb-8 text-gray-600 cursor-pointer'
+                  >
+                    <p>{article?.attributes?.articleContent}</p>
+                  </article>
                   <div className='flex space-x-2'>
                     <div className='w-12 h-12 '>
                       <Image
@@ -61,15 +79,18 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
                         layout='responsive'
                         width={1}
                         height={1}
-                        className='rounded-full'
+                        className='rounded-full cursor-pointer'
                       />
                     </div>
                     <div className='flex flex-col'>
-                      <span className='font-medium'>
+                      <span className='font-medium cursor-pointer hover:underline '>
                         {article?.attributes?.articleAuthor}
                       </span>
                       <span className='text-xs text-gray-400'>
                         {article?.attributes?.publishingDate}
+                        <p>
+                          <span id='time'>{}</span> minute read
+                        </p>
                       </span>
                     </div>
                   </div>
