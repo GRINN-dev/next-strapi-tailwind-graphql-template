@@ -50,6 +50,11 @@
       "type": "component",
       "repeatable": true,
       "component": "layout.footer-navigation"
+    },
+    "blog_articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog-article.blog-article"
     }
   }
 }
