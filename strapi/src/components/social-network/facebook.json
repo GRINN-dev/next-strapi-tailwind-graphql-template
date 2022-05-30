@@ -7,11 +7,28 @@
   },
   "options": {},
   "attributes": {
-    "socialNetworkName": {
-      "type": "string"
-    },
     "link": {
       "type": "string"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "socialNetworkName": {
+      "type": "enumeration",
+      "enum": [
+        "Facebook",
+        "Twitter",
+        "LinkedIn",
+        "Instagram"
+      ]
     }
   }
 }

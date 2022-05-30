@@ -1,0 +1,27 @@
+query TeamMember {
+  teamMembers {
+    data {
+      id
+      attributes {
+        firstName
+        lastName
+        bio
+        socialNetworks {
+          socialNetworkName
+          link
+
+          id
+        }
+        avatar {
+          data {
+            attributes {
+              url
+              alternativeText
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}

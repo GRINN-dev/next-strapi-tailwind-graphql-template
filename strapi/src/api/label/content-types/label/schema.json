@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "labels",
+  "info": {
+    "singularName": "label",
+    "pluralName": "labels",
+    "displayName": "Label"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "labelName": {
+      "type": "string"
+    },
+    "labelColor": {
+      "type": "string"
+    },
+    "labelSlug": {
+      "type": "uid",
+      "targetField": "labelName"
+    }
+  }
+}

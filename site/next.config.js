@@ -1,8 +1,20 @@
+const { config } = require("process");
+
 /** @type {import('next').NextConfig} */
 
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["tailwindui.com", "images.unsplash.com", "localhost"],
+    loader: "default",
+    domains: [
+      "tailwindui.com",
+      "placehold.co",
+      "localhost",
+      "i.pravatar.cc",
+      "picsum.photos",
+      "images.unsplash.com",
+    ],
   },
 };
+
+module.exports = nextConfig;

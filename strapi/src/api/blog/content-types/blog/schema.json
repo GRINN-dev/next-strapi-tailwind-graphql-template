@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "blogTitle": {
+      "type": "string"
+    },
+    "blogIntroduction": {
+      "type": "richtext"
+    },
+    "blogMeta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "meta.meta"
+    }
+  }
+}
