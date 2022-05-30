@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-interface TestimonyProps {
+export interface TestimonyProps {
   companyName: string;
   job: string;
   testimonyContent: string;
@@ -10,16 +10,28 @@ interface TestimonyProps {
   companyLogo?: any;
 }
 
-export const Testimony: FC = ({}) => {
+export const Testimony: FC<TestimonyProps> = ({
+  companyName,
+  job,
+  testimonyContent,
+  firstName,
+  lastName,
+  avatar,
+  companyLogo,
+}) => {
   return (
     <div>
-      <div>companyLogo + company name</div>
-      <p>contenu témoignage</p>
+      <div>
+        {companyLogo} {companyName}
+      </div>
+      <p>{testimonyContent}</p>
       <div className='flex'>
-        <span>image</span>
-        <span>prénom nom</span>
-        <span>emploi</span>
-        <span>entreprise</span>
+        <span>{avatar}</span>
+        <span>
+          {firstName} {lastName}{' '}
+        </span>
+        <span>{job}</span>
+        <span>{companyName}</span>
       </div>
     </div>
   );
