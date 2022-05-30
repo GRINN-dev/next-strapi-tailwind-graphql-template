@@ -74,8 +74,13 @@ export const Header: FC<HeaderProps> = ({ logo, header, seeMore }) => {
                     {x.label || ""}
                   </a>
                 ))}
-                {seeMore && (
-                  <SeeMore subHeader={seeMore.subHeader} blog={seeMore.blog} />
+                {seeMore && seeMore.isDisplayed && (
+                  <SeeMore
+                    subHeader={seeMore.subHeader}
+                    blog={seeMore.blog}
+                    title={seeMore.title}
+                    isDisplayed={seeMore.isDisplayed}
+                  />
                 )}
               </Popover.Group>
               <div className="flex items-center md:ml-12">
@@ -142,10 +147,10 @@ export const Header: FC<HeaderProps> = ({ logo, header, seeMore }) => {
                     seeMore?.subHeader?.map((x, index) => (
                       <a
                         key={index}
-                        href={x.href}
+                        href={x?.href || ""}
                         className="text-base font-medium text-gray-900 rounded-md hover:text-gray-700"
                       >
-                        {x.label}
+                        {x?.title || ""}
                       </a>
                     ))}
                   {seeMore?.blog && (

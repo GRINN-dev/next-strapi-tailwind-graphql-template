@@ -8,7 +8,12 @@ const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(" ");
 };
 
-export const SeeMore: FC<SeeMoreProps> = ({ subHeader, blog }) => {
+export const SeeMore: FC<SeeMoreProps> = ({
+  title,
+  isDisplayed,
+  subHeader,
+  blog,
+}) => {
   return (
     <Popover>
       {({ open }) => (
@@ -19,7 +24,7 @@ export const SeeMore: FC<SeeMoreProps> = ({ subHeader, blog }) => {
               "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             )}
           >
-            <span>Plus</span>
+            <span>{title || "Plus"}</span>
             <ChevronDownIcon
               className={classNames(
                 open ? "text-gray-600" : "text-gray-400",
@@ -48,17 +53,17 @@ export const SeeMore: FC<SeeMoreProps> = ({ subHeader, blog }) => {
                     {subHeader?.map((x, index) => (
                       <div key={index}>
                         <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
-                          {x.label}
+                          {x.title || ""}
                         </h3>
                         <ul role="list" className="mt-5 space-y-6">
-                          {x.subHeader?.map((y, index) => (
+                          {x.pages?.map((y, index) => (
                             <li key={index} className="flow-root">
                               <a
-                                href={y.href}
+                                href={y.href || ""}
                                 className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 rounded-md hover:bg-gray-50"
                               >
-                                {y.icon}
-                                <span className="ml-4">{y.label}</span>
+                                {y.icon && y.icon}
+                                <span className="ml-4">{y.label || ""}</span>
                               </a>
                             </li>
                           ))}
@@ -77,14 +82,14 @@ export const SeeMore: FC<SeeMoreProps> = ({ subHeader, blog }) => {
                         {blog?.map((post, index) => (
                           <li key={index} className="flow-root">
                             <a
-                              href={post.href}
+                              href={post?.href || ""}
                               className="flex p-3 -m-3 rounded-lg hover:bg-gray-100"
                             >
                               <div className="flex-shrink-0 hidden sm:block">
                                 <div className="relative w-32 h-20">
                                   <Image
                                     className="object-cover rounded-md"
-                                    src={post.imageUrl}
+                                    src={post?.imageUrl || ""}
                                     alt=""
                                     layout="fill"
                                   />
@@ -92,10 +97,10 @@ export const SeeMore: FC<SeeMoreProps> = ({ subHeader, blog }) => {
                               </div>
                               <div className="flex-1 w-0 sm:ml-8">
                                 <h4 className="text-base font-medium text-gray-900 truncate">
-                                  {post.title}
+                                  {post?.title || ""}
                                 </h4>
                                 <p className="mt-1 text-sm text-gray-500">
-                                  {post.description}
+                                  {post?.description || ""}
                                 </p>
                               </div>
                             </a>

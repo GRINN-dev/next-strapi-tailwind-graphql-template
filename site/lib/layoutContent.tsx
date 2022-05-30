@@ -14,6 +14,24 @@ export const headerContent: (layout: LayoutEntityResponse) => HeaderProps = (
         href: x?.href,
       };
     }),
+    seeMore: {
+      title: layout?.data?.attributes?.headerSecondaryNavigationTitle,
+      isDisplayed: layout?.data?.attributes?.isDisplayed,
+      subHeader: layout?.data?.attributes?.headerSecondaryNavigation?.map(
+        (x) => {
+          return {
+            title: x?.title,
+            href: x?.href,
+            pages: x?.subNavigation?.map((y) => {
+              return {
+                label: y?.label,
+                href: y?.href,
+              };
+            }),
+          };
+        }
+      ),
+    },
   };
 };
 
@@ -24,7 +42,7 @@ export const footerContent: (layout: LayoutEntityResponse) => FooterProps = (
     navigation: layout?.data?.attributes?.footerNavigation?.map((x) => {
       return {
         title: x?.title,
-        pages: x?.subFooterNavigation?.map((y) => {
+        pages: x?.subNavigation?.map((y) => {
           return {
             label: y?.label,
             href: y?.href,
