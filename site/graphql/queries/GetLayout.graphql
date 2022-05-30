@@ -20,7 +20,7 @@ query GetLayout {
         footerNavigation {
           id
           title
-          subFooterNavigation {
+          subNavigation {
             id
             label
             href
@@ -30,6 +30,18 @@ query GetLayout {
           id
           href
           type
+        }
+        headerSecondaryNavigationTitle
+        isDisplayed
+        headerSecondaryNavigation {
+          id
+          title
+          href
+          subNavigation {
+            id
+            label
+            href
+          }
         }
       }
     }

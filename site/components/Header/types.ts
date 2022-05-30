@@ -8,21 +8,23 @@ export interface HeaderProps {
 }
 
 export interface SeeMoreProps {
-  subHeader?: {
-    label: string;
-    href: string;
-    subHeader?: SubHeaderProps[];
-  }[];
+  title?: string | null | undefined;
+  isDisplayed?: boolean | null | undefined;
+  subHeader?: SubHeaderProps[];
   blog?: {
-    title: string;
-    href: string;
-    description: string;
-    imageUrl: string;
+    title: string | null | undefined;
+    href: string | null | undefined;
+    description: string | null | undefined;
+    imageUrl: string | null | undefined;
   }[];
 }
 
 interface SubHeaderProps {
-  label: string;
-  href: string;
-  icon?: any;
+  title?: string | null | undefined;
+  href?: string | null | undefined;
+  pages?: {
+    label: string | null | undefined;
+    href: string | null | undefined;
+    icon?: any;
+  }[];
 }

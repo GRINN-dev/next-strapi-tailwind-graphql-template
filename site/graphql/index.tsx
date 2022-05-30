@@ -118,13 +118,14 @@ export type BooleanFilterInput = {
 
 export type ComponentLayoutFooterNavigation = {
   __typename?: 'ComponentLayoutFooterNavigation';
+  href?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
-  subFooterNavigation?: Maybe<Array<Maybe<ComponentLayoutSubFooterNavigation>>>;
+  subNavigation?: Maybe<Array<Maybe<ComponentLayoutSubFooterNavigation>>>;
   title?: Maybe<Scalars['String']>;
 };
 
 
-export type ComponentLayoutFooterNavigationSubFooterNavigationArgs = {
+export type ComponentLayoutFooterNavigationSubNavigationArgs = {
   filters?: InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -132,36 +133,17 @@ export type ComponentLayoutFooterNavigationSubFooterNavigationArgs = {
 
 export type ComponentLayoutFooterNavigationFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationFiltersInput>>>;
+  href?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<ComponentLayoutFooterNavigationFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationFiltersInput>>>;
   title?: InputMaybe<StringFilterInput>;
 };
 
 export type ComponentLayoutFooterNavigationInput = {
-  id?: InputMaybe<Scalars['ID']>;
-  subFooterNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationInput>>>;
-  title?: InputMaybe<Scalars['String']>;
-};
-
-export type ComponentLayoutHeaderMainNavigation = {
-  __typename?: 'ComponentLayoutHeaderMainNavigation';
-  href?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  label?: Maybe<Scalars['String']>;
-};
-
-export type ComponentLayoutHeaderMainNavigationFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentLayoutHeaderMainNavigationFiltersInput>>>;
-  href?: InputMaybe<StringFilterInput>;
-  label?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<ComponentLayoutHeaderMainNavigationFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentLayoutHeaderMainNavigationFiltersInput>>>;
-};
-
-export type ComponentLayoutHeaderMainNavigationInput = {
   href?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
-  label?: InputMaybe<Scalars['String']>;
+  subNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationInput>>>;
+  title?: InputMaybe<Scalars['String']>;
 };
 
 export type ComponentLayoutSocials = {
@@ -325,7 +307,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = BlogArticle | ComponentLayoutFooterNavigation | ComponentLayoutHeaderMainNavigation | ComponentLayoutSocials | ComponentLayoutSubFooterNavigation | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | Layout | TeamMember | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = BlogArticle | ComponentLayoutFooterNavigation | ComponentLayoutSocials | ComponentLayoutSubFooterNavigation | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | Layout | TeamMember | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -436,7 +418,10 @@ export type Layout = {
   __typename?: 'Layout';
   createdAt?: Maybe<Scalars['DateTime']>;
   footerNavigation?: Maybe<Array<Maybe<ComponentLayoutFooterNavigation>>>;
-  headerMainNavigation?: Maybe<Array<Maybe<ComponentLayoutHeaderMainNavigation>>>;
+  headerMainNavigation?: Maybe<Array<Maybe<ComponentLayoutSubFooterNavigation>>>;
+  headerSecondaryNavigation?: Maybe<Array<Maybe<ComponentLayoutFooterNavigation>>>;
+  headerSecondaryNavigationTitle?: Maybe<Scalars['String']>;
+  isDisplayed?: Maybe<Scalars['Boolean']>;
   logo?: Maybe<UploadFileEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   socials?: Maybe<Array<Maybe<ComponentLayoutSocials>>>;
@@ -452,7 +437,14 @@ export type LayoutFooterNavigationArgs = {
 
 
 export type LayoutHeaderMainNavigationArgs = {
-  filters?: InputMaybe<ComponentLayoutHeaderMainNavigationFiltersInput>;
+  filters?: InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type LayoutHeaderSecondaryNavigationArgs = {
+  filters?: InputMaybe<ComponentLayoutFooterNavigationFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -477,7 +469,10 @@ export type LayoutEntityResponse = {
 
 export type LayoutInput = {
   footerNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationInput>>>;
-  headerMainNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutHeaderMainNavigationInput>>>;
+  headerMainNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationInput>>>;
+  headerSecondaryNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationInput>>>;
+  headerSecondaryNavigationTitle?: InputMaybe<Scalars['String']>;
+  isDisplayed?: InputMaybe<Scalars['Boolean']>;
   logo?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   socials?: InputMaybe<Array<InputMaybe<ComponentLayoutSocialsInput>>>;
@@ -1221,7 +1216,7 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type GetLayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetLayoutQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutEntityResponse', data?: { __typename?: 'LayoutEntity', id?: string | null, attributes?: { __typename?: 'Layout', logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, headerMainNavigation?: Array<{ __typename?: 'ComponentLayoutHeaderMainNavigation', id: string, label?: string | null, href?: string | null } | null> | null, footerNavigation?: Array<{ __typename?: 'ComponentLayoutFooterNavigation', id: string, title?: string | null, subFooterNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null } | null> | null, socials?: Array<{ __typename?: 'ComponentLayoutSocials', id: string, href?: string | null, type?: Enum_Componentlayoutsocials_Type | null } | null> | null } | null } | null } | null };
+export type GetLayoutQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutEntityResponse', data?: { __typename?: 'LayoutEntity', id?: string | null, attributes?: { __typename?: 'Layout', headerSecondaryNavigationTitle?: string | null, isDisplayed?: boolean | null, logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, headerMainNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null, footerNavigation?: Array<{ __typename?: 'ComponentLayoutFooterNavigation', id: string, title?: string | null, subNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null } | null> | null, socials?: Array<{ __typename?: 'ComponentLayoutSocials', id: string, href?: string | null, type?: Enum_Componentlayoutsocials_Type | null } | null> | null, headerSecondaryNavigation?: Array<{ __typename?: 'ComponentLayoutFooterNavigation', id: string, title?: string | null, href?: string | null, subNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null } | null> | null } | null } | null } | null };
 
 
 export const GetLayoutDocument = gql`
@@ -1247,7 +1242,7 @@ export const GetLayoutDocument = gql`
         footerNavigation {
           id
           title
-          subFooterNavigation {
+          subNavigation {
             id
             label
             href
@@ -1257,6 +1252,18 @@ export const GetLayoutDocument = gql`
           id
           href
           type
+        }
+        headerSecondaryNavigationTitle
+        isDisplayed
+        headerSecondaryNavigation {
+          id
+          title
+          href
+          subNavigation {
+            id
+            label
+            href
+          }
         }
       }
     }

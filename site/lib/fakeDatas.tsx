@@ -9,11 +9,13 @@ export const HeaderPropsExample: HeaderProps = {
     { label: "L'équipe", href: "" },
   ],
   seeMore: {
+    title: "Voir plus",
+    isDisplayed: true,
     subHeader: [
       {
-        label: "La presse en parle",
+        title: "La presse en parle",
         href: "",
-        subHeader: [
+        pages: [
           {
             label: "Le Point - 25/05/2022",
             href: "",
@@ -27,9 +29,9 @@ export const HeaderPropsExample: HeaderProps = {
         ],
       },
       {
-        label: "Nos projets",
+        title: "Nos projets",
         href: "",
-        subHeader: [
+        pages: [
           {
             label: "Projet Patrimoine",
             href: "",

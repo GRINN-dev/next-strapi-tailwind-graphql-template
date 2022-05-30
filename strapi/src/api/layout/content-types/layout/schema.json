@@ -23,12 +23,6 @@
         "audios"
       ]
     },
-    "headerMainNavigation": {
-      "displayName": "headerMainNavigation",
-      "type": "component",
-      "repeatable": true,
-      "component": "layout.header-main-navigation"
-    },
     "footerNavigation": {
       "displayName": "footerNavigation",
       "type": "component",
@@ -40,6 +34,22 @@
       "type": "component",
       "repeatable": true,
       "component": "layout.socials"
+    },
+    "headerMainNavigation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.sub-footer-navigation"
+    },
+    "headerSecondaryNavigationTitle": {
+      "type": "string"
+    },
+    "isDisplayed": {
+      "type": "boolean"
+    },
+    "headerSecondaryNavigation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.footer-navigation"
     }
   }
 }

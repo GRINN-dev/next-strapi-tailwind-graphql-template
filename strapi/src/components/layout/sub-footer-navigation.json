@@ -1,8 +1,9 @@
 {
   "collectionName": "components_layout_sub_footer_navigations",
   "info": {
-    "displayName": "subFooterNavigation",
-    "icon": "blender"
+    "displayName": "mainNavigation",
+    "icon": "blender",
+    "description": ""
   },
   "options": {},
   "attributes": {
