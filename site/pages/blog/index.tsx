@@ -35,7 +35,7 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
         </h1>
         <h2 className='my-5'>{blog?.data?.attributes?.blogIntroduction}</h2>
       </section>
-      <div className='grid grid-cols-1 gap-6 mx-8 my-4 md:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-6 mx-8 my-4 lg:grid-cols-3'>
         {articles?.data?.blogArticles?.data?.map((article) => {
           return (
             <div
