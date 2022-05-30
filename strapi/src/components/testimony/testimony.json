@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_testimony_testimonies",
+  "info": {
+    "displayName": "Testimony",
+    "icon": "file-alt"
+  },
+  "options": {},
+  "attributes": {
+    "testimonyTitle": {
+      "type": "string"
+    },
+    "testimonyContent": {
+      "type": "richtext"
+    },
+    "testimonyAvatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "testimonyFirstName": {
+      "type": "string"
+    },
+    "testimonyLastName": {
+      "type": "string"
+    },
+    "testimonyBio": {
+      "type": "text"
+    }
+  }
+}
