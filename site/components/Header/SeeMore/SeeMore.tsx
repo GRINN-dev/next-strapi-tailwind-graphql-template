@@ -8,12 +8,7 @@ const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(" ");
 };
 
-export const SeeMore: FC<SeeMoreProps> = ({
-  title,
-  isDisplayed,
-  subHeader,
-  blog,
-}) => {
+export const SeeMore: FC<SeeMoreProps> = ({ title, subHeader, blog }) => {
   return (
     <Popover>
       {({ open }) => (
