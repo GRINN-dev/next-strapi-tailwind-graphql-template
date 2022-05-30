@@ -16,10 +16,9 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
     return `${readTime} minute read`;
   };
 
-  const post = 'This is a very very very very very long test post';
-  readingTime(post);
-  console.log(readingTime(post));
-  //returns 1 min !
+  // const post = 'This is a very very very very very long test post';
+  // readingTime(post);
+  // console.log(readingTime(post));
 
   const blogPost = readingTime(
     articles?.data?.blogArticles?.data[0]?.attributes?.articleContent
@@ -32,13 +31,13 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
           <title>{blog?.data?.attributes?.blogTitle}</title>
         </Head>
       </div>
-      <section className='flex flex-col items-center justify-between flex-1 p-6 my-6 overflow-hidden bg-white md:mx-28'>
+      <section className='flex flex-col items-center justify-between flex-1 p-6 mx-16 my-6 overflow-hidden bg-white md:mx-28'>
         <h1 className='text-3xl font-medium'>
           {blog?.data?.attributes?.blogTitle}
         </h1>
         <h2 className='my-5'>{blog?.data?.attributes?.blogIntroduction}</h2>
       </section>
-      <div className='grid grid-cols-1 gap-6 mx-auto md:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-6 mx-8 my-4 md:grid-cols-3'>
         {articles?.data?.blogArticles?.data?.map((article) => {
           return (
             <div
@@ -93,7 +92,7 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
                       <span className='text-xs text-gray-400'>
                         {article?.attributes?.publishingDate}
                         <p>
-                          <span id='time'>{blogPost}</span> minute read
+                          <span id='time'>{blogPost}</span>
                         </p>
                       </span>
                     </div>
@@ -104,8 +103,6 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
           );
         })}
       </div>
-
-      <div></div>
     </div>
   );
 };
