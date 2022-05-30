@@ -21,6 +21,10 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
   console.log(readingTime(post));
   //returns 1 min !
 
+  const blogPost = readingTime(
+    articles?.data?.blogArticles?.data[0]?.attributes?.articleContent
+  );
+
   return (
     <div>
       <div>
@@ -89,7 +93,7 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
                       <span className='text-xs text-gray-400'>
                         {article?.attributes?.publishingDate}
                         <p>
-                          <span id='time'>{}</span> minute read
+                          <span id='time'>{blogPost}</span> minute read
                         </p>
                       </span>
                     </div>
