@@ -4,21 +4,10 @@ import Image from 'next/image';
 import { BlogDocument, BlogQuery, useArticlesQuery } from '../../graphql';
 import { client } from '../../lib/apolloClient';
 import article1 from '../../public/article1.jpg';
+import { readingTime } from '../../lib/readingTime';
 
 const Blog: NextPage<BlogQuery> = ({ blog }) => {
   const articles = useArticlesQuery({});
-
-  const readingTime = (text: any) => {
-    const wordPerMinute = 200;
-    const words = text.split(/\s/g).length;
-    const min = words / wordPerMinute;
-    const readTime = Math.ceil(min);
-    return `${readTime} minute read`;
-  };
-
-  // const post = 'This is a very very very very very long test post';
-  // readingTime(post);
-  // console.log(readingTime(post));
 
   const blogPost = readingTime(
     articles?.data?.blogArticles?.data[0]?.attributes?.articleContent
