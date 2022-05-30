@@ -23,10 +23,21 @@ export type Scalars = {
   Upload: any;
 };
 
+export type Blog = {
+  __typename?: 'Blog';
+  blogIntroduction?: Maybe<Scalars['String']>;
+  blogMeta?: Maybe<ComponentMetaMeta>;
+  blogTitle?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
 export type BlogArticle = {
   __typename?: 'BlogArticle';
   articleAuthor?: Maybe<Scalars['String']>;
   articleContent?: Maybe<Scalars['String']>;
+  articleMedia?: Maybe<UploadFileEntityResponse>;
   articleTitle?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   keyWord?: Maybe<Scalars['String']>;
@@ -81,6 +92,7 @@ export type BlogArticleFiltersInput = {
 export type BlogArticleInput = {
   articleAuthor?: InputMaybe<Scalars['String']>;
   articleContent?: InputMaybe<Scalars['String']>;
+  articleMedia?: InputMaybe<Scalars['ID']>;
   articleTitle?: InputMaybe<Scalars['String']>;
   keyWord?: InputMaybe<Scalars['String']>;
   meta?: InputMaybe<ComponentMetaMetaInput>;
@@ -91,6 +103,29 @@ export type BlogArticleInput = {
   publishingDate?: InputMaybe<Scalars['Date']>;
   slug?: InputMaybe<Scalars['String']>;
   team_member?: InputMaybe<Scalars['ID']>;
+};
+
+export type BlogArticleRelationResponseCollection = {
+  __typename?: 'BlogArticleRelationResponseCollection';
+  data: Array<BlogArticleEntity>;
+};
+
+export type BlogEntity = {
+  __typename?: 'BlogEntity';
+  attributes?: Maybe<Blog>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type BlogEntityResponse = {
+  __typename?: 'BlogEntityResponse';
+  data?: Maybe<BlogEntity>;
+};
+
+export type BlogInput = {
+  blogIntroduction?: InputMaybe<Scalars['String']>;
+  blogMeta?: InputMaybe<ComponentMetaMetaInput>;
+  blogTitle?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type BooleanFilterInput = {
@@ -205,9 +240,10 @@ export type ComponentMetaMetaInput = {
 
 export type ComponentSocialNetworkFacebook = {
   __typename?: 'ComponentSocialNetworkFacebook';
+  icon?: Maybe<UploadFileEntityResponse>;
   id: Scalars['ID'];
   link?: Maybe<Scalars['String']>;
-  socialNetworkName?: Maybe<Scalars['String']>;
+  socialNetworkName?: Maybe<Enum_Componentsocialnetworkfacebook_Socialnetworkname>;
 };
 
 export type ComponentSocialNetworkFacebookFiltersInput = {
@@ -219,9 +255,10 @@ export type ComponentSocialNetworkFacebookFiltersInput = {
 };
 
 export type ComponentSocialNetworkFacebookInput = {
+  icon?: InputMaybe<Scalars['ID']>;
   id?: InputMaybe<Scalars['ID']>;
   link?: InputMaybe<Scalars['String']>;
-  socialNetworkName?: InputMaybe<Scalars['String']>;
+  socialNetworkName?: InputMaybe<Enum_Componentsocialnetworkfacebook_Socialnetworkname>;
 };
 
 export type DateFilterInput = {
@@ -278,6 +315,13 @@ export enum Enum_Componentlayoutsocials_Type {
   Twitter = 'Twitter'
 }
 
+export enum Enum_Componentsocialnetworkfacebook_Socialnetworkname {
+  Facebook = 'Facebook',
+  Instagram = 'Instagram',
+  LinkedIn = 'LinkedIn',
+  Twitter = 'Twitter'
+}
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
   caption?: InputMaybe<Scalars['String']>;
@@ -307,7 +351,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = BlogArticle | ComponentLayoutFooterNavigation | ComponentLayoutSocials | ComponentLayoutSubFooterNavigation | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | Layout | TeamMember | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Blog | BlogArticle | ComponentLayoutFooterNavigation | ComponentLayoutSocials | ComponentLayoutSubFooterNavigation | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | Label | Layout | TeamMember | TeamPage | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -414,8 +458,56 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']>;
 };
 
+export type Label = {
+  __typename?: 'Label';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  labelColor?: Maybe<Scalars['String']>;
+  labelName?: Maybe<Scalars['String']>;
+  labelSlug?: Maybe<Scalars['String']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type LabelEntity = {
+  __typename?: 'LabelEntity';
+  attributes?: Maybe<Label>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type LabelEntityResponse = {
+  __typename?: 'LabelEntityResponse';
+  data?: Maybe<LabelEntity>;
+};
+
+export type LabelEntityResponseCollection = {
+  __typename?: 'LabelEntityResponseCollection';
+  data: Array<LabelEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type LabelFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<LabelFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  labelColor?: InputMaybe<StringFilterInput>;
+  labelName?: InputMaybe<StringFilterInput>;
+  labelSlug?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<LabelFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<LabelFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type LabelInput = {
+  labelColor?: InputMaybe<Scalars['String']>;
+  labelName?: InputMaybe<Scalars['String']>;
+  labelSlug?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
 export type Layout = {
   __typename?: 'Layout';
+  blog_articles?: Maybe<BlogArticleRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   footerNavigation?: Maybe<Array<Maybe<ComponentLayoutFooterNavigation>>>;
   headerMainNavigation?: Maybe<Array<Maybe<ComponentLayoutSubFooterNavigation>>>;
@@ -426,6 +518,14 @@ export type Layout = {
   publishedAt?: Maybe<Scalars['DateTime']>;
   socials?: Maybe<Array<Maybe<ComponentLayoutSocials>>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type LayoutBlog_ArticlesArgs = {
+  filters?: InputMaybe<BlogArticleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -468,6 +568,7 @@ export type LayoutEntityResponse = {
 };
 
 export type LayoutInput = {
+  blog_articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   footerNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationInput>>>;
   headerMainNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationInput>>>;
   headerSecondaryNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationInput>>>;
@@ -481,15 +582,19 @@ export type LayoutInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   createBlogArticle?: Maybe<BlogArticleEntityResponse>;
+  createLabel?: Maybe<LabelEntityResponse>;
   createTeamMember?: Maybe<TeamMemberEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteBlog?: Maybe<BlogEntityResponse>;
   deleteBlogArticle?: Maybe<BlogArticleEntityResponse>;
+  deleteLabel?: Maybe<LabelEntityResponse>;
   deleteLayout?: Maybe<LayoutEntityResponse>;
   deleteTeamMember?: Maybe<TeamMemberEntityResponse>;
+  deleteTeamPage?: Maybe<TeamPageEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
@@ -506,10 +611,13 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateBlog?: Maybe<BlogEntityResponse>;
   updateBlogArticle?: Maybe<BlogArticleEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updateLabel?: Maybe<LabelEntityResponse>;
   updateLayout?: Maybe<LayoutEntityResponse>;
   updateTeamMember?: Maybe<TeamMemberEntityResponse>;
+  updateTeamPage?: Maybe<TeamPageEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
@@ -521,6 +629,11 @@ export type Mutation = {
 
 export type MutationCreateBlogArticleArgs = {
   data: BlogArticleInput;
+};
+
+
+export type MutationCreateLabelArgs = {
+  data: LabelInput;
 };
 
 
@@ -545,6 +658,11 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 
 export type MutationDeleteBlogArticleArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteLabelArgs = {
   id: Scalars['ID'];
 };
 
@@ -609,6 +727,11 @@ export type MutationResetPasswordArgs = {
 };
 
 
+export type MutationUpdateBlogArgs = {
+  data: BlogInput;
+};
+
+
 export type MutationUpdateBlogArticleArgs = {
   data: BlogArticleInput;
   id: Scalars['ID'];
@@ -621,6 +744,12 @@ export type MutationUpdateFileInfoArgs = {
 };
 
 
+export type MutationUpdateLabelArgs = {
+  data: LabelInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateLayoutArgs = {
   data: LayoutInput;
 };
@@ -629,6 +758,11 @@ export type MutationUpdateLayoutArgs = {
 export type MutationUpdateTeamMemberArgs = {
   data: TeamMemberInput;
   id: Scalars['ID'];
+};
+
+
+export type MutationUpdateTeamPageArgs = {
+  data: TeamPageInput;
 };
 
 
@@ -680,20 +814,29 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  blog?: Maybe<BlogEntityResponse>;
   blogArticle?: Maybe<BlogArticleEntityResponse>;
   blogArticles?: Maybe<BlogArticleEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
+  label?: Maybe<LabelEntityResponse>;
+  labels?: Maybe<LabelEntityResponseCollection>;
   layout?: Maybe<LayoutEntityResponse>;
   me?: Maybe<UsersPermissionsMe>;
   teamMember?: Maybe<TeamMemberEntityResponse>;
   teamMembers?: Maybe<TeamMemberEntityResponseCollection>;
+  teamPage?: Maybe<TeamPageEntityResponse>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>;
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
+};
+
+
+export type QueryBlogArgs = {
+  publicationState?: InputMaybe<PublicationState>;
 };
 
 
@@ -722,6 +865,19 @@ export type QueryI18NLocalesArgs = {
 };
 
 
+export type QueryLabelArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryLabelsArgs = {
+  filters?: InputMaybe<LabelFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
 export type QueryLayoutArgs = {
   publicationState?: InputMaybe<PublicationState>;
 };
@@ -737,6 +893,11 @@ export type QueryTeamMembersArgs = {
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryTeamPageArgs = {
+  publicationState?: InputMaybe<PublicationState>;
 };
 
 
@@ -805,67 +966,20 @@ export type StringFilterInput = {
 
 export type TeamMember = {
   __typename?: 'TeamMember';
-  Facebook?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  Instagram?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  LinkedIn?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  Snapchat?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  TikTok?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  Twitter?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
-  avatar?: Maybe<UploadFileRelationResponseCollection>;
+  avatar?: Maybe<UploadFileEntityResponse>;
   bio?: Maybe<Scalars['String']>;
   blog_article?: Maybe<BlogArticleEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']>;
   firstName?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
+  socialNetworks?: Maybe<Array<Maybe<ComponentSocialNetworkFacebook>>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 
-export type TeamMemberFacebookArgs = {
+export type TeamMemberSocialNetworksArgs = {
   filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberInstagramArgs = {
-  filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberLinkedInArgs = {
-  filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberSnapchatArgs = {
-  filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberTikTokArgs = {
-  filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberTwitterArgs = {
-  filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type TeamMemberAvatarArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -902,18 +1016,41 @@ export type TeamMemberFiltersInput = {
 };
 
 export type TeamMemberInput = {
-  Facebook?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  Instagram?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  LinkedIn?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  Snapchat?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  TikTok?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  Twitter?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
-  avatar?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  avatar?: InputMaybe<Scalars['ID']>;
   bio?: InputMaybe<Scalars['String']>;
   blog_article?: InputMaybe<Scalars['ID']>;
   firstName?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+  socialNetworks?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
+};
+
+export type TeamPage = {
+  __typename?: 'TeamPage';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  teamMeta?: Maybe<ComponentMetaMeta>;
+  teamParagraph?: Maybe<Scalars['String']>;
+  teamTitle?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type TeamPageEntity = {
+  __typename?: 'TeamPageEntity';
+  attributes?: Maybe<TeamPage>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type TeamPageEntityResponse = {
+  __typename?: 'TeamPageEntityResponse';
+  data?: Maybe<TeamPageEntity>;
+};
+
+export type TeamPageInput = {
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  teamMeta?: InputMaybe<ComponentMetaMetaInput>;
+  teamParagraph?: InputMaybe<Scalars['String']>;
+  teamTitle?: InputMaybe<Scalars['String']>;
 };
 
 export type UploadFile = {
@@ -992,11 +1129,6 @@ export type UploadFileInput = {
   size?: InputMaybe<Scalars['Float']>;
   url?: InputMaybe<Scalars['String']>;
   width?: InputMaybe<Scalars['Int']>;
-};
-
-export type UploadFileRelationResponseCollection = {
-  __typename?: 'UploadFileRelationResponseCollection';
-  data: Array<UploadFileEntity>;
 };
 
 export type UsersPermissionsCreateRolePayload = {
@@ -1213,12 +1345,215 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type ArticlesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ArticlesQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', pageTitle?: string | null, pageDescription?: string | null, keyWord?: string | null, ogTag?: string | null, articleTitle?: string | null, articleContent?: string | null, articleAuthor?: string | null, publishingDate?: any | null, slug?: string | null, updatedAt?: any | null, articleMedia?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null, team_member?: { __typename?: 'TeamMemberEntityResponse', data?: { __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
+
+export type BlogQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type BlogQuery = { __typename?: 'Query', blog?: { __typename?: 'BlogEntityResponse', data?: { __typename?: 'BlogEntity', id?: string | null, attributes?: { __typename?: 'Blog', blogTitle?: string | null, blogIntroduction?: string | null, createdAt?: any | null, blogMeta?: { __typename?: 'ComponentMetaMeta', metaName?: string | null, metaContent?: string | null, metaProperty?: string | null } | null } | null } | null } | null };
+
+export type GetArticleAuthorDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetArticleAuthorDataQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', team_member?: { __typename?: 'TeamMemberEntityResponse', data?: { __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
+
 export type GetLayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetLayoutQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutEntityResponse', data?: { __typename?: 'LayoutEntity', id?: string | null, attributes?: { __typename?: 'Layout', headerSecondaryNavigationTitle?: string | null, isDisplayed?: boolean | null, logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, headerMainNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null, footerNavigation?: Array<{ __typename?: 'ComponentLayoutFooterNavigation', id: string, title?: string | null, subNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null } | null> | null, socials?: Array<{ __typename?: 'ComponentLayoutSocials', id: string, href?: string | null, type?: Enum_Componentlayoutsocials_Type | null } | null> | null, headerSecondaryNavigation?: Array<{ __typename?: 'ComponentLayoutFooterNavigation', id: string, title?: string | null, href?: string | null, subNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null } | null> | null } | null } | null } | null };
 
+export type TeamPageQueryVariables = Exact<{ [key: string]: never; }>;
 
+
+export type TeamPageQuery = { __typename?: 'Query', teamPage?: { __typename?: 'TeamPageEntityResponse', data?: { __typename?: 'TeamPageEntity', id?: string | null, attributes?: { __typename?: 'TeamPage', teamTitle?: string | null, teamParagraph?: string | null, teamMeta?: { __typename?: 'ComponentMetaMeta', metaName?: string | null, metaProperty?: string | null, metaContent?: string | null } | null } | null } | null } | null };
+
+export type TeamMemberQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TeamMemberQuery = { __typename?: 'Query', teamMembers?: { __typename?: 'TeamMemberEntityResponseCollection', data: Array<{ __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, bio?: string | null, socialNetworks?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', socialNetworkName?: Enum_Componentsocialnetworkfacebook_Socialnetworkname | null, link?: string | null, id: string } | null> | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, name: string } | null } | null } | null } | null }> } | null };
+
+
+export const ArticlesDocument = gql`
+    query Articles {
+  blogArticles {
+    data {
+      id
+      attributes {
+        pageTitle
+        pageDescription
+        keyWord
+        ogTag
+        articleTitle
+        articleContent
+        articleAuthor
+        publishingDate
+        articleMedia {
+          data {
+            id
+            attributes {
+              name
+              url
+              alternativeText
+            }
+          }
+        }
+        team_member {
+          data {
+            id
+            attributes {
+              firstName
+              lastName
+              avatar {
+                data {
+                  id
+                  attributes {
+                    alternativeText
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+        slug
+        updatedAt
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useArticlesQuery__
+ *
+ * To run a query within a React component, call `useArticlesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useArticlesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useArticlesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useArticlesQuery(baseOptions?: Apollo.QueryHookOptions<ArticlesQuery, ArticlesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ArticlesQuery, ArticlesQueryVariables>(ArticlesDocument, options);
+      }
+export function useArticlesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ArticlesQuery, ArticlesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ArticlesQuery, ArticlesQueryVariables>(ArticlesDocument, options);
+        }
+export type ArticlesQueryHookResult = ReturnType<typeof useArticlesQuery>;
+export type ArticlesLazyQueryHookResult = ReturnType<typeof useArticlesLazyQuery>;
+export type ArticlesQueryResult = Apollo.QueryResult<ArticlesQuery, ArticlesQueryVariables>;
+export const BlogDocument = gql`
+    query Blog {
+  blog {
+    data {
+      id
+      attributes {
+        blogTitle
+        blogIntroduction
+        createdAt
+        blogMeta {
+          metaName
+          metaContent
+          metaProperty
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useBlogQuery__
+ *
+ * To run a query within a React component, call `useBlogQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useBlogQuery(baseOptions?: Apollo.QueryHookOptions<BlogQuery, BlogQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogQuery, BlogQueryVariables>(BlogDocument, options);
+      }
+export function useBlogLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogQuery, BlogQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogQuery, BlogQueryVariables>(BlogDocument, options);
+        }
+export type BlogQueryHookResult = ReturnType<typeof useBlogQuery>;
+export type BlogLazyQueryHookResult = ReturnType<typeof useBlogLazyQuery>;
+export type BlogQueryResult = Apollo.QueryResult<BlogQuery, BlogQueryVariables>;
+export const GetArticleAuthorDataDocument = gql`
+    query GetArticleAuthorData {
+  blogArticles {
+    data {
+      id
+      attributes {
+        team_member {
+          data {
+            id
+            attributes {
+              firstName
+              lastName
+              avatar {
+                data {
+                  id
+                  attributes {
+                    alternativeText
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetArticleAuthorDataQuery__
+ *
+ * To run a query within a React component, call `useGetArticleAuthorDataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetArticleAuthorDataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetArticleAuthorDataQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetArticleAuthorDataQuery(baseOptions?: Apollo.QueryHookOptions<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>(GetArticleAuthorDataDocument, options);
+      }
+export function useGetArticleAuthorDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>(GetArticleAuthorDataDocument, options);
+        }
+export type GetArticleAuthorDataQueryHookResult = ReturnType<typeof useGetArticleAuthorDataQuery>;
+export type GetArticleAuthorDataLazyQueryHookResult = ReturnType<typeof useGetArticleAuthorDataLazyQuery>;
+export type GetArticleAuthorDataQueryResult = Apollo.QueryResult<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>;
 export const GetLayoutDocument = gql`
     query GetLayout {
   layout {
@@ -1297,3 +1632,103 @@ export function useGetLayoutLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<
 export type GetLayoutQueryHookResult = ReturnType<typeof useGetLayoutQuery>;
 export type GetLayoutLazyQueryHookResult = ReturnType<typeof useGetLayoutLazyQuery>;
 export type GetLayoutQueryResult = Apollo.QueryResult<GetLayoutQuery, GetLayoutQueryVariables>;
+export const TeamPageDocument = gql`
+    query TeamPage {
+  teamPage {
+    data {
+      id
+      attributes {
+        teamTitle
+        teamParagraph
+        teamMeta {
+          metaName
+          metaProperty
+          metaContent
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useTeamPageQuery__
+ *
+ * To run a query within a React component, call `useTeamPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTeamPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTeamPageQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTeamPageQuery(baseOptions?: Apollo.QueryHookOptions<TeamPageQuery, TeamPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TeamPageQuery, TeamPageQueryVariables>(TeamPageDocument, options);
+      }
+export function useTeamPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TeamPageQuery, TeamPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TeamPageQuery, TeamPageQueryVariables>(TeamPageDocument, options);
+        }
+export type TeamPageQueryHookResult = ReturnType<typeof useTeamPageQuery>;
+export type TeamPageLazyQueryHookResult = ReturnType<typeof useTeamPageLazyQuery>;
+export type TeamPageQueryResult = Apollo.QueryResult<TeamPageQuery, TeamPageQueryVariables>;
+export const TeamMemberDocument = gql`
+    query TeamMember {
+  teamMembers {
+    data {
+      id
+      attributes {
+        firstName
+        lastName
+        bio
+        socialNetworks {
+          socialNetworkName
+          link
+          id
+        }
+        avatar {
+          data {
+            attributes {
+              url
+              alternativeText
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useTeamMemberQuery__
+ *
+ * To run a query within a React component, call `useTeamMemberQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTeamMemberQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTeamMemberQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTeamMemberQuery(baseOptions?: Apollo.QueryHookOptions<TeamMemberQuery, TeamMemberQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TeamMemberQuery, TeamMemberQueryVariables>(TeamMemberDocument, options);
+      }
+export function useTeamMemberLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TeamMemberQuery, TeamMemberQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TeamMemberQuery, TeamMemberQueryVariables>(TeamMemberDocument, options);
+        }
+export type TeamMemberQueryHookResult = ReturnType<typeof useTeamMemberQuery>;
+export type TeamMemberLazyQueryHookResult = ReturnType<typeof useTeamMemberLazyQuery>;
+export type TeamMemberQueryResult = Apollo.QueryResult<TeamMemberQuery, TeamMemberQueryVariables>;

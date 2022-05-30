@@ -1,0 +1,16 @@
+query TeamPage {
+  teamPage {
+    data {
+      id
+      attributes {
+        teamTitle
+        teamParagraph
+        teamMeta {
+          metaName
+          metaProperty
+          metaContent
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+query Articles {
+  blogArticles {
+    data {
+      id
+      attributes {
+        pageTitle
+        pageDescription
+        keyWord
+        ogTag
+        articleTitle
+        articleContent
+        articleAuthor
+        publishingDate
+        articleMedia {
+          data {
+            id
+            attributes {
+              name
+              url
+              alternativeText
+            }
+          }
+        }
+        team_member {
+          data {
+            id
+            attributes {
+              firstName
+              lastName
+              avatar {
+                data {
+                  id
+                  attributes {
+                    alternativeText
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+        slug
+        updatedAt
+      }
+    }
+  }
+}
