@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { FooterProps } from ".";
+import { getSocialIcon } from "../../lib";
 
 export const Footer: FC<FooterProps> = ({ navigation, social, newsletter }) => {
   return (
@@ -76,7 +77,7 @@ export const Footer: FC<FooterProps> = ({ navigation, social, newsletter }) => {
                   className="text-gray-400 hover:text-gray-500"
                 >
                   <span className="sr-only">{x.name || ""}</span>
-                  {/* <x.icon className="w-6 h-6" aria-hidden="true" /> */}
+                  {getSocialIcon(x?.name || "")}
                 </a>
               ))}
             </div>

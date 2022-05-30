@@ -4,7 +4,6 @@ export interface FooterProps {
   social?: {
     name: string | null | undefined;
     href: string | null | undefined;
-    icon?: any;
   }[];
   newsletter?: {
     title: string | null | undefined;
