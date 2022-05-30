@@ -1,0 +1,60 @@
+{
+  "kind": "singleType",
+  "collectionName": "layouts",
+  "info": {
+    "singularName": "layout",
+    "pluralName": "layouts",
+    "displayName": "Layout",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "footerNavigation": {
+      "displayName": "footerNavigation",
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.footer-navigation"
+    },
+    "socials": {
+      "displayName": "socials",
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.socials"
+    },
+    "headerMainNavigation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.sub-footer-navigation"
+    },
+    "headerSecondaryNavigationTitle": {
+      "type": "string"
+    },
+    "isDisplayed": {
+      "type": "boolean"
+    },
+    "headerSecondaryNavigation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.footer-navigation"
+    },
+    "blog_articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog-article.blog-article"
+    }
+  }
+}

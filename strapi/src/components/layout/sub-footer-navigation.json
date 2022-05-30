@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_layout_sub_footer_navigations",
+  "info": {
+    "displayName": "mainNavigation",
+    "icon": "blender",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+query GetLayout {
+  layout {
+    data {
+      id
+      attributes {
+        logo {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+        headerMainNavigation {
+          id
+          label
+          href
+        }
+        footerNavigation {
+          id
+          title
+          subNavigation {
+            id
+            label
+            href
+          }
+        }
+        socials {
+          id
+          href
+          type
+        }
+        headerSecondaryNavigationTitle
+        isDisplayed
+        headerSecondaryNavigation {
+          id
+          title
+          href
+          subNavigation {
+            id
+            label
+            href
+          }
+        }
+      }
+    }
+  }
+}
