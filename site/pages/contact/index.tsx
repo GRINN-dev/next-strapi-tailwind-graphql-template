@@ -21,9 +21,9 @@ const Contact: NextPage<TeamPageQuery, TeamMemberQuery> = ({ teamPage }) => {
           {teamPage?.data?.attributes?.teamMeta?.metaName?.toString()}
         </title>
         <meta
-          name={teamPage?.data?.attributes?.teamMeta?.metaName?.toString()}
-          property={teamPage?.data?.attributes?.teamMeta?.metaProperty?.toString()}
-          content={teamPage?.data?.attributes?.teamMeta?.metaContent?.toString()}
+          name={teamPage?.data?.attributes?.teamMeta?.metaName || ''}
+          property={teamPage?.data?.attributes?.teamMeta?.metaProperty || ''}
+          content={teamPage?.data?.attributes?.teamMeta?.metaContent || ''}
         />
       </Head>
       <section className='flex flex-col mb-10 space-y-6'>

@@ -1,10 +1,11 @@
 import { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import { BlogDocument, BlogQuery, useArticlesQuery } from '../../graphql';
 import { client } from '../../lib/apolloClient';
 import article1 from '../../public/article1.jpg';
 import { readingTime } from '../../lib/readingTime';
+import Meta from '../../components/Meta/Meta';
+import Head from 'next/head';
 
 const Blog: NextPage<BlogQuery> = ({ blog }) => {
   const articles = useArticlesQuery({});
@@ -15,11 +16,19 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
 
   return (
     <div>
-      <div>
-        <Head>
-          <title>{blog?.data?.attributes?.blogTitle}</title>
-        </Head>
-      </div>
+      <Head>
+        <Meta
+          title={blog?.data?.attributes?.blogMeta?.metaName || ''}
+          meta={[
+            {
+              content: blog?.data?.attributes?.blogMeta?.metaContent || '',
+              name: blog?.data?.attributes?.blogMeta?.metaName || '',
+              property: blog?.data?.attributes?.blogMeta?.metaProperty || '',
+            },
+          ]}
+        />
+      </Head>
+
       <section className='flex flex-col items-center justify-between flex-1 p-6 mx-16 my-6 overflow-hidden bg-white md:mx-28'>
         <h1 className='text-3xl font-medium'>
           {blog?.data?.attributes?.blogTitle}
@@ -39,7 +48,7 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
                     src={article1}
                     alt='article-pic'
                     layout='responsive'
-                    className='object-cover w-full '
+                    className='object-cover w-full'
                   />
                 </div>
                 <div className='mx-4'>
