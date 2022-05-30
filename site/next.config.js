@@ -12,6 +12,7 @@ const nextConfig = {
       "localhost",
       "i.pravatar.cc",
       "picsum.photos",
+      "images.unsplash.com",
     ],
   },
 };

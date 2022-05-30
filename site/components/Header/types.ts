@@ -1,24 +1,30 @@
 export interface HeaderProps {
-  header: { label: string; href: string }[];
+  logo?: string | null | undefined;
+  header?: {
+    label: string | null | undefined;
+    href: string | null | undefined;
+  }[];
   seeMore?: SeeMoreProps;
 }
 
-interface SubHeaderProps {
-  label: string;
-  href: string;
-  icon?: any;
+export interface SeeMoreProps {
+  title?: string | null | undefined;
+  isDisplayed?: boolean | null | undefined;
+  subHeader?: SubHeaderProps[];
+  blog?: {
+    title: string | null | undefined;
+    href: string | null | undefined;
+    description: string | null | undefined;
+    imageUrl: string | null | undefined;
+  }[];
 }
 
-interface SeeMoreProps {
-  subHeader?: {
-    label: string;
-    href: string;
-    subHeader?: SubHeaderProps[];
-  }[];
-  blog?: {
-    title: string;
-    href: string;
-    description: string;
-    imageUrl: string;
+interface SubHeaderProps {
+  title?: string | null | undefined;
+  href?: string | null | undefined;
+  pages?: {
+    label: string | null | undefined;
+    href: string | null | undefined;
+    icon?: any;
   }[];
 }

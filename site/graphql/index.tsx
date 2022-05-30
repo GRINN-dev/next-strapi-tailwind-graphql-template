@@ -105,6 +105,11 @@ export type BlogArticleInput = {
   team_member?: InputMaybe<Scalars['ID']>;
 };
 
+export type BlogArticleRelationResponseCollection = {
+  __typename?: 'BlogArticleRelationResponseCollection';
+  data: Array<BlogArticleEntity>;
+};
+
 export type BlogEntity = {
   __typename?: 'BlogEntity';
   attributes?: Maybe<Blog>;
@@ -144,6 +149,78 @@ export type BooleanFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
   startsWith?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type ComponentLayoutFooterNavigation = {
+  __typename?: 'ComponentLayoutFooterNavigation';
+  href?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  subNavigation?: Maybe<Array<Maybe<ComponentLayoutSubFooterNavigation>>>;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+export type ComponentLayoutFooterNavigationSubNavigationArgs = {
+  filters?: InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentLayoutFooterNavigationFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationFiltersInput>>>;
+  href?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentLayoutFooterNavigationFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationFiltersInput>>>;
+  title?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentLayoutFooterNavigationInput = {
+  href?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  subNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationInput>>>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentLayoutSocials = {
+  __typename?: 'ComponentLayoutSocials';
+  href?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  type?: Maybe<Enum_Componentlayoutsocials_Type>;
+};
+
+export type ComponentLayoutSocialsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentLayoutSocialsFiltersInput>>>;
+  href?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentLayoutSocialsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentLayoutSocialsFiltersInput>>>;
+  type?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentLayoutSocialsInput = {
+  href?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  type?: InputMaybe<Enum_Componentlayoutsocials_Type>;
+};
+
+export type ComponentLayoutSubFooterNavigation = {
+  __typename?: 'ComponentLayoutSubFooterNavigation';
+  href?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  label?: Maybe<Scalars['String']>;
+};
+
+export type ComponentLayoutSubFooterNavigationFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>>>;
+  href?: InputMaybe<StringFilterInput>;
+  label?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>>>;
+};
+
+export type ComponentLayoutSubFooterNavigationInput = {
+  href?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  label?: InputMaybe<Scalars['String']>;
 };
 
 export type ComponentMetaMeta = {
@@ -230,6 +307,14 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']>;
 };
 
+export enum Enum_Componentlayoutsocials_Type {
+  Dribbble = 'Dribbble',
+  Facebook = 'Facebook',
+  GitHub = 'GitHub',
+  Instagram = 'Instagram',
+  Twitter = 'Twitter'
+}
+
 export enum Enum_Componentsocialnetworkfacebook_Socialnetworkname {
   Facebook = 'Facebook',
   Instagram = 'Instagram',
@@ -266,7 +351,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Blog | BlogArticle | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | Label | TeamMember | TeamPage | Test | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Blog | BlogArticle | ComponentLayoutFooterNavigation | ComponentLayoutSocials | ComponentLayoutSubFooterNavigation | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | Label | Layout | TeamMember | TeamPage | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -420,12 +505,85 @@ export type LabelInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
+export type Layout = {
+  __typename?: 'Layout';
+  blog_articles?: Maybe<BlogArticleRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  footerNavigation?: Maybe<Array<Maybe<ComponentLayoutFooterNavigation>>>;
+  headerMainNavigation?: Maybe<Array<Maybe<ComponentLayoutSubFooterNavigation>>>;
+  headerSecondaryNavigation?: Maybe<Array<Maybe<ComponentLayoutFooterNavigation>>>;
+  headerSecondaryNavigationTitle?: Maybe<Scalars['String']>;
+  isDisplayed?: Maybe<Scalars['Boolean']>;
+  logo?: Maybe<UploadFileEntityResponse>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  socials?: Maybe<Array<Maybe<ComponentLayoutSocials>>>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type LayoutBlog_ArticlesArgs = {
+  filters?: InputMaybe<BlogArticleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type LayoutFooterNavigationArgs = {
+  filters?: InputMaybe<ComponentLayoutFooterNavigationFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type LayoutHeaderMainNavigationArgs = {
+  filters?: InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type LayoutHeaderSecondaryNavigationArgs = {
+  filters?: InputMaybe<ComponentLayoutFooterNavigationFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type LayoutSocialsArgs = {
+  filters?: InputMaybe<ComponentLayoutSocialsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type LayoutEntity = {
+  __typename?: 'LayoutEntity';
+  attributes?: Maybe<Layout>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type LayoutEntityResponse = {
+  __typename?: 'LayoutEntityResponse';
+  data?: Maybe<LayoutEntity>;
+};
+
+export type LayoutInput = {
+  blog_articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  footerNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationInput>>>;
+  headerMainNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationInput>>>;
+  headerSecondaryNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationInput>>>;
+  headerSecondaryNavigationTitle?: InputMaybe<Scalars['String']>;
+  isDisplayed?: InputMaybe<Scalars['Boolean']>;
+  logo?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  socials?: InputMaybe<Array<InputMaybe<ComponentLayoutSocialsInput>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createBlogArticle?: Maybe<BlogArticleEntityResponse>;
   createLabel?: Maybe<LabelEntityResponse>;
   createTeamMember?: Maybe<TeamMemberEntityResponse>;
-  createTest?: Maybe<TestEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
@@ -434,9 +592,9 @@ export type Mutation = {
   deleteBlog?: Maybe<BlogEntityResponse>;
   deleteBlogArticle?: Maybe<BlogArticleEntityResponse>;
   deleteLabel?: Maybe<LabelEntityResponse>;
+  deleteLayout?: Maybe<LayoutEntityResponse>;
   deleteTeamMember?: Maybe<TeamMemberEntityResponse>;
   deleteTeamPage?: Maybe<TeamPageEntityResponse>;
-  deleteTest?: Maybe<TestEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
@@ -457,9 +615,9 @@ export type Mutation = {
   updateBlogArticle?: Maybe<BlogArticleEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateLabel?: Maybe<LabelEntityResponse>;
+  updateLayout?: Maybe<LayoutEntityResponse>;
   updateTeamMember?: Maybe<TeamMemberEntityResponse>;
   updateTeamPage?: Maybe<TeamPageEntityResponse>;
-  updateTest?: Maybe<TestEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
@@ -481,11 +639,6 @@ export type MutationCreateLabelArgs = {
 
 export type MutationCreateTeamMemberArgs = {
   data: TeamMemberInput;
-};
-
-
-export type MutationCreateTestArgs = {
-  data: TestInput;
 };
 
 
@@ -515,11 +668,6 @@ export type MutationDeleteLabelArgs = {
 
 
 export type MutationDeleteTeamMemberArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationDeleteTestArgs = {
   id: Scalars['ID'];
 };
 
@@ -602,6 +750,11 @@ export type MutationUpdateLabelArgs = {
 };
 
 
+export type MutationUpdateLayoutArgs = {
+  data: LayoutInput;
+};
+
+
 export type MutationUpdateTeamMemberArgs = {
   data: TeamMemberInput;
   id: Scalars['ID'];
@@ -610,12 +763,6 @@ export type MutationUpdateTeamMemberArgs = {
 
 export type MutationUpdateTeamPageArgs = {
   data: TeamPageInput;
-};
-
-
-export type MutationUpdateTestArgs = {
-  data: TestInput;
-  id: Scalars['ID'];
 };
 
 
@@ -674,12 +821,11 @@ export type Query = {
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   label?: Maybe<LabelEntityResponse>;
   labels?: Maybe<LabelEntityResponseCollection>;
+  layout?: Maybe<LayoutEntityResponse>;
   me?: Maybe<UsersPermissionsMe>;
   teamMember?: Maybe<TeamMemberEntityResponse>;
   teamMembers?: Maybe<TeamMemberEntityResponseCollection>;
   teamPage?: Maybe<TeamPageEntityResponse>;
-  test?: Maybe<TestEntityResponse>;
-  tests?: Maybe<TestEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>;
@@ -732,6 +878,11 @@ export type QueryLabelsArgs = {
 };
 
 
+export type QueryLayoutArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
 export type QueryTeamMemberArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
@@ -747,19 +898,6 @@ export type QueryTeamMembersArgs = {
 
 export type QueryTeamPageArgs = {
   publicationState?: InputMaybe<PublicationState>;
-};
-
-
-export type QueryTestArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
-export type QueryTestsArgs = {
-  filters?: InputMaybe<TestFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -913,47 +1051,6 @@ export type TeamPageInput = {
   teamMeta?: InputMaybe<ComponentMetaMetaInput>;
   teamParagraph?: InputMaybe<Scalars['String']>;
   teamTitle?: InputMaybe<Scalars['String']>;
-};
-
-export type Test = {
-  __typename?: 'Test';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  title: Scalars['String'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type TestEntity = {
-  __typename?: 'TestEntity';
-  attributes?: Maybe<Test>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type TestEntityResponse = {
-  __typename?: 'TestEntityResponse';
-  data?: Maybe<TestEntity>;
-};
-
-export type TestEntityResponseCollection = {
-  __typename?: 'TestEntityResponseCollection';
-  data: Array<TestEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type TestFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<TestFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<TestFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<TestFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type TestInput = {
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  title?: InputMaybe<Scalars['String']>;
 };
 
 export type UploadFile = {
@@ -1263,6 +1360,11 @@ export type GetArticleAuthorDataQueryVariables = Exact<{ [key: string]: never; }
 
 export type GetArticleAuthorDataQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', team_member?: { __typename?: 'TeamMemberEntityResponse', data?: { __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
 
+export type GetLayoutQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetLayoutQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutEntityResponse', data?: { __typename?: 'LayoutEntity', id?: string | null, attributes?: { __typename?: 'Layout', headerSecondaryNavigationTitle?: string | null, isDisplayed?: boolean | null, logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, headerMainNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null, footerNavigation?: Array<{ __typename?: 'ComponentLayoutFooterNavigation', id: string, title?: string | null, subNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null } | null> | null, socials?: Array<{ __typename?: 'ComponentLayoutSocials', id: string, href?: string | null, type?: Enum_Componentlayoutsocials_Type | null } | null> | null, headerSecondaryNavigation?: Array<{ __typename?: 'ComponentLayoutFooterNavigation', id: string, title?: string | null, href?: string | null, subNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null } | null> | null } | null } | null } | null };
+
 export type TeamPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1272,11 +1374,6 @@ export type TeamMemberQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type TeamMemberQuery = { __typename?: 'Query', teamMembers?: { __typename?: 'TeamMemberEntityResponseCollection', data: Array<{ __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, bio?: string | null, socialNetworks?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', socialNetworkName?: Enum_Componentsocialnetworkfacebook_Socialnetworkname | null, link?: string | null, id: string } | null> | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, name: string } | null } | null } | null } | null }> } | null };
-
-export type TestQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type TestQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', title: string } | null }> } | null };
 
 
 export const ArticlesDocument = gql`
@@ -1457,6 +1554,84 @@ export function useGetArticleAuthorDataLazyQuery(baseOptions?: Apollo.LazyQueryH
 export type GetArticleAuthorDataQueryHookResult = ReturnType<typeof useGetArticleAuthorDataQuery>;
 export type GetArticleAuthorDataLazyQueryHookResult = ReturnType<typeof useGetArticleAuthorDataLazyQuery>;
 export type GetArticleAuthorDataQueryResult = Apollo.QueryResult<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>;
+export const GetLayoutDocument = gql`
+    query GetLayout {
+  layout {
+    data {
+      id
+      attributes {
+        logo {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+        headerMainNavigation {
+          id
+          label
+          href
+        }
+        footerNavigation {
+          id
+          title
+          subNavigation {
+            id
+            label
+            href
+          }
+        }
+        socials {
+          id
+          href
+          type
+        }
+        headerSecondaryNavigationTitle
+        isDisplayed
+        headerSecondaryNavigation {
+          id
+          title
+          href
+          subNavigation {
+            id
+            label
+            href
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetLayoutQuery__
+ *
+ * To run a query within a React component, call `useGetLayoutQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLayoutQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLayoutQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetLayoutQuery(baseOptions?: Apollo.QueryHookOptions<GetLayoutQuery, GetLayoutQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetLayoutQuery, GetLayoutQueryVariables>(GetLayoutDocument, options);
+      }
+export function useGetLayoutLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLayoutQuery, GetLayoutQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetLayoutQuery, GetLayoutQueryVariables>(GetLayoutDocument, options);
+        }
+export type GetLayoutQueryHookResult = ReturnType<typeof useGetLayoutQuery>;
+export type GetLayoutLazyQueryHookResult = ReturnType<typeof useGetLayoutLazyQuery>;
+export type GetLayoutQueryResult = Apollo.QueryResult<GetLayoutQuery, GetLayoutQueryVariables>;
 export const TeamPageDocument = gql`
     query TeamPage {
   teamPage {
@@ -1557,42 +1732,3 @@ export function useTeamMemberLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type TeamMemberQueryHookResult = ReturnType<typeof useTeamMemberQuery>;
 export type TeamMemberLazyQueryHookResult = ReturnType<typeof useTeamMemberLazyQuery>;
 export type TeamMemberQueryResult = Apollo.QueryResult<TeamMemberQuery, TeamMemberQueryVariables>;
-export const TestDocument = gql`
-    query Test {
-  tests {
-    data {
-      id
-      attributes {
-        title
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useTestQuery__
- *
- * To run a query within a React component, call `useTestQuery` and pass it any options that fit your needs.
- * When your component renders, `useTestQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useTestQuery({
- *   variables: {
- *   },
- * });
- */
-export function useTestQuery(baseOptions?: Apollo.QueryHookOptions<TestQuery, TestQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<TestQuery, TestQueryVariables>(TestDocument, options);
-      }
-export function useTestLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TestQuery, TestQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<TestQuery, TestQueryVariables>(TestDocument, options);
-        }
-export type TestQueryHookResult = ReturnType<typeof useTestQuery>;
-export type TestLazyQueryHookResult = ReturnType<typeof useTestLazyQuery>;
-export type TestQueryResult = Apollo.QueryResult<TestQuery, TestQueryVariables>;

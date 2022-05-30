@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react";
-import { FooterPropsExample } from "../../lib/fakeDatas";
+import { FooterPropsExample } from "../../lib";
 import { Footer, FooterProps } from ".";
 
 export default {

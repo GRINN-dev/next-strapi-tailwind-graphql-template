@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_layout_socials",
+  "info": {
+    "displayName": "socials",
+    "icon": "chess-queen"
+  },
+  "options": {},
+  "attributes": {
+    "href": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Facebook",
+        "Instagram",
+        "Twitter",
+        "GitHub",
+        "Dribbble"
+      ]
+    }
+  }
+}
