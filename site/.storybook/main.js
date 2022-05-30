@@ -21,4 +21,11 @@ module.exports = {
   core: {
     builder: "webpack5",
   },
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.alias = {
+      "next/image": require.resolve("./__mocks__/NextJSImageMock.js"),
+    };
+
+    return config;
+  },
 };

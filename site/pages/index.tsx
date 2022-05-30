@@ -1,13 +1,16 @@
-import type { GetStaticProps, NextPage } from 'next';
-import { TestDocument, TestQuery } from '../graphql';
-import { client } from '../lib/apolloClient';
+import type { GetStaticProps, NextPage } from "next";
+import { Layout } from "../components";
+import { TestDocument, TestQuery } from "../graphql";
+import { client } from "../lib/apolloClient";
+import { FooterPropsExample, HeaderPropsExample } from "../lib/fakeDatas";
 
 const Home: NextPage<TestQuery> = ({ tests }) => {
   return (
-    <div>
-      <h1 className='text-2xl'>Hello world</h1>
+    <Layout header={HeaderPropsExample} footer={FooterPropsExample}>
+      <h1 className="text-2xl">Hello world</h1>
       <p>{tests?.data[0]?.attributes?.title}</p>
-    </div>
+      <div className="h-96" />
+    </Layout>
   );
 };
 
