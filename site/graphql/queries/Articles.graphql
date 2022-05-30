@@ -21,6 +21,24 @@ query Articles {
             }
           }
         }
+        team_member {
+          data {
+            id
+            attributes {
+              firstName
+              lastName
+              avatar {
+                data {
+                  id
+                  attributes {
+                    alternativeText
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
         slug
         updatedAt
       }

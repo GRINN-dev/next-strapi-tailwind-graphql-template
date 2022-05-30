@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     loader: 'default',
-    domains: ['localhost', 'i.pravatar.cc'],
+    domains: ['localhost', 'i.pravatar.cc', 'picsum.photos'],
   },
 };
 

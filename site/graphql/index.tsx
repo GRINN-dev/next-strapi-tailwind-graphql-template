@@ -1251,12 +1251,17 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type ArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ArticlesQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', pageTitle?: string | null, pageDescription?: string | null, keyWord?: string | null, ogTag?: string | null, articleTitle?: string | null, articleContent?: string | null, articleAuthor?: string | null, publishingDate?: any | null, slug?: string | null, updatedAt?: any | null, articleMedia?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null } | null }> } | null };
+export type ArticlesQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', pageTitle?: string | null, pageDescription?: string | null, keyWord?: string | null, ogTag?: string | null, articleTitle?: string | null, articleContent?: string | null, articleAuthor?: string | null, publishingDate?: any | null, slug?: string | null, updatedAt?: any | null, articleMedia?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null, team_member?: { __typename?: 'TeamMemberEntityResponse', data?: { __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
 
 export type BlogQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type BlogQuery = { __typename?: 'Query', blog?: { __typename?: 'BlogEntityResponse', data?: { __typename?: 'BlogEntity', id?: string | null, attributes?: { __typename?: 'Blog', blogTitle?: string | null, blogIntroduction?: string | null, createdAt?: any | null, blogMeta?: { __typename?: 'ComponentMetaMeta', metaName?: string | null, metaContent?: string | null, metaProperty?: string | null } | null } | null } | null } | null };
+
+export type GetArticleAuthorDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetArticleAuthorDataQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', team_member?: { __typename?: 'TeamMemberEntityResponse', data?: { __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
 
 export type TeamPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1295,6 +1300,24 @@ export const ArticlesDocument = gql`
               name
               url
               alternativeText
+            }
+          }
+        }
+        team_member {
+          data {
+            id
+            attributes {
+              firstName
+              lastName
+              avatar {
+                data {
+                  id
+                  attributes {
+                    alternativeText
+                    url
+                  }
+                }
+              }
             }
           }
         }
@@ -1378,6 +1401,62 @@ export function useBlogLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogQ
 export type BlogQueryHookResult = ReturnType<typeof useBlogQuery>;
 export type BlogLazyQueryHookResult = ReturnType<typeof useBlogLazyQuery>;
 export type BlogQueryResult = Apollo.QueryResult<BlogQuery, BlogQueryVariables>;
+export const GetArticleAuthorDataDocument = gql`
+    query GetArticleAuthorData {
+  blogArticles {
+    data {
+      id
+      attributes {
+        team_member {
+          data {
+            id
+            attributes {
+              firstName
+              lastName
+              avatar {
+                data {
+                  id
+                  attributes {
+                    alternativeText
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetArticleAuthorDataQuery__
+ *
+ * To run a query within a React component, call `useGetArticleAuthorDataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetArticleAuthorDataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetArticleAuthorDataQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetArticleAuthorDataQuery(baseOptions?: Apollo.QueryHookOptions<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>(GetArticleAuthorDataDocument, options);
+      }
+export function useGetArticleAuthorDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>(GetArticleAuthorDataDocument, options);
+        }
+export type GetArticleAuthorDataQueryHookResult = ReturnType<typeof useGetArticleAuthorDataQuery>;
+export type GetArticleAuthorDataLazyQueryHookResult = ReturnType<typeof useGetArticleAuthorDataLazyQuery>;
+export type GetArticleAuthorDataQueryResult = Apollo.QueryResult<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>;
 export const TeamPageDocument = gql`
     query TeamPage {
   teamPage {
