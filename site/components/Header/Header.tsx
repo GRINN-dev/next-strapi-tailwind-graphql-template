@@ -2,13 +2,8 @@ import { Popover, Transition } from "@headlessui/react";
 import { FC, Fragment, useEffect, useState } from "react";
 import Image from "next/image";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { ChevronDownIcon } from "@heroicons/react/solid";
 import { HeaderProps } from ".";
 import { SeeMore } from "..";
-
-const classNames = (...classes: string[]) => {
-  return classes.filter(Boolean).join(" ");
-};
 
 export const Header: FC<HeaderProps> = ({ logo, header, seeMore }) => {
   const [isScrolled, setIsScrolled] = useState(false);
