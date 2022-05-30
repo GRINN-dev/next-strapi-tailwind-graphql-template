@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_layout_footer_navigations",
+  "info": {
+    "displayName": "secondaryNavigation",
+    "icon": "birthday-cake",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subNavigation": {
+      "displayName": "subFooterNavigation",
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.sub-footer-navigation"
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}

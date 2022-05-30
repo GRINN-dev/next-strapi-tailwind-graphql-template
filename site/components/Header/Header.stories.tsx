@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react";
-import { HeaderPropsExample } from "../../lib/fakeDatas";
+import { HeaderPropsExample } from "../../lib";
 import { Header, HeaderProps } from ".";
 
 export default {

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { FooterProps } from ".";
+import { getSocialIcon } from "../../lib";
 
 export const Footer: FC<FooterProps> = ({ navigation, social, newsletter }) => {
   return (
@@ -11,22 +12,22 @@ export const Footer: FC<FooterProps> = ({ navigation, social, newsletter }) => {
         <div className="px-4 mx-auto max-w-7xl lg:px-8 sm:px-6 ">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="md:grid md:grid-flow-col md:gap-8 xl:col-span-2">
-              {navigation.map((x, index) => (
+              {navigation?.map((x, index) => (
                 <div
                   key={index}
                   className={`${index !== 0 ? "mt-12 md:mt-0" : ""}`}
                 >
                   <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase">
-                    {x.title}
+                    {x?.title || ""}
                   </h3>
                   <ul role="list" className="mt-4 space-y-4">
                     {x.pages?.map((y, index) => (
                       <li key={index}>
                         <a
-                          href={y.href}
+                          href={y?.href || ""}
                           className="text-base text-gray-500 hover:text-gray-900"
                         >
-                          {y.label}
+                          {y.label || ""}
                         </a>
                       </li>
                     ))}
@@ -36,9 +37,11 @@ export const Footer: FC<FooterProps> = ({ navigation, social, newsletter }) => {
             </div>
             <div className="mt-8 xl:mt-0">
               <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase">
-                {newsletter.title}
+                {newsletter?.title || ""}
               </h3>
-              <p className="mt-4 text-base text-gray-500">{newsletter.text}</p>
+              <p className="mt-4 text-base text-gray-500">
+                {newsletter?.text || ""}
+              </p>
               <form className="mt-4 sm:flex sm:max-w-md">
                 <label htmlFor="email-address" className="sr-only">
                   Email address
@@ -67,14 +70,14 @@ export const Footer: FC<FooterProps> = ({ navigation, social, newsletter }) => {
         <div className="pt-8 mt-8 border-t border-gray-200 ">
           <div className="px-4 mx-auto md:flex md:items-center md:justify-between max-w-7xl lg:px-8 sm:px-6">
             <div className="flex space-x-6 md:order-2">
-              {social.map((x, index) => (
+              {social?.map((x, index) => (
                 <a
                   key={index}
-                  href={x.href}
+                  href={x?.href || ""}
                   className="text-gray-400 hover:text-gray-500"
                 >
-                  <span className="sr-only">{x.name}</span>
-                  <x.icon className="w-6 h-6" aria-hidden="true" />
+                  <span className="sr-only">{x.name || ""}</span>
+                  {getSocialIcon(x?.name || "")}
                 </a>
               ))}
             </div>

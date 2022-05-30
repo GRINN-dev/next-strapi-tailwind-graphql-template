@@ -1,14 +1,19 @@
 import type { GetStaticProps, NextPage } from "next";
 import { Layout } from "../components";
-import { TestDocument, TestQuery } from "../graphql";
-import { client } from "../lib/apolloClient";
-import { FooterPropsExample, HeaderPropsExample } from "../lib/fakeDatas";
+import {
+  GetLayoutDocument,
+  GetLayoutQuery,
+  LayoutEntityResponse,
+} from "../graphql";
+import { client, footerContent, headerContent } from "../lib";
 
-const Home: NextPage<TestQuery> = ({ tests }) => {
+const Home: NextPage<GetLayoutQuery> = ({ layout }) => {
   return (
-    <Layout header={HeaderPropsExample} footer={FooterPropsExample}>
+    <Layout
+      header={headerContent(layout as LayoutEntityResponse)}
+      footer={footerContent(layout as LayoutEntityResponse)}
+    >
       <h1 className="text-2xl">Hello world</h1>
-      <p>{tests?.data[0]?.attributes?.title}</p>
       <div className="h-96" />
     </Layout>
   );
@@ -16,12 +21,12 @@ const Home: NextPage<TestQuery> = ({ tests }) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<TestQuery> = async ({}) => {
-  const { data, error } = await client.query<TestQuery>({
-    query: TestDocument,
+export const getStaticProps: GetStaticProps<GetLayoutQuery> = async ({}) => {
+  const { data: layout, error } = await client.query<GetLayoutQuery>({
+    query: GetLayoutDocument,
   });
   return {
-    props: data,
+    props: layout,
     // revalidate: 60,
   };
 };
