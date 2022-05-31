@@ -1,0 +1,31 @@
+query {
+  pages {
+    data {
+      id
+      attributes {
+        pageDynamicZone {
+          __typename
+          ... on ComponentTestimonyTestimony {
+            id
+            testimonyTitle
+            testimonyContent
+            testimonyFirstName
+            testimonyLastName
+            testimonyAvatar {
+              data {
+                id
+                attributes {
+                  name
+                  alternativeText
+                  url
+                }
+              }
+            }
+            testimonyCompanyName
+            testimonyJob
+          }
+        }
+      }
+    }
+  }
+}
