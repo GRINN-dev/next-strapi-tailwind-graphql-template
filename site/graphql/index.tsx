@@ -1477,10 +1477,10 @@ export type GetArticleAuthorDataQueryVariables = Exact<{ [key: string]: never; }
 
 export type GetArticleAuthorDataQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', team_member?: { __typename?: 'TeamMemberEntityResponse', data?: { __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
 
-export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+export type DynamicZoneQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', pageDynamicZone?: Array<{ __typename: 'ComponentTestimonyTestimony', id: string, testimonyTitle?: string | null, testimonyContent?: string | null, testimonyFirstName?: string | null, testimonyLastName?: string | null, testimonyCompanyName?: string | null, testimonyJob?: string | null, testimonyAvatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null } | null } | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
+export type DynamicZoneQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename: 'Page', pageSlug?: string | null, pageMeta?: { __typename?: 'ComponentMetaMeta', id: string, metaProperty?: string | null, metaName?: string | null, metaContent?: string | null } | null, pageDynamicZone?: Array<{ __typename: 'ComponentTestimonyTestimony', id: string, testimonyTitle?: string | null, testimonyContent?: string | null, testimonyFirstName?: string | null, testimonyLastName?: string | null, testimonyCompanyName?: string | null, testimonyJob?: string | null, companyLogo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null, testimonyAvatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null } | null } | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
 
 export type GetLayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1676,17 +1676,34 @@ export function useGetArticleAuthorDataLazyQuery(baseOptions?: Apollo.LazyQueryH
 export type GetArticleAuthorDataQueryHookResult = ReturnType<typeof useGetArticleAuthorDataQuery>;
 export type GetArticleAuthorDataLazyQueryHookResult = ReturnType<typeof useGetArticleAuthorDataLazyQuery>;
 export type GetArticleAuthorDataQueryResult = Apollo.QueryResult<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>;
-export const Document = gql`
-    {
+export const DynamicZoneDocument = gql`
+    query DynamicZone {
   pages {
     data {
       id
       attributes {
+        pageSlug
+        __typename
+        pageMeta {
+          id
+          metaProperty
+          metaName
+          metaContent
+        }
         pageDynamicZone {
           __typename
           ... on ComponentTestimonyTestimony {
             id
             testimonyTitle
+            companyLogo {
+              data {
+                attributes {
+                  name
+                  url
+                  alternativeText
+                }
+              }
+            }
             testimonyContent
             testimonyFirstName
             testimonyLastName
@@ -1711,31 +1728,31 @@ export const Document = gql`
     `;
 
 /**
- * __useQuery__
+ * __useDynamicZoneQuery__
  *
- * To run a query within a React component, call `useQuery` and pass it any options that fit your needs.
- * When your component renders, `useQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useDynamicZoneQuery` and pass it any options that fit your needs.
+ * When your component renders, `useDynamicZoneQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useQuery({
+ * const { data, loading, error } = useDynamicZoneQuery({
  *   variables: {
  *   },
  * });
  */
-export function useQuery(baseOptions?: Apollo.QueryHookOptions<Query, QueryVariables>) {
+export function useDynamicZoneQuery(baseOptions?: Apollo.QueryHookOptions<DynamicZoneQuery, DynamicZoneQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<Query, QueryVariables>(Document, options);
+        return Apollo.useQuery<DynamicZoneQuery, DynamicZoneQueryVariables>(DynamicZoneDocument, options);
       }
-export function useLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Query, QueryVariables>) {
+export function useDynamicZoneLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<DynamicZoneQuery, DynamicZoneQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<Query, QueryVariables>(Document, options);
+          return Apollo.useLazyQuery<DynamicZoneQuery, DynamicZoneQueryVariables>(DynamicZoneDocument, options);
         }
-export type QueryHookResult = ReturnType<typeof useQuery>;
-export type LazyQueryHookResult = ReturnType<typeof useLazyQuery>;
-export type QueryResult = Apollo.QueryResult<Query, QueryVariables>;
+export type DynamicZoneQueryHookResult = ReturnType<typeof useDynamicZoneQuery>;
+export type DynamicZoneLazyQueryHookResult = ReturnType<typeof useDynamicZoneLazyQuery>;
+export type DynamicZoneQueryResult = Apollo.QueryResult<DynamicZoneQuery, DynamicZoneQueryVariables>;
 export const GetLayoutDocument = gql`
     query GetLayout {
   layout {

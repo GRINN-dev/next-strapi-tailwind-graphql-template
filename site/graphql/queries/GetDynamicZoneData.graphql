@@ -1,13 +1,30 @@
-query {
+query DynamicZone {
   pages {
     data {
       id
       attributes {
+        pageSlug
+        __typename
+        pageMeta {
+          id
+          metaProperty
+          metaName
+          metaContent
+        }
         pageDynamicZone {
           __typename
           ... on ComponentTestimonyTestimony {
             id
             testimonyTitle
+            companyLogo {
+              data {
+                attributes {
+                  name
+                  url
+                  alternativeText
+                }
+              }
+            }
             testimonyContent
             testimonyFirstName
             testimonyLastName
