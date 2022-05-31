@@ -1,5 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import Testimony, { TestimonyProps } from './Testimony';
+import obole from '../../public/obole.png';
+import logo_ninon from '../../public/logo_ninon.png';
 
 export default {
   title: 'Component/Testimony',
@@ -9,13 +11,17 @@ export default {
 const Template: Story<TestimonyProps> = () => {
   return (
     <Testimony
-      companyName={''}
-      job={''}
-      testimonyContent={''}
-      firstName={''}
-      lastName={''}
+      companyName={'Grinn'}
+      companyLogo={obole}
+      job={'Web dev'}
+      testimonyContent={
+        '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis"'
+      }
+      firstName={'Ninon'}
+      lastName={'Denormandie'}
+      avatar={logo_ninon}
     />
   );
 };
 
-export const HeaderExample = Template.bind({});
+export const TestimonyExample = Template.bind({});
