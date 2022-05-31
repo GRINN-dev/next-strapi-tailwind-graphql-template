@@ -61,6 +61,12 @@
         "videos",
         "audios"
       ]
+    },
+    "pageDynamicZone": {
+      "type": "dynamiczone",
+      "components": [
+        "testimony.testimony"
+      ]
     }
   }
 }

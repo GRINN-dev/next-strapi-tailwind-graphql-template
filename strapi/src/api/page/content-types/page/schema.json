@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page",
     "pluralName": "pages",
-    "displayName": "Page"
+    "displayName": "Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,15 @@
       "type": "component",
       "repeatable": false,
       "component": "meta.meta"
+    },
+    "pageDynamicZone": {
+      "type": "dynamiczone",
+      "components": [
+        "testimony.testimony"
+      ]
+    },
+    "pageSlug": {
+      "type": "uid"
     }
   }
 }
