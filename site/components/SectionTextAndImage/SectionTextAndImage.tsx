@@ -2,15 +2,16 @@ import { FC } from "react";
 import { SectionTextAndImageProps } from ".";
 import { CameraIcon } from "@heroicons/react/solid";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
 
 export const SectionTextAndImage: FC<SectionTextAndImageProps> = ({
   sections,
 }) => {
   return (
-    <section>
+    <section className="py-16">
       {sections.map((section, index) => (
         <div className="overflow-hidden bg-white" key={index}>
-          <div className="relative px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="mx-auto text-base max-w-prose lg:grid lg:grid-cols-2 lg:gap-8 lg:max-w-none">
               <div>
                 <h2 className="text-base font-semibold tracking-wide text-indigo-600 uppercase">
@@ -51,11 +52,15 @@ export const SectionTextAndImage: FC<SectionTextAndImageProps> = ({
                 </div>
               </div>
               <div className="mt-8 lg:mt-0">
-                <div className="mx-auto text-base max-w-prose lg:max-w-none">
-                  {section.introduction}
+                <div className="mx-auto">
+                  <ReactMarkdown className="text-base max-w-prose lg:max-w-none">
+                    {section.introduction}
+                  </ReactMarkdown>
                 </div>
-                <div className="mx-auto mt-5 prose text-gray-500 prose-indigo lg:max-w-none lg:row-start-1 lg:col-start-1">
-                  {section.text}
+                <div className="mx-auto mt-5 lg:max-w-none lg:row-start-1 lg:col-start-1">
+                  <ReactMarkdown className="prose text-gray-500 prose-indigo">
+                    {section.text}
+                  </ReactMarkdown>
                 </div>
               </div>
             </div>
