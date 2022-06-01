@@ -6,8 +6,8 @@
 - lancer l'install en faisant `yarn`
 - Créer un `.env` dans le workspace strapi suivant le `.env.example`
 - lancer strapi en faisant `yarn workspace strapi develop` , cette commande lance http://localhost:1337/admin/auth/register-admin , il faut créer un compte admin.
-- executer `yarn workspace site codegen` pour générer le fichier `graphql/index.tsx`
 - `yarn dev` lance strapi et le site next
+- executer `yarn workspace site codegen` pour générer le fichier `graphql/index.tsx`
 
 bonus:
 
