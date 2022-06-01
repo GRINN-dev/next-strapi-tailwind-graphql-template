@@ -32,6 +32,7 @@ export const Testimony: FC<TestimonyProps> = ({
             src={avatar}
             alt={lastName}
             className='items-center w-6 h-6 mx-2 rounded-full'
+            layout='fill'
           />
           <span className=''>
             {firstName} {''}

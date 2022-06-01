@@ -35,7 +35,9 @@ const Blank: NextPage<DynamicZoneQuery> = ({ pages }) => {
                         testimonyContent={dyn?.testimonyContent || ''}
                         firstName={dyn?.testimonyFirstName || ''}
                         lastName={dyn?.testimonyLastName || ''}
-                        avatar={dyn?.testimonyAvatar || ''}
+                        avatar={
+                          'http://localhost:1337' + dyn?.testimonyAvatar || ''
+                        }
                         companyLogo={dyn?.companyLogo || ''}
                       />
                     ) : (
