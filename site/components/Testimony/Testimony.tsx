@@ -36,12 +36,12 @@ export const Testimony: FC<TestimonyProps> = ({
           <Image
             src={avatar}
             alt={lastName}
-            className='absolute items-center object-contain mx-2 rounded-full'
+            className='items-center object-contain mx-2 rounded-full'
             layout='fixed'
             width={20}
             height={20}
           />
-          <span className='ml-1'>
+          <span className='relative ml-2'>
             {firstName} {''}
             {lastName} <span className='ml-1'>/</span>
           </span>

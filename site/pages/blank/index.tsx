@@ -43,7 +43,7 @@ const Blank: NextPage<DynamicZoneQuery> = ({ pages }) => {
                         companyLogo={
                           dyn?.companyLogo?.data?.attributes?.url
                             ? `http://localhost:1337${dyn?.companyLogo?.data?.attributes?.url}`
-                            : 'https://picsum.photos/200/300'
+                            : ''
                         }
                       />
                     ) : (
