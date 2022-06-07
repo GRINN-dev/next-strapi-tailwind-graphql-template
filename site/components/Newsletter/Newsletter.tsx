@@ -32,12 +32,12 @@ export const Newsletter: FC<NewsletterProps> = ({
             <input
               type='text'
               placeholder={inputPlaceholder}
-              className='inline-flex items-center justify-center w-full px-5 py-3 ml-2 text-base font-medium text-indigo-600 bg-white border border-transparent rounded-md sm:w-auto '
+              className='inline-flex items-center justify-center w-full px-5 py-2 ml-2 text-base font-medium text-indigo-600 bg-white border border-transparent rounded-md sm:w-auto '
             />
           </label>
           <button
             type='submit'
-            className='px-5 py-3 text-base text-white bg-indigo-300 rounded-md'
+            className='px-5 py-2 text-base text-white bg-indigo-500 rounded-md'
           >
             {submitLabel}
           </button>
