@@ -18,15 +18,15 @@ export const Newsletter: FC<NewsletterProps> = ({
   checkboxLabel,
 }) => {
   return (
-    <div className='bg-indigo-700 rounded-lg'>
-      <div className='max-w-2xl px-4 py-16 mx-auto text-center sm:py-20 sm:px-6 lg:px-8'>
+    <div className='mx-10 mb-2 bg-indigo-700 rounded-lg'>
+      <div className='max-w-2xl px-4 py-10 mx-auto text-center sm:py-16 sm:px-6 lg:px-8'>
         <h1 className='text-3xl font-extrabold text-white sm:text-4xl'>
           {title}
         </h1>
         <h2 className='mt-4 mb-8 text-lg leading-6 text-indigo-200'>
           {description}
         </h2>
-        <div className='flex justify-center mx-2 mb-6 space-x-2'>
+        <div className='flex-col justify-center mx-2 mb-6 space-x-2 space-y-2 md:flex-row'>
           <label className='text-base text-white'>
             {inputLabel}
             <input

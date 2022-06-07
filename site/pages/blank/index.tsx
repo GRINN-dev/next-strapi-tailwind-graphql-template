@@ -1,5 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import Meta from '../../components/Meta/Meta';
+import { Newsletter } from '../../components/Newsletter';
 import { Testimony } from '../../components/Testimony';
 import {
   GetDynamicZoneDataDocument,
@@ -59,6 +60,24 @@ const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
                 );
               })}
             </div>
+            {p?.attributes?.pageDynamicZone?.map((news) => {
+              return (
+                <div key={news?.__typename}>
+                  {news?.__typename === 'ComponentNewsletterNewsletter' ? (
+                    <Newsletter
+                      title={news?.newsletterTitle || ''}
+                      description={news?.newsletterDescription || ''}
+                      inputLabel={news?.inputLabel || ''}
+                      inputPlaceholder={news?.inputPlaceholder || ''}
+                      submitLabel={news?.submitLabel || ''}
+                      checkboxLabel={news?.checkboxLabel || ''}
+                    />
+                  ) : (
+                    ''
+                  )}
+                </div>
+              );
+            })}
           </>
         );
       })}
