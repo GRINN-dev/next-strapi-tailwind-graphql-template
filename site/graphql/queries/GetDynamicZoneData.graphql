@@ -1,10 +1,10 @@
-query DynamicZone {
+query GetDynamicZoneData {
   pages {
     data {
       id
       attributes {
-        pageSlug
         __typename
+        pageSlug
         pageMeta {
           id
           metaProperty
@@ -12,6 +12,16 @@ query DynamicZone {
           metaContent
         }
         pageDynamicZone {
+          __typename
+          ... on ComponentNewsletterNewsletter {
+            id
+            newsletterTitle
+            newsletterDescription
+            inputLabel
+            inputPlaceholder
+            submitLabel
+            checkboxLabel
+          }
           __typename
           ... on ComponentTestimonyTestimony {
             id

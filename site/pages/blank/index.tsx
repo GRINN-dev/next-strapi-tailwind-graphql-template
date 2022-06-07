@@ -1,10 +1,13 @@
 import { GetStaticProps, NextPage } from 'next';
 import Meta from '../../components/Meta/Meta';
 import { Testimony } from '../../components/Testimony';
-import { DynamicZoneDocument, DynamicZoneQuery } from '../../graphql';
+import {
+  GetDynamicZoneDataDocument,
+  GetDynamicZoneDataQuery,
+} from '../../graphql';
 import { client } from '../../lib';
 
-const Blank: NextPage<DynamicZoneQuery> = ({ pages }) => {
+const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
   return (
     <div>
       {/* <p>Test</p> */}
@@ -65,11 +68,12 @@ const Blank: NextPage<DynamicZoneQuery> = ({ pages }) => {
 
 export default Blank;
 
-export const getStaticProps: GetStaticProps<DynamicZoneQuery> = async ({}) => {
-  const { data, error } = await client.query<DynamicZoneQuery>({
-    query: DynamicZoneDocument,
-  });
-  return {
-    props: data,
+export const getStaticProps: GetStaticProps<GetDynamicZoneDataQuery> =
+  async ({}) => {
+    const { data, error } = await client.query<GetDynamicZoneDataQuery>({
+      query: GetDynamicZoneDataDocument,
+    });
+    return {
+      props: data,
+    };
   };
-};
