@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_spotlight_article_spotlights",
+  "info": {
+    "displayName": "Spotlight",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "titleSpotlight": {
+      "type": "string"
+    }
+  }
+}
