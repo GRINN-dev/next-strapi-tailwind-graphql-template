@@ -3,7 +3,6 @@ import Meta from '../../components/Meta/Meta';
 import { Testimony } from '../../components/Testimony';
 import { DynamicZoneDocument, DynamicZoneQuery } from '../../graphql';
 import { client } from '../../lib';
-import Image from 'next/image';
 
 const Blank: NextPage<DynamicZoneQuery> = ({ pages }) => {
   return (
@@ -14,7 +13,11 @@ const Blank: NextPage<DynamicZoneQuery> = ({ pages }) => {
           <>
             <div key={p.id}>
               <Meta
-                title={p?.attributes?.pageMeta?.metaName || ''}
+                title={
+                  p?.attributes?.pageMeta?.metaName
+                    ? p?.attributes?.pageMeta?.metaName
+                    : ''
+                }
                 meta={[
                   {
                     content: p?.attributes?.pageMeta?.metaContent || '',
