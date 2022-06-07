@@ -2,11 +2,15 @@
   "collectionName": "components_spotlight_article_spotlights",
   "info": {
     "displayName": "Spotlight",
-    "icon": "star"
+    "icon": "star",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "titleSpotlight": {
+      "type": "string"
+    },
+    "inputLabelSeeAllArticles": {
       "type": "string"
     }
   }
