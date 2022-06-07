@@ -8,7 +8,7 @@ import Image from 'next/image';
 const Blank: NextPage<DynamicZoneQuery> = ({ pages }) => {
   return (
     <div>
-      <p>Test</p>
+      {/* <p>Test</p> */}
       {pages?.data?.map((p) => {
         return (
           <>
@@ -36,9 +36,15 @@ const Blank: NextPage<DynamicZoneQuery> = ({ pages }) => {
                         firstName={dyn?.testimonyFirstName || ''}
                         lastName={dyn?.testimonyLastName || ''}
                         avatar={
-                          dyn?.testimonyAvatar || 'https://i.pravatar.cc/300'
+                          dyn?.testimonyAvatar?.data?.attributes?.url
+                            ? `http://localhost:1337${dyn?.testimonyAvatar?.data?.attributes?.url}`
+                            : `https://picsum.photos/200/300`
                         }
-                        companyLogo={dyn?.companyLogo || ''}
+                        companyLogo={
+                          dyn?.companyLogo?.data?.attributes?.url
+                            ? `http://localhost:1337${dyn?.companyLogo?.data?.attributes?.url}`
+                            : 'https://picsum.photos/200/300'
+                        }
                       />
                     ) : (
                       ''

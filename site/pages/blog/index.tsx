@@ -71,7 +71,7 @@ const Blog: NextPage<BlogQuery> = ({ blog }) => {
                           article?.attributes?.team_member?.data?.attributes
                             ?.avatar?.data?.attributes?.url
                             ? `http://localhost:1337${article?.attributes?.team_member?.data?.attributes?.avatar?.data?.attributes?.url}`
-                            : `https://picsum.photos/200/300`
+                            : 'https://picsum.photos/200/300'
                         }
                         alt={
                           article?.attributes?.team_member?.data?.attributes
