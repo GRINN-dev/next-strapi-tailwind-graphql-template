@@ -36,7 +36,7 @@ const Blank: NextPage<DynamicZoneQuery> = ({ pages }) => {
                         firstName={dyn?.testimonyFirstName || ''}
                         lastName={dyn?.testimonyLastName || ''}
                         avatar={
-                          'http://localhost:1337' + dyn?.testimonyAvatar || ''
+                          dyn?.testimonyAvatar || 'https://i.pravatar.cc/300'
                         }
                         companyLogo={dyn?.companyLogo || ''}
                       />

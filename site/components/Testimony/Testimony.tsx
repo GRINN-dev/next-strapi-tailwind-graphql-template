@@ -29,7 +29,7 @@ export const Testimony: FC<TestimonyProps> = ({
         <p>{testimonyContent}</p>
         <div className='flex items-center justify-center text-sm'>
           <Image
-            src={avatar}
+            src={avatar || '../../public/logo_ninon.png'}
             alt={lastName}
             className='items-center w-6 h-6 mx-2 rounded-full'
             layout='fill'
