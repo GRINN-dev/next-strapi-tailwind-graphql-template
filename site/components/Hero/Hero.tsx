@@ -15,7 +15,7 @@ export const Hero: FC<HeroProps> = ({
   image,
 }) => {
   return (
-    <div className='relative bg-gray-200'>
+    <div className='relative bg-gray-200 rounded-md'>
       <div className='h-56 sm:h-72 md:absolute md:right-0 md:h-full md:w-1/2'>
         <Image
           src={
@@ -24,7 +24,7 @@ export const Hero: FC<HeroProps> = ({
           }
           alt={''}
           layout='fill'
-          className='right-0 object-cover w-full h-full'
+          className='right-0 object-cover w-full h-full rounded-r-md'
         />
       </div>
       <div className='relative px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-16'>

@@ -2,10 +2,15 @@
   "name": "next-strapi-tailwind-graphql-template",
   "version": "1.0",
   "private": true,
-  "workspaces": [
-    "site",
-    "strapi"
-  ],
+  "workspaces": {
+    "packages": [
+      "site",
+      "strapi"
+    ],
+    "nohoist": [
+      "strapi"
+    ]
+  },
   "dependencies": {
     "concurrently": "^7.2.0"
   },
