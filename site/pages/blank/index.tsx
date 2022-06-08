@@ -67,7 +67,7 @@ const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
                     <Newsletter
                       title={news?.newsletterTitle || ''}
                       description={news?.newsletterDescription || ''}
-                      inputLabel={news?.inputLabel || ''}
+                      inputLabel={''}
                       inputPlaceholder={news?.inputPlaceholder || ''}
                       submitLabel={news?.submitLabel || ''}
                       checkboxLabel={news?.checkboxLabel || ''}

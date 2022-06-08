@@ -13,7 +13,7 @@ const Template: Story<NewsletterProps> = () => {
       description={
         'Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique pellentesque.'
       }
-      inputLabel={'Email'}
+      inputLabel={''}
       inputPlaceholder={'Enter your email'}
       submitLabel={'Notify me'}
       checkboxLabel={'RGPD text'}
