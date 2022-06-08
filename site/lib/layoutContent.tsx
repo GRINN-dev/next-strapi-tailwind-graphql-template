@@ -4,8 +4,6 @@ import { LayoutEntityResponse } from "../graphql";
 export const headerContent: (layout: LayoutEntityResponse) => HeaderProps = (
   layout
 ) => {
-  console.log(process.env);
-
   return {
     logo: layout?.data?.attributes?.logo?.data?.attributes?.url
       ? /* process.env.NEXT_PUBLIC_ASSETS_URL || */
@@ -35,6 +33,16 @@ export const headerContent: (layout: LayoutEntityResponse) => HeaderProps = (
           };
         }
       ),
+      blog: [
+        {
+          title: "S'engager dans l'associatif",
+          href: "",
+          description:
+            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt enim atque, accusamus veniam laboriosam, omnis exercitationem explicabo ipsa voluptate voluptatem nostrum! Consequuntur reiciendis quidem neque quae magni provident laudantium error.",
+          imageUrl:
+            "https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80",
+        },
+      ],
     },
   };
 };
