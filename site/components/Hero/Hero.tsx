@@ -1,8 +1,10 @@
 import Image from 'next/image';
+import { PropsWithRef } from 'react';
 import { FC } from 'react';
+import { Cta } from './CTA';
 
 interface HeroProps {
-  title?: string;
+  title?: any;
   description?: string;
   image?: any;
   buttonTitle?: string;
@@ -33,12 +35,7 @@ export const Hero: FC<HeroProps> = ({
             {title}
           </h1>
           <p className='text-lg text-gray-600'>{description}</p>
-          <button
-            type='button'
-            className='items-center justify-center px-5 py-2 my-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md w-max hover:bg-gray-50'
-          >
-            {buttonTitle}
-          </button>
+          <Cta title={buttonTitle || ''} />
         </div>
       </div>
     </div>
