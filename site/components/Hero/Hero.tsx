@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import { PropsWithRef } from 'react';
 import { FC } from 'react';
+import Image from 'next/image';
 import { Cta } from './CTA';
 
 interface HeroProps {
