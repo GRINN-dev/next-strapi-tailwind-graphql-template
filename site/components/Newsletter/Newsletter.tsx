@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
 export interface NewsletterProps {
-  title: string;
-  description: string;
-  inputLabel: string;
-  inputPlaceholder: string;
-  submitLabel: string;
-  checkboxLabel: string;
+  title?: string;
+  description?: string;
+  inputLabel?: string;
+  inputPlaceholder?: string;
+  submitLabel?: string;
+  checkboxLabel?: string;
 }
 
 export const Newsletter: FC<NewsletterProps> = ({
