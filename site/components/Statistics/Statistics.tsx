@@ -2,7 +2,6 @@ import { FC } from 'react';
 
 export interface StatisticsProps {
   title?: string;
-
   descriptionTitle?: string;
   descriptionDetail?: string;
   image?: any;
@@ -23,7 +22,7 @@ export const Statistics: FC<StatisticsProps> = ({
 
       <div className='pb-12 mt-10 bg-white sm:pb-16'>
         <div className='relative'>
-          <div className='absolute inset-0 h-1/2 bg-gray-50' />
+          <div className='absolute inset-0 h-1/2' />
           <div className='relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
             <div className='max-w-4xl mx-auto'>
               <dl className='bg-white rounded-lg shadow-lg sm:grid sm:grid-cols-3'>
