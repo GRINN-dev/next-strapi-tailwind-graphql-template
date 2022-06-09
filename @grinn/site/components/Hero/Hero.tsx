@@ -10,14 +10,14 @@ export const Hero: FC<HeroProps> = ({
   image,
 }) => {
   return (
-    <div className='relative bg-gray-200 rounded-md'>
+    <div className='relative m-2 bg-gray-200 rounded-md'>
       <div className='h-56 sm:h-72 md:absolute md:right-0 md:h-full md:w-1/2'>
         <Image
           src={
             image ||
             'https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&blend=6366F1&sat=-100&blend-mode=multiply'
           }
-          alt={''}
+          alt={'hero-image'}
           layout='fill'
           className='right-0 object-cover w-full h-full rounded-t-md md:rounded-r-md md:rounded-l-none'
         />
