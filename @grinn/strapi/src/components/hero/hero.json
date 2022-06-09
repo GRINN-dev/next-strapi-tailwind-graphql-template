@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_hero_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "child"
+  },
+  "options": {},
+  "attributes": {
+    "heroImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroDescription": {
+      "type": "text"
+    },
+    "buttonTitle": {
+      "type": "string"
+    }
+  }
+}

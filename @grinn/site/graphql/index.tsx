@@ -13,12 +13,14 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  BlogArticlePageDynamicZoneDynamicZoneInput: any;
   /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any;
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: any;
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: any;
+  PagePageDynamicZoneDynamicZoneInput: any;
   /** The `Upload` scalar type represents a file upload. */
   Upload: any;
 };
@@ -44,6 +46,7 @@ export type BlogArticle = {
   meta?: Maybe<ComponentMetaMeta>;
   ogTag?: Maybe<Scalars['String']>;
   pageDescription?: Maybe<Scalars['String']>;
+  pageDynamicZone?: Maybe<Array<Maybe<BlogArticlePageDynamicZoneDynamicZone>>>;
   pageTitle?: Maybe<Scalars['String']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   publishingDate?: Maybe<Scalars['Date']>;
@@ -98,12 +101,15 @@ export type BlogArticleInput = {
   meta?: InputMaybe<ComponentMetaMetaInput>;
   ogTag?: InputMaybe<Scalars['String']>;
   pageDescription?: InputMaybe<Scalars['String']>;
+  pageDynamicZone?: InputMaybe<Array<Scalars['BlogArticlePageDynamicZoneDynamicZoneInput']>>;
   pageTitle?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   publishingDate?: InputMaybe<Scalars['Date']>;
   slug?: InputMaybe<Scalars['String']>;
   team_member?: InputMaybe<Scalars['ID']>;
 };
+
+export type BlogArticlePageDynamicZoneDynamicZone = ComponentTestimonyTestimony | Error;
 
 export type BlogArticleRelationResponseCollection = {
   __typename?: 'BlogArticleRelationResponseCollection';
@@ -238,6 +244,17 @@ export type ComponentMetaMetaInput = {
   metaProperty?: InputMaybe<Scalars['String']>;
 };
 
+export type ComponentNewsletterNewsletter = {
+  __typename?: 'ComponentNewsletterNewsletter';
+  checkboxLabel?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  inputLabel?: Maybe<Scalars['String']>;
+  inputPlaceholder?: Maybe<Scalars['String']>;
+  newsletterDescription?: Maybe<Scalars['String']>;
+  newsletterTitle?: Maybe<Scalars['String']>;
+  submitLabel?: Maybe<Scalars['String']>;
+};
+
 export type ComponentSocialNetworkFacebook = {
   __typename?: 'ComponentSocialNetworkFacebook';
   icon?: Maybe<UploadFileEntityResponse>;
@@ -259,6 +276,26 @@ export type ComponentSocialNetworkFacebookInput = {
   id?: InputMaybe<Scalars['ID']>;
   link?: InputMaybe<Scalars['String']>;
   socialNetworkName?: InputMaybe<Enum_Componentsocialnetworkfacebook_Socialnetworkname>;
+};
+
+export type ComponentSpotlightArticleSpotlight = {
+  __typename?: 'ComponentSpotlightArticleSpotlight';
+  id: Scalars['ID'];
+  inputLabelSeeAllArticles?: Maybe<Scalars['String']>;
+  titleSpotlight?: Maybe<Scalars['String']>;
+};
+
+export type ComponentTestimonyTestimony = {
+  __typename?: 'ComponentTestimonyTestimony';
+  companyLogo?: Maybe<UploadFileEntityResponse>;
+  id: Scalars['ID'];
+  testimonyAvatar?: Maybe<UploadFileEntityResponse>;
+  testimonyCompanyName?: Maybe<Scalars['String']>;
+  testimonyContent?: Maybe<Scalars['String']>;
+  testimonyFirstName?: Maybe<Scalars['String']>;
+  testimonyJob?: Maybe<Scalars['String']>;
+  testimonyLastName?: Maybe<Scalars['String']>;
+  testimonyTitle?: Maybe<Scalars['String']>;
 };
 
 export type DateFilterInput = {
@@ -322,6 +359,12 @@ export enum Enum_Componentsocialnetworkfacebook_Socialnetworkname {
   Twitter = 'Twitter'
 }
 
+export type Error = {
+  __typename?: 'Error';
+  code: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
+};
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
   caption?: InputMaybe<Scalars['String']>;
@@ -351,7 +394,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Blog | BlogArticle | ComponentLayoutFooterNavigation | ComponentLayoutSocials | ComponentLayoutSubFooterNavigation | ComponentMetaMeta | ComponentSocialNetworkFacebook | I18NLocale | Label | Layout | TeamMember | TeamPage | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Blog | BlogArticle | ComponentLayoutFooterNavigation | ComponentLayoutSocials | ComponentLayoutSubFooterNavigation | ComponentMetaMeta | ComponentNewsletterNewsletter | ComponentSocialNetworkFacebook | ComponentSpotlightArticleSpotlight | ComponentTestimonyTestimony | I18NLocale | Label | Layout | Page | TeamMember | TeamPage | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -583,6 +626,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createBlogArticle?: Maybe<BlogArticleEntityResponse>;
   createLabel?: Maybe<LabelEntityResponse>;
+  createPage?: Maybe<PageEntityResponse>;
   createTeamMember?: Maybe<TeamMemberEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Create a new role */
@@ -593,6 +637,7 @@ export type Mutation = {
   deleteBlogArticle?: Maybe<BlogArticleEntityResponse>;
   deleteLabel?: Maybe<LabelEntityResponse>;
   deleteLayout?: Maybe<LayoutEntityResponse>;
+  deletePage?: Maybe<PageEntityResponse>;
   deleteTeamMember?: Maybe<TeamMemberEntityResponse>;
   deleteTeamPage?: Maybe<TeamPageEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -616,6 +661,7 @@ export type Mutation = {
   updateFileInfo: UploadFileEntityResponse;
   updateLabel?: Maybe<LabelEntityResponse>;
   updateLayout?: Maybe<LayoutEntityResponse>;
+  updatePage?: Maybe<PageEntityResponse>;
   updateTeamMember?: Maybe<TeamMemberEntityResponse>;
   updateTeamPage?: Maybe<TeamPageEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -634,6 +680,11 @@ export type MutationCreateBlogArticleArgs = {
 
 export type MutationCreateLabelArgs = {
   data: LabelInput;
+};
+
+
+export type MutationCreatePageArgs = {
+  data: PageInput;
 };
 
 
@@ -663,6 +714,11 @@ export type MutationDeleteBlogArticleArgs = {
 
 
 export type MutationDeleteLabelArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeletePageArgs = {
   id: Scalars['ID'];
 };
 
@@ -755,6 +811,12 @@ export type MutationUpdateLayoutArgs = {
 };
 
 
+export type MutationUpdatePageArgs = {
+  data: PageInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateTeamMemberArgs = {
   data: TeamMemberInput;
   id: Scalars['ID'];
@@ -792,6 +854,53 @@ export type MutationUploadArgs = {
   refId?: InputMaybe<Scalars['ID']>;
 };
 
+export type Page = {
+  __typename?: 'Page';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  pageDynamicZone?: Maybe<Array<Maybe<PagePageDynamicZoneDynamicZone>>>;
+  pageMeta?: Maybe<ComponentMetaMeta>;
+  pageSlug?: Maybe<Scalars['String']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type PageEntity = {
+  __typename?: 'PageEntity';
+  attributes?: Maybe<Page>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type PageEntityResponse = {
+  __typename?: 'PageEntityResponse';
+  data?: Maybe<PageEntity>;
+};
+
+export type PageEntityResponseCollection = {
+  __typename?: 'PageEntityResponseCollection';
+  data: Array<PageEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type PageFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<PageFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
+  pageSlug?: InputMaybe<StringFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type PageInput = {
+  pageDynamicZone?: InputMaybe<Array<Scalars['PagePageDynamicZoneDynamicZoneInput']>>;
+  pageMeta?: InputMaybe<ComponentMetaMetaInput>;
+  pageSlug?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type PagePageDynamicZoneDynamicZone = ComponentNewsletterNewsletter | ComponentTestimonyTestimony | Error;
+
 export type Pagination = {
   __typename?: 'Pagination';
   page: Scalars['Int'];
@@ -823,6 +932,8 @@ export type Query = {
   labels?: Maybe<LabelEntityResponseCollection>;
   layout?: Maybe<LayoutEntityResponse>;
   me?: Maybe<UsersPermissionsMe>;
+  page?: Maybe<PageEntityResponse>;
+  pages?: Maybe<PageEntityResponseCollection>;
   teamMember?: Maybe<TeamMemberEntityResponse>;
   teamMembers?: Maybe<TeamMemberEntityResponseCollection>;
   teamPage?: Maybe<TeamPageEntityResponse>;
@@ -880,6 +991,19 @@ export type QueryLabelsArgs = {
 
 export type QueryLayoutArgs = {
   publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryPageArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryPagesArgs = {
+  filters?: InputMaybe<PageFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -1360,6 +1484,11 @@ export type GetArticleAuthorDataQueryVariables = Exact<{ [key: string]: never; }
 
 export type GetArticleAuthorDataQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', team_member?: { __typename?: 'TeamMemberEntityResponse', data?: { __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
 
+export type GetDynamicZoneDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetDynamicZoneDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename: 'Page', pageSlug?: string | null, pageMeta?: { __typename?: 'ComponentMetaMeta', id: string, metaProperty?: string | null, metaName?: string | null, metaContent?: string | null } | null, pageDynamicZone?: Array<{ __typename: 'ComponentNewsletterNewsletter', id: string, newsletterTitle?: string | null, newsletterDescription?: string | null, inputLabel?: string | null, inputPlaceholder?: string | null, submitLabel?: string | null, checkboxLabel?: string | null } | { __typename: 'ComponentTestimonyTestimony', id: string, testimonyTitle?: string | null, testimonyContent?: string | null, testimonyFirstName?: string | null, testimonyLastName?: string | null, testimonyCompanyName?: string | null, testimonyJob?: string | null, companyLogo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null, testimonyAvatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null } | null } | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
+
 export type GetLayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1554,6 +1683,93 @@ export function useGetArticleAuthorDataLazyQuery(baseOptions?: Apollo.LazyQueryH
 export type GetArticleAuthorDataQueryHookResult = ReturnType<typeof useGetArticleAuthorDataQuery>;
 export type GetArticleAuthorDataLazyQueryHookResult = ReturnType<typeof useGetArticleAuthorDataLazyQuery>;
 export type GetArticleAuthorDataQueryResult = Apollo.QueryResult<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>;
+export const GetDynamicZoneDataDocument = gql`
+    query GetDynamicZoneData {
+  pages {
+    data {
+      id
+      attributes {
+        __typename
+        pageSlug
+        pageMeta {
+          id
+          metaProperty
+          metaName
+          metaContent
+        }
+        pageDynamicZone {
+          __typename
+          ... on ComponentNewsletterNewsletter {
+            id
+            newsletterTitle
+            newsletterDescription
+            inputLabel
+            inputPlaceholder
+            submitLabel
+            checkboxLabel
+          }
+          __typename
+          ... on ComponentTestimonyTestimony {
+            id
+            testimonyTitle
+            companyLogo {
+              data {
+                attributes {
+                  name
+                  url
+                  alternativeText
+                }
+              }
+            }
+            testimonyContent
+            testimonyFirstName
+            testimonyLastName
+            testimonyAvatar {
+              data {
+                id
+                attributes {
+                  name
+                  alternativeText
+                  url
+                }
+              }
+            }
+            testimonyCompanyName
+            testimonyJob
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetDynamicZoneDataQuery__
+ *
+ * To run a query within a React component, call `useGetDynamicZoneDataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDynamicZoneDataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDynamicZoneDataQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetDynamicZoneDataQuery(baseOptions?: Apollo.QueryHookOptions<GetDynamicZoneDataQuery, GetDynamicZoneDataQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetDynamicZoneDataQuery, GetDynamicZoneDataQueryVariables>(GetDynamicZoneDataDocument, options);
+      }
+export function useGetDynamicZoneDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDynamicZoneDataQuery, GetDynamicZoneDataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetDynamicZoneDataQuery, GetDynamicZoneDataQueryVariables>(GetDynamicZoneDataDocument, options);
+        }
+export type GetDynamicZoneDataQueryHookResult = ReturnType<typeof useGetDynamicZoneDataQuery>;
+export type GetDynamicZoneDataLazyQueryHookResult = ReturnType<typeof useGetDynamicZoneDataLazyQuery>;
+export type GetDynamicZoneDataQueryResult = Apollo.QueryResult<GetDynamicZoneDataQuery, GetDynamicZoneDataQueryVariables>;
 export const GetLayoutDocument = gql`
     query GetLayout {
   layout {
