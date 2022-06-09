@@ -24,6 +24,7 @@ export default Home;
 export const getStaticProps: GetStaticProps<GetLayoutQuery> = async ({}) => {
   const { data: layout, error } = await client.query<GetLayoutQuery>({
     query: GetLayoutDocument,
+    fetchPolicy: "no-cache",
   });
   return {
     props: layout,

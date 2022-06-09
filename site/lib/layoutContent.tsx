@@ -4,8 +4,6 @@ import { LayoutEntityResponse } from "../graphql";
 export const headerContent: (layout: LayoutEntityResponse) => HeaderProps = (
   layout
 ) => {
-  console.log(process.env);
-
   return {
     logo: layout?.data?.attributes?.logo?.data?.attributes?.url
       ? /* process.env.NEXT_PUBLIC_ASSETS_URL || */
