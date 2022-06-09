@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import { Hero } from '../../components/Hero';
 import Meta from '../../components/Meta/Meta';
 import { Newsletter } from '../../components/Newsletter';
 import { Testimony } from '../../components/Testimony';
@@ -7,6 +8,7 @@ import {
   GetDynamicZoneDataQuery,
 } from '../../graphql';
 import { client } from '../../lib';
+import article1 from '../../public/article1.jpg';
 
 const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
   return (
@@ -30,6 +32,28 @@ const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
                   },
                 ]}
               />
+            </div>
+            <div>
+              {p?.attributes?.pageDynamicZone?.map((hero) => {
+                return (
+                  <div key={hero?.__typename}>
+                    {hero?.__typename === 'ComponentHeroHero' ? (
+                      <Hero
+                        title={hero?.heroTitle || ''}
+                        description={hero?.heroDescription || ''}
+                        image={
+                          hero?.heroImage?.data?.attributes?.url
+                            ? hero?.heroImage?.data?.attributes?.url
+                            : ''
+                        }
+                        buttonTitle={hero?.buttonTitle || ''}
+                      />
+                    ) : (
+                      ''
+                    )}
+                  </div>
+                );
+              })}
             </div>
             <div>
               {p?.attributes?.pageDynamicZone?.map((dyn) => {
