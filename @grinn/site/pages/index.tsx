@@ -1,11 +1,11 @@
-import type { GetStaticProps, NextPage } from "next";
-import { Layout } from "../components";
+import type { GetStaticProps, NextPage } from 'next';
+import { Layout } from '../components';
 import {
   GetLayoutDocument,
   GetLayoutQuery,
   LayoutEntityResponse,
-} from "../graphql";
-import { client, footerContent, headerContent } from "../lib";
+} from '../graphql';
+import { client, footerContent, headerContent } from '../lib';
 
 const Home: NextPage<GetLayoutQuery> = ({ layout }) => {
   return (
@@ -13,8 +13,8 @@ const Home: NextPage<GetLayoutQuery> = ({ layout }) => {
       header={headerContent(layout as LayoutEntityResponse)}
       footer={footerContent(layout as LayoutEntityResponse)}
     >
-      <h1 className="text-2xl">Hello world</h1>
-      <div className="h-96" />
+      <h1 className='text-2xl'>Hello world</h1>
+      <div className='h-96' />
     </Layout>
   );
 };
