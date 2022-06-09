@@ -17,7 +17,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "testimonyFirstName": {
       "type": "string"
@@ -32,7 +34,9 @@
       "type": "text"
     },
     "companyLogo": {
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "type": "media",
       "multiple": false
     }

@@ -20,9 +20,8 @@
     "pageDynamicZone": {
       "type": "dynamiczone",
       "components": [
-        "newsletter.newsletter",
         "testimony.testimony",
-        "hero.hero"
+        "newsletter.newsletter"
       ]
     },
     "pageSlug": {

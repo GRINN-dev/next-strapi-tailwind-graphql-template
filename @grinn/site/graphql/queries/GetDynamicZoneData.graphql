@@ -13,23 +13,6 @@ query GetDynamicZoneData {
         }
         pageDynamicZone {
           __typename
-          ... on ComponentHeroHero {
-            id
-            heroTitle
-            heroDescription
-            heroImage {
-              data {
-                id
-                attributes {
-                  alternativeText
-                  url
-                  name
-                }
-              }
-            }
-            buttonTitle
-          }
-          __typename
           ... on ComponentNewsletterNewsletter {
             id
             newsletterTitle
@@ -39,7 +22,6 @@ query GetDynamicZoneData {
             submitLabel
             checkboxLabel
           }
-
           __typename
           ... on ComponentTestimonyTestimony {
             id

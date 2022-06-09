@@ -1,5 +1,5 @@
-import { FooterProps, HeaderProps } from "../components";
-import { LayoutEntityResponse } from "../graphql";
+import { FooterProps, HeaderProps } from '../components';
+import { LayoutEntityResponse } from '../graphql';
 
 export const headerContent: (layout: LayoutEntityResponse) => HeaderProps = (
   layout
@@ -7,11 +7,11 @@ export const headerContent: (layout: LayoutEntityResponse) => HeaderProps = (
   console.log(process.env);
 
   return {
-    logo: layout?.data?.attributes?.logo?.data?.attributes?.url
-      ? /* process.env.NEXT_PUBLIC_ASSETS_URL || */
-        "http://localhost:1337" +
-        layout?.data?.attributes?.logo?.data?.attributes?.url
-      : "",
+    logo:
+      /* process.env.NEXT_PUBLIC_ASSETS_URL || */
+      layout?.data?.attributes?.logo?.data?.attributes?.url
+        ? `http://localhost:1337${layout?.data?.attributes?.logo?.data?.attributes?.url}`
+        : '',
     header: layout?.data?.attributes?.headerMainNavigation?.map((x) => {
       return {
         label: x?.label,
