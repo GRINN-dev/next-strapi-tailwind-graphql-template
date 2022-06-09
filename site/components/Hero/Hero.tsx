@@ -25,7 +25,7 @@ export const Hero: FC<HeroProps> = ({
           }
           alt={''}
           layout='fill'
-          className='right-0 object-cover w-full h-full rounded-t-md md:rounded-r-md'
+          className='right-0 object-cover w-full h-full rounded-t-md md:rounded-r-md md:rounded-l-none'
         />
       </div>
       <div className='relative px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-16'>
