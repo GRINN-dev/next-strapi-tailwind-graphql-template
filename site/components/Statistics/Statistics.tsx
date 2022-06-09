@@ -1,10 +1,5 @@
 import { FC } from 'react';
-
-export interface StatisticsProps {
-  title?: string;
-  content?: { descriptionTitle?: string; descriptionDetail?: string }[];
-  image?: any;
-}
+import { StatisticsProps } from './types';
 
 export const Statistics: FC<StatisticsProps> = ({ title, content, image }) => {
   return (

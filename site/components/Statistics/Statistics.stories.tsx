@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react';
-import { Statistics, StatisticsProps } from './Statistics';
+import { StatisticsProps } from './types';
+import { Statistics } from './Statistics';
 
 export default {
   title: 'Component/Statistics',

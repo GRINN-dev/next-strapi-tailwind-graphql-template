@@ -7,3 +7,5 @@ export const Spotlight: FC = () => {
     </div>
   );
 };
+
+// lien avec blog articles
