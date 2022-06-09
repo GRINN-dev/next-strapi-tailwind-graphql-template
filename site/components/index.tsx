@@ -6,3 +6,5 @@ export * from './Meta/Meta';
 export * from './Newsletter';
 export * from './Testimony';
 export * from './Spotlight';
+export * from './Statistics';
+export * from './Hero';
