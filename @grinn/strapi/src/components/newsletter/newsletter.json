@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_newsletter_newsletters",
+  "info": {
+    "displayName": "Newsletter",
+    "icon": "feather"
+  },
+  "options": {},
+  "attributes": {
+    "newsletterTitle": {
+      "type": "string"
+    },
+    "newsletterDescription": {
+      "type": "text"
+    },
+    "inputLabel": {
+      "type": "string"
+    },
+    "inputPlaceholder": {
+      "type": "string"
+    },
+    "submitLabel": {
+      "type": "string"
+    },
+    "checkboxLabel": {
+      "type": "string"
+    }
+  }
+}

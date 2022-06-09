@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_testimony_testimonies",
+  "info": {
+    "displayName": "Testimony",
+    "icon": "file-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "testimonyTitle": {
+      "type": "string"
+    },
+    "testimonyContent": {
+      "type": "richtext"
+    },
+    "testimonyAvatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "testimonyFirstName": {
+      "type": "string"
+    },
+    "testimonyLastName": {
+      "type": "string"
+    },
+    "testimonyJob": {
+      "type": "text"
+    },
+    "testimonyCompanyName": {
+      "type": "text"
+    },
+    "companyLogo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

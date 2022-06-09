@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageMeta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "meta.meta"
+    },
+    "pageDynamicZone": {
+      "type": "dynamiczone",
+      "components": [
+        "testimony.testimony",
+        "newsletter.newsletter"
+      ]
+    },
+    "pageSlug": {
+      "type": "uid"
+    }
+  }
+}
