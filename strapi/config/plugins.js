@@ -20,4 +20,7 @@ module.exports = ({ env }) => ({
       maxLimit: 200,
     },
   },
+  "content-versioning": {
+    enabled: true,
+  },
 });
