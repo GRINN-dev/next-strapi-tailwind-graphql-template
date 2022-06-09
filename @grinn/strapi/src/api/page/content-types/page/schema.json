@@ -22,7 +22,8 @@
       "components": [
         "newsletter.newsletter",
         "testimony.testimony",
-        "hero.hero"
+        "hero.hero",
+        "statistics.statistics"
       ]
     },
     "pageSlug": {

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_statistics_statistics",
+  "info": {
+    "displayName": "Statistics",
+    "icon": "sort-numeric-up",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "statTitle": {
+      "type": "string"
+    },
+    "statImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "statContent": {
+      "type": "richtext"
+    }
+  }
+}
