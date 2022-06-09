@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react';
-import Testimony, { TestimonyProps } from './Testimony';
+import Testimony from './Testimony';
+import { TestimonyProps } from './types';
 import obole from '../../public/obole.png';
 import logo_ninon from '../../public/logo_ninon.png';
 

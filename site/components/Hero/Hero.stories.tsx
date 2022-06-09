@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import { HeaderProps } from '../Header';
+import { HeroProps } from './types';
 import { Hero } from './Hero';
 
 export default {
@@ -7,7 +7,7 @@ export default {
   component: Hero,
 } as Meta;
 
-const Template: Story<HeaderProps> = () => {
+const Template: Story<HeroProps> = () => {
   return (
     <Hero
       title={'Data to enrich your online business'}

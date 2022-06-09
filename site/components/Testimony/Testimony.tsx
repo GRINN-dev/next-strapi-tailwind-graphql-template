@@ -1,15 +1,6 @@
 import { FC } from 'react';
 import Image from 'next/image';
-
-export interface TestimonyProps {
-  companyName: string;
-  job: string;
-  testimonyContent: string;
-  firstName: string;
-  lastName: string;
-  avatar?: any;
-  companyLogo?: any;
-}
+import { TestimonyProps } from './types';
 
 export const Testimony: FC<TestimonyProps> = ({
   companyName,

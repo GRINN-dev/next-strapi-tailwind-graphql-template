@@ -1,13 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import { Cta } from './CTA';
-
-interface HeroProps {
-  title?: any;
-  description?: string;
-  image?: any;
-  buttonTitle?: string;
-}
+import { HeroProps } from './types';
 
 export const Hero: FC<HeroProps> = ({
   title,
