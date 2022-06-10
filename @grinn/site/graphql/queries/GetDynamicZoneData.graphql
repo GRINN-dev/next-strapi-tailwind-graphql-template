@@ -23,6 +23,23 @@ query GetDynamicZoneData {
             checkboxLabel
           }
           __typename
+          ... on ComponentHeroHero {
+            id
+            heroImage {
+              data {
+                id
+                attributes {
+                  name
+                  alternativeText
+                  url
+                }
+              }
+            }
+            heroTitle
+            heroDescription
+            buttonTitle
+          }
+          __typename
           ... on ComponentTestimonyTestimony {
             id
             testimonyTitle

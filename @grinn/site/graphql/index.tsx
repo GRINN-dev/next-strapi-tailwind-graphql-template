@@ -2,13 +2,9 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
-  { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
-  { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -105,9 +101,7 @@ export type BlogArticleInput = {
   meta?: InputMaybe<ComponentMetaMetaInput>;
   ogTag?: InputMaybe<Scalars['String']>;
   pageDescription?: InputMaybe<Scalars['String']>;
-  pageDynamicZone?: InputMaybe<
-    Array<Scalars['BlogArticlePageDynamicZoneDynamicZoneInput']>
-  >;
+  pageDynamicZone?: InputMaybe<Array<Scalars['BlogArticlePageDynamicZoneDynamicZoneInput']>>;
   pageTitle?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   publishingDate?: InputMaybe<Scalars['Date']>;
@@ -115,9 +109,7 @@ export type BlogArticleInput = {
   team_member?: InputMaybe<Scalars['ID']>;
 };
 
-export type BlogArticlePageDynamicZoneDynamicZone =
-  | ComponentTestimonyTestimony
-  | Error;
+export type BlogArticlePageDynamicZoneDynamicZone = ComponentTestimonyTestimony | Error;
 
 export type BlogArticleRelationResponseCollection = {
   __typename?: 'BlogArticleRelationResponseCollection';
@@ -182,6 +174,7 @@ export type ComponentLayoutFooterNavigation = {
   title?: Maybe<Scalars['String']>;
 };
 
+
 export type ComponentLayoutFooterNavigationSubNavigationArgs = {
   filters?: InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
@@ -189,23 +182,17 @@ export type ComponentLayoutFooterNavigationSubNavigationArgs = {
 };
 
 export type ComponentLayoutFooterNavigationFiltersInput = {
-  and?: InputMaybe<
-    Array<InputMaybe<ComponentLayoutFooterNavigationFiltersInput>>
-  >;
+  and?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationFiltersInput>>>;
   href?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<ComponentLayoutFooterNavigationFiltersInput>;
-  or?: InputMaybe<
-    Array<InputMaybe<ComponentLayoutFooterNavigationFiltersInput>>
-  >;
+  or?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationFiltersInput>>>;
   title?: InputMaybe<StringFilterInput>;
 };
 
 export type ComponentLayoutFooterNavigationInput = {
   href?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
-  subNavigation?: InputMaybe<
-    Array<InputMaybe<ComponentLayoutSubFooterNavigationInput>>
-  >;
+  subNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationInput>>>;
   title?: InputMaybe<Scalars['String']>;
 };
 
@@ -238,15 +225,11 @@ export type ComponentLayoutSubFooterNavigation = {
 };
 
 export type ComponentLayoutSubFooterNavigationFiltersInput = {
-  and?: InputMaybe<
-    Array<InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>>
-  >;
+  and?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>>>;
   href?: InputMaybe<StringFilterInput>;
   label?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>;
-  or?: InputMaybe<
-    Array<InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>>
-  >;
+  or?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>>>;
 };
 
 export type ComponentLayoutSubFooterNavigationInput = {
@@ -290,14 +273,10 @@ export type ComponentSocialNetworkFacebook = {
 };
 
 export type ComponentSocialNetworkFacebookFiltersInput = {
-  and?: InputMaybe<
-    Array<InputMaybe<ComponentSocialNetworkFacebookFiltersInput>>
-  >;
+  and?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookFiltersInput>>>;
   link?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
-  or?: InputMaybe<
-    Array<InputMaybe<ComponentSocialNetworkFacebookFiltersInput>>
-  >;
+  or?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookFiltersInput>>>;
   socialNetworkName?: InputMaybe<StringFilterInput>;
 };
 
@@ -313,6 +292,14 @@ export type ComponentSpotlightArticleSpotlight = {
   id: Scalars['ID'];
   inputLabelSeeAllArticles?: Maybe<Scalars['String']>;
   titleSpotlight?: Maybe<Scalars['String']>;
+};
+
+export type ComponentStatisticsStatistics = {
+  __typename?: 'ComponentStatisticsStatistics';
+  id: Scalars['ID'];
+  statContent?: Maybe<Scalars['String']>;
+  statImage?: Maybe<UploadFileEntityResponse>;
+  statTitle?: Maybe<Scalars['String']>;
 };
 
 export type ComponentTestimonyTestimony = {
@@ -379,14 +366,14 @@ export enum Enum_Componentlayoutsocials_Type {
   Facebook = 'Facebook',
   GitHub = 'GitHub',
   Instagram = 'Instagram',
-  Twitter = 'Twitter',
+  Twitter = 'Twitter'
 }
 
 export enum Enum_Componentsocialnetworkfacebook_Socialnetworkname {
   Facebook = 'Facebook',
   Instagram = 'Instagram',
   LinkedIn = 'LinkedIn',
-  Twitter = 'Twitter',
+  Twitter = 'Twitter'
 }
 
 export type Error = {
@@ -424,28 +411,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph =
-  | Blog
-  | BlogArticle
-  | ComponentHeroHero
-  | ComponentLayoutFooterNavigation
-  | ComponentLayoutSocials
-  | ComponentLayoutSubFooterNavigation
-  | ComponentMetaMeta
-  | ComponentNewsletterNewsletter
-  | ComponentSocialNetworkFacebook
-  | ComponentSpotlightArticleSpotlight
-  | ComponentTestimonyTestimony
-  | I18NLocale
-  | Label
-  | Layout
-  | Page
-  | TeamMember
-  | TeamPage
-  | UploadFile
-  | UsersPermissionsPermission
-  | UsersPermissionsRole
-  | UsersPermissionsUser;
+export type GenericMorph = Blog | BlogArticle | ComponentHeroHero | ComponentLayoutFooterNavigation | ComponentLayoutSocials | ComponentLayoutSubFooterNavigation | ComponentMetaMeta | ComponentNewsletterNewsletter | ComponentSocialNetworkFacebook | ComponentSpotlightArticleSpotlight | ComponentStatisticsStatistics | ComponentTestimonyTestimony | I18NLocale | Label | Layout | Page | TeamMember | TeamPage | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -604,12 +570,8 @@ export type Layout = {
   blog_articles?: Maybe<BlogArticleRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   footerNavigation?: Maybe<Array<Maybe<ComponentLayoutFooterNavigation>>>;
-  headerMainNavigation?: Maybe<
-    Array<Maybe<ComponentLayoutSubFooterNavigation>>
-  >;
-  headerSecondaryNavigation?: Maybe<
-    Array<Maybe<ComponentLayoutFooterNavigation>>
-  >;
+  headerMainNavigation?: Maybe<Array<Maybe<ComponentLayoutSubFooterNavigation>>>;
+  headerSecondaryNavigation?: Maybe<Array<Maybe<ComponentLayoutFooterNavigation>>>;
   headerSecondaryNavigationTitle?: Maybe<Scalars['String']>;
   isDisplayed?: Maybe<Scalars['Boolean']>;
   logo?: Maybe<UploadFileEntityResponse>;
@@ -618,6 +580,7 @@ export type Layout = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
+
 export type LayoutBlog_ArticlesArgs = {
   filters?: InputMaybe<BlogArticleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
@@ -625,11 +588,13 @@ export type LayoutBlog_ArticlesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type LayoutFooterNavigationArgs = {
   filters?: InputMaybe<ComponentLayoutFooterNavigationFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 export type LayoutHeaderMainNavigationArgs = {
   filters?: InputMaybe<ComponentLayoutSubFooterNavigationFiltersInput>;
@@ -637,11 +602,13 @@ export type LayoutHeaderMainNavigationArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type LayoutHeaderSecondaryNavigationArgs = {
   filters?: InputMaybe<ComponentLayoutFooterNavigationFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 export type LayoutSocialsArgs = {
   filters?: InputMaybe<ComponentLayoutSocialsFiltersInput>;
@@ -662,15 +629,9 @@ export type LayoutEntityResponse = {
 
 export type LayoutInput = {
   blog_articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  footerNavigation?: InputMaybe<
-    Array<InputMaybe<ComponentLayoutFooterNavigationInput>>
-  >;
-  headerMainNavigation?: InputMaybe<
-    Array<InputMaybe<ComponentLayoutSubFooterNavigationInput>>
-  >;
-  headerSecondaryNavigation?: InputMaybe<
-    Array<InputMaybe<ComponentLayoutFooterNavigationInput>>
-  >;
+  footerNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationInput>>>;
+  headerMainNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutSubFooterNavigationInput>>>;
+  headerSecondaryNavigation?: InputMaybe<Array<InputMaybe<ComponentLayoutFooterNavigationInput>>>;
   headerSecondaryNavigationTitle?: InputMaybe<Scalars['String']>;
   isDisplayed?: InputMaybe<Scalars['Boolean']>;
   logo?: InputMaybe<Scalars['ID']>;
@@ -728,73 +689,91 @@ export type Mutation = {
   upload: UploadFileEntityResponse;
 };
 
+
 export type MutationCreateBlogArticleArgs = {
   data: BlogArticleInput;
 };
+
 
 export type MutationCreateLabelArgs = {
   data: LabelInput;
 };
 
+
 export type MutationCreatePageArgs = {
   data: PageInput;
 };
+
 
 export type MutationCreateTeamMemberArgs = {
   data: TeamMemberInput;
 };
 
+
 export type MutationCreateUploadFileArgs = {
   data: UploadFileInput;
 };
+
 
 export type MutationCreateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput;
 };
 
+
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
 };
+
 
 export type MutationDeleteBlogArticleArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationDeleteLabelArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationDeletePageArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationDeleteTeamMemberArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationDeleteUploadFileArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationDeleteUsersPermissionsRoleArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationDeleteUsersPermissionsUserArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationEmailConfirmationArgs = {
   confirmation: Scalars['String'];
 };
+
 
 export type MutationForgotPasswordArgs = {
   email: Scalars['String'];
 };
 
+
 export type MutationLoginArgs = {
   input: UsersPermissionsLoginInput;
 };
+
 
 export type MutationMultipleUploadArgs = {
   field?: InputMaybe<Scalars['String']>;
@@ -803,13 +782,16 @@ export type MutationMultipleUploadArgs = {
   refId?: InputMaybe<Scalars['ID']>;
 };
 
+
 export type MutationRegisterArgs = {
   input: UsersPermissionsRegisterInput;
 };
 
+
 export type MutationRemoveFileArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationResetPasswordArgs = {
   code: Scalars['String'];
@@ -817,57 +799,69 @@ export type MutationResetPasswordArgs = {
   passwordConfirmation: Scalars['String'];
 };
 
+
 export type MutationUpdateBlogArgs = {
   data: BlogInput;
 };
+
 
 export type MutationUpdateBlogArticleArgs = {
   data: BlogArticleInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
 };
+
 
 export type MutationUpdateLabelArgs = {
   data: LabelInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateLayoutArgs = {
   data: LayoutInput;
 };
+
 
 export type MutationUpdatePageArgs = {
   data: PageInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateTeamMemberArgs = {
   data: TeamMemberInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateTeamPageArgs = {
   data: TeamPageInput;
 };
+
 
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
   id: Scalars['ID'];
 };
+
 
 export type MutationUploadArgs = {
   field?: InputMaybe<Scalars['String']>;
@@ -916,19 +910,13 @@ export type PageFiltersInput = {
 };
 
 export type PageInput = {
-  pageDynamicZone?: InputMaybe<
-    Array<Scalars['PagePageDynamicZoneDynamicZoneInput']>
-  >;
+  pageDynamicZone?: InputMaybe<Array<Scalars['PagePageDynamicZoneDynamicZoneInput']>>;
   pageMeta?: InputMaybe<ComponentMetaMetaInput>;
   pageSlug?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
-export type PagePageDynamicZoneDynamicZone =
-  | ComponentHeroHero
-  | ComponentNewsletterNewsletter
-  | ComponentTestimonyTestimony
-  | Error;
+export type PagePageDynamicZoneDynamicZone = ComponentHeroHero | ComponentNewsletterNewsletter | ComponentStatisticsStatistics | ComponentTestimonyTestimony | Error;
 
 export type Pagination = {
   __typename?: 'Pagination';
@@ -947,7 +935,7 @@ export type PaginationArg = {
 
 export enum PublicationState {
   Live = 'LIVE',
-  Preview = 'PREVIEW',
+  Preview = 'PREVIEW'
 }
 
 export type Query = {
@@ -974,13 +962,16 @@ export type Query = {
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
 };
 
+
 export type QueryBlogArgs = {
   publicationState?: InputMaybe<PublicationState>;
 };
 
+
 export type QueryBlogArticleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryBlogArticlesArgs = {
   filters?: InputMaybe<BlogArticleFiltersInput>;
@@ -989,9 +980,11 @@ export type QueryBlogArticlesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryI18NLocaleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
@@ -999,9 +992,11 @@ export type QueryI18NLocalesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryLabelArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryLabelsArgs = {
   filters?: InputMaybe<LabelFiltersInput>;
@@ -1010,13 +1005,16 @@ export type QueryLabelsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryLayoutArgs = {
   publicationState?: InputMaybe<PublicationState>;
 };
 
+
 export type QueryPageArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryPagesArgs = {
   filters?: InputMaybe<PageFiltersInput>;
@@ -1025,9 +1023,11 @@ export type QueryPagesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryTeamMemberArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryTeamMembersArgs = {
   filters?: InputMaybe<TeamMemberFiltersInput>;
@@ -1036,13 +1036,16 @@ export type QueryTeamMembersArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryTeamPageArgs = {
   publicationState?: InputMaybe<PublicationState>;
 };
 
+
 export type QueryUploadFileArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryUploadFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>;
@@ -1050,9 +1053,11 @@ export type QueryUploadFilesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryUsersPermissionsRoleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryUsersPermissionsRolesArgs = {
   filters?: InputMaybe<UsersPermissionsRoleFiltersInput>;
@@ -1060,9 +1065,11 @@ export type QueryUsersPermissionsRolesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryUsersPermissionsUserArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryUsersPermissionsUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>;
@@ -1111,6 +1118,7 @@ export type TeamMember = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
+
 export type TeamMemberSocialNetworksArgs = {
   filters?: InputMaybe<ComponentSocialNetworkFacebookFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
@@ -1155,9 +1163,7 @@ export type TeamMemberInput = {
   firstName?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
-  socialNetworks?: InputMaybe<
-    Array<InputMaybe<ComponentSocialNetworkFacebookInput>>
-  >;
+  socialNetworks?: InputMaybe<Array<InputMaybe<ComponentSocialNetworkFacebookInput>>>;
 };
 
 export type TeamPage = {
@@ -1358,11 +1364,13 @@ export type UsersPermissionsRole = {
   users?: Maybe<UsersPermissionsUserRelationResponseCollection>;
 };
 
+
 export type UsersPermissionsRolePermissionsArgs = {
   filters?: InputMaybe<UsersPermissionsPermissionFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 export type UsersPermissionsRoleUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>;
@@ -1478,404 +1486,91 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type ArticlesQueryVariables = Exact<{ [key: string]: never }>;
+export type ArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type ArticlesQuery = {
-  __typename?: 'Query';
-  blogArticles?: {
-    __typename?: 'BlogArticleEntityResponseCollection';
-    data: Array<{
-      __typename?: 'BlogArticleEntity';
-      id?: string | null;
-      attributes?: {
-        __typename?: 'BlogArticle';
-        pageTitle?: string | null;
-        pageDescription?: string | null;
-        keyWord?: string | null;
-        ogTag?: string | null;
-        articleTitle?: string | null;
-        articleContent?: string | null;
-        articleAuthor?: string | null;
-        publishingDate?: any | null;
-        slug?: string | null;
-        updatedAt?: any | null;
-        articleMedia?: {
-          __typename?: 'UploadFileEntityResponse';
-          data?: {
-            __typename?: 'UploadFileEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'UploadFile';
-              name: string;
-              url: string;
-              alternativeText?: string | null;
-            } | null;
-          } | null;
-        } | null;
-        team_member?: {
-          __typename?: 'TeamMemberEntityResponse';
-          data?: {
-            __typename?: 'TeamMemberEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'TeamMember';
-              firstName?: string | null;
-              lastName?: string | null;
-              avatar?: {
-                __typename?: 'UploadFileEntityResponse';
-                data?: {
-                  __typename?: 'UploadFileEntity';
-                  id?: string | null;
-                  attributes?: {
-                    __typename?: 'UploadFile';
-                    alternativeText?: string | null;
-                    url: string;
-                  } | null;
-                } | null;
-              } | null;
-            } | null;
-          } | null;
-        } | null;
-      } | null;
-    }>;
-  } | null;
-};
 
-export type BlogQueryVariables = Exact<{ [key: string]: never }>;
+export type ArticlesQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', pageTitle?: string | null, pageDescription?: string | null, keyWord?: string | null, ogTag?: string | null, articleTitle?: string | null, articleContent?: string | null, articleAuthor?: string | null, publishingDate?: any | null, slug?: string | null, updatedAt?: any | null, articleMedia?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null, team_member?: { __typename?: 'TeamMemberEntityResponse', data?: { __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
 
-export type BlogQuery = {
-  __typename?: 'Query';
-  blog?: {
-    __typename?: 'BlogEntityResponse';
-    data?: {
-      __typename?: 'BlogEntity';
-      id?: string | null;
-      attributes?: {
-        __typename?: 'Blog';
-        blogTitle?: string | null;
-        blogIntroduction?: string | null;
-        createdAt?: any | null;
-        blogMeta?: {
-          __typename?: 'ComponentMetaMeta';
-          metaName?: string | null;
-          metaContent?: string | null;
-          metaProperty?: string | null;
-        } | null;
-      } | null;
-    } | null;
-  } | null;
-};
+export type BlogQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type GetArticleAuthorDataQueryVariables = Exact<{
-  [key: string]: never;
-}>;
 
-export type GetArticleAuthorDataQuery = {
-  __typename?: 'Query';
-  blogArticles?: {
-    __typename?: 'BlogArticleEntityResponseCollection';
-    data: Array<{
-      __typename?: 'BlogArticleEntity';
-      id?: string | null;
-      attributes?: {
-        __typename?: 'BlogArticle';
-        team_member?: {
-          __typename?: 'TeamMemberEntityResponse';
-          data?: {
-            __typename?: 'TeamMemberEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'TeamMember';
-              firstName?: string | null;
-              lastName?: string | null;
-              avatar?: {
-                __typename?: 'UploadFileEntityResponse';
-                data?: {
-                  __typename?: 'UploadFileEntity';
-                  id?: string | null;
-                  attributes?: {
-                    __typename?: 'UploadFile';
-                    alternativeText?: string | null;
-                    url: string;
-                  } | null;
-                } | null;
-              } | null;
-            } | null;
-          } | null;
-        } | null;
-      } | null;
-    }>;
-  } | null;
-};
+export type BlogQuery = { __typename?: 'Query', blog?: { __typename?: 'BlogEntityResponse', data?: { __typename?: 'BlogEntity', id?: string | null, attributes?: { __typename?: 'Blog', blogTitle?: string | null, blogIntroduction?: string | null, createdAt?: any | null, blogMeta?: { __typename?: 'ComponentMetaMeta', metaName?: string | null, metaContent?: string | null, metaProperty?: string | null } | null } | null } | null } | null };
 
-export type GetDynamicZoneDataQueryVariables = Exact<{ [key: string]: never }>;
+export type GetArticleAuthorDataQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type GetDynamicZoneDataQuery = {
-  __typename?: 'Query';
-  pages?: {
-    __typename?: 'PageEntityResponseCollection';
-    data: Array<{
-      __typename?: 'PageEntity';
-      id?: string | null;
-      attributes?: {
-        __typename: 'Page';
-        pageSlug?: string | null;
-        pageMeta?: {
-          __typename?: 'ComponentMetaMeta';
-          id: string;
-          metaProperty?: string | null;
-          metaName?: string | null;
-          metaContent?: string | null;
-        } | null;
-        pageDynamicZone?: Array<
-          | {
-              __typename: 'ComponentHeroHero';
-              id: string;
-              heroTitle?: string | null;
-              heroDescription?: string | null;
-              buttonTitle?: string | null;
-              heroImage?: {
-                __typename?: 'UploadFileEntityResponse';
-                data?: {
-                  __typename?: 'UploadFileEntity';
-                  id?: string | null;
-                  attributes?: {
-                    __typename?: 'UploadFile';
-                    alternativeText?: string | null;
-                    url: string;
-                    name: string;
-                  } | null;
-                } | null;
-              } | null;
-            }
-          | {
-              __typename: 'ComponentNewsletterNewsletter';
-              id: string;
-              newsletterTitle?: string | null;
-              newsletterDescription?: string | null;
-              inputLabel?: string | null;
-              inputPlaceholder?: string | null;
-              submitLabel?: string | null;
-              checkboxLabel?: string | null;
-            }
-          | {
-              __typename: 'ComponentTestimonyTestimony';
-              id: string;
-              testimonyTitle?: string | null;
-              testimonyContent?: string | null;
-              testimonyFirstName?: string | null;
-              testimonyLastName?: string | null;
-              testimonyCompanyName?: string | null;
-              testimonyJob?: string | null;
-              companyLogo?: {
-                __typename?: 'UploadFileEntityResponse';
-                data?: {
-                  __typename?: 'UploadFileEntity';
-                  attributes?: {
-                    __typename?: 'UploadFile';
-                    name: string;
-                    url: string;
-                    alternativeText?: string | null;
-                  } | null;
-                } | null;
-              } | null;
-              testimonyAvatar?: {
-                __typename?: 'UploadFileEntityResponse';
-                data?: {
-                  __typename?: 'UploadFileEntity';
-                  id?: string | null;
-                  attributes?: {
-                    __typename?: 'UploadFile';
-                    name: string;
-                    alternativeText?: string | null;
-                    url: string;
-                  } | null;
-                } | null;
-              } | null;
-            }
-          | { __typename: 'Error' }
-          | null
-        > | null;
-      } | null;
-    }>;
-  } | null;
-};
 
-export type GetLayoutQueryVariables = Exact<{ [key: string]: never }>;
+export type GetArticleAuthorDataQuery = { __typename?: 'Query', blogArticles?: { __typename?: 'BlogArticleEntityResponseCollection', data: Array<{ __typename?: 'BlogArticleEntity', id?: string | null, attributes?: { __typename?: 'BlogArticle', team_member?: { __typename?: 'TeamMemberEntityResponse', data?: { __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null } | null } | null } | null } | null }> } | null };
 
-export type GetLayoutQuery = {
-  __typename?: 'Query';
-  layout?: {
-    __typename?: 'LayoutEntityResponse';
-    data?: {
-      __typename?: 'LayoutEntity';
-      id?: string | null;
-      attributes?: {
-        __typename?: 'Layout';
-        headerSecondaryNavigationTitle?: string | null;
-        isDisplayed?: boolean | null;
-        logo?: {
-          __typename?: 'UploadFileEntityResponse';
-          data?: {
-            __typename?: 'UploadFileEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'UploadFile';
-              name: string;
-              url: string;
-            } | null;
-          } | null;
-        } | null;
-        headerMainNavigation?: Array<{
-          __typename?: 'ComponentLayoutSubFooterNavigation';
-          id: string;
-          label?: string | null;
-          href?: string | null;
-        } | null> | null;
-        footerNavigation?: Array<{
-          __typename?: 'ComponentLayoutFooterNavigation';
-          id: string;
-          title?: string | null;
-          subNavigation?: Array<{
-            __typename?: 'ComponentLayoutSubFooterNavigation';
-            id: string;
-            label?: string | null;
-            href?: string | null;
-          } | null> | null;
-        } | null> | null;
-        socials?: Array<{
-          __typename?: 'ComponentLayoutSocials';
-          id: string;
-          href?: string | null;
-          type?: Enum_Componentlayoutsocials_Type | null;
-        } | null> | null;
-        headerSecondaryNavigation?: Array<{
-          __typename?: 'ComponentLayoutFooterNavigation';
-          id: string;
-          title?: string | null;
-          href?: string | null;
-          subNavigation?: Array<{
-            __typename?: 'ComponentLayoutSubFooterNavigation';
-            id: string;
-            label?: string | null;
-            href?: string | null;
-          } | null> | null;
-        } | null> | null;
-      } | null;
-    } | null;
-  } | null;
-};
+export type GetDynamicZoneDataQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type TeamPageQueryVariables = Exact<{ [key: string]: never }>;
 
-export type TeamPageQuery = {
-  __typename?: 'Query';
-  teamPage?: {
-    __typename?: 'TeamPageEntityResponse';
-    data?: {
-      __typename?: 'TeamPageEntity';
-      id?: string | null;
-      attributes?: {
-        __typename?: 'TeamPage';
-        teamTitle?: string | null;
-        teamParagraph?: string | null;
-        teamMeta?: {
-          __typename?: 'ComponentMetaMeta';
-          metaName?: string | null;
-          metaProperty?: string | null;
-          metaContent?: string | null;
-        } | null;
-      } | null;
-    } | null;
-  } | null;
-};
+export type GetDynamicZoneDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename: 'Page', pageSlug?: string | null, pageMeta?: { __typename?: 'ComponentMetaMeta', id: string, metaProperty?: string | null, metaName?: string | null, metaContent?: string | null } | null, pageDynamicZone?: Array<{ __typename: 'ComponentHeroHero', id: string, heroTitle?: string | null, heroDescription?: string | null, buttonTitle?: string | null, heroImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null } | null } | null } | { __typename: 'ComponentNewsletterNewsletter', id: string, newsletterTitle?: string | null, newsletterDescription?: string | null, inputLabel?: string | null, inputPlaceholder?: string | null, submitLabel?: string | null, checkboxLabel?: string | null } | { __typename: 'ComponentStatisticsStatistics' } | { __typename: 'ComponentTestimonyTestimony', id: string, testimonyTitle?: string | null, testimonyContent?: string | null, testimonyFirstName?: string | null, testimonyLastName?: string | null, testimonyCompanyName?: string | null, testimonyJob?: string | null, companyLogo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null, testimonyAvatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null } | null } | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
 
-export type TeamMemberQueryVariables = Exact<{ [key: string]: never }>;
+export type GetLayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type TeamMemberQuery = {
-  __typename?: 'Query';
-  teamMembers?: {
-    __typename?: 'TeamMemberEntityResponseCollection';
-    data: Array<{
-      __typename?: 'TeamMemberEntity';
-      id?: string | null;
-      attributes?: {
-        __typename?: 'TeamMember';
-        firstName?: string | null;
-        lastName?: string | null;
-        bio?: string | null;
-        socialNetworks?: Array<{
-          __typename?: 'ComponentSocialNetworkFacebook';
-          socialNetworkName?: Enum_Componentsocialnetworkfacebook_Socialnetworkname | null;
-          link?: string | null;
-          id: string;
-        } | null> | null;
-        avatar?: {
-          __typename?: 'UploadFileEntityResponse';
-          data?: {
-            __typename?: 'UploadFileEntity';
-            attributes?: {
-              __typename?: 'UploadFile';
-              url: string;
-              alternativeText?: string | null;
-              name: string;
-            } | null;
-          } | null;
-        } | null;
-      } | null;
-    }>;
-  } | null;
-};
+
+export type GetLayoutQuery = { __typename?: 'Query', layout?: { __typename?: 'LayoutEntityResponse', data?: { __typename?: 'LayoutEntity', id?: string | null, attributes?: { __typename?: 'Layout', headerSecondaryNavigationTitle?: string | null, isDisplayed?: boolean | null, logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } | null, headerMainNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null, footerNavigation?: Array<{ __typename?: 'ComponentLayoutFooterNavigation', id: string, title?: string | null, subNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null } | null> | null, socials?: Array<{ __typename?: 'ComponentLayoutSocials', id: string, href?: string | null, type?: Enum_Componentlayoutsocials_Type | null } | null> | null, headerSecondaryNavigation?: Array<{ __typename?: 'ComponentLayoutFooterNavigation', id: string, title?: string | null, href?: string | null, subNavigation?: Array<{ __typename?: 'ComponentLayoutSubFooterNavigation', id: string, label?: string | null, href?: string | null } | null> | null } | null> | null } | null } | null } | null };
+
+export type TeamPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TeamPageQuery = { __typename?: 'Query', teamPage?: { __typename?: 'TeamPageEntityResponse', data?: { __typename?: 'TeamPageEntity', id?: string | null, attributes?: { __typename?: 'TeamPage', teamTitle?: string | null, teamParagraph?: string | null, teamMeta?: { __typename?: 'ComponentMetaMeta', metaName?: string | null, metaProperty?: string | null, metaContent?: string | null } | null } | null } | null } | null };
+
+export type TeamMemberQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TeamMemberQuery = { __typename?: 'Query', teamMembers?: { __typename?: 'TeamMemberEntityResponseCollection', data: Array<{ __typename?: 'TeamMemberEntity', id?: string | null, attributes?: { __typename?: 'TeamMember', firstName?: string | null, lastName?: string | null, bio?: string | null, socialNetworks?: Array<{ __typename?: 'ComponentSocialNetworkFacebook', socialNetworkName?: Enum_Componentsocialnetworkfacebook_Socialnetworkname | null, link?: string | null, id: string } | null> | null, avatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, name: string } | null } | null } | null } | null }> } | null };
+
 
 export const ArticlesDocument = gql`
-  query Articles {
-    blogArticles {
-      data {
-        id
-        attributes {
-          pageTitle
-          pageDescription
-          keyWord
-          ogTag
-          articleTitle
-          articleContent
-          articleAuthor
-          publishingDate
-          articleMedia {
-            data {
-              id
-              attributes {
-                name
-                url
-                alternativeText
-              }
+    query Articles {
+  blogArticles {
+    data {
+      id
+      attributes {
+        pageTitle
+        pageDescription
+        keyWord
+        ogTag
+        articleTitle
+        articleContent
+        articleAuthor
+        publishingDate
+        articleMedia {
+          data {
+            id
+            attributes {
+              name
+              url
+              alternativeText
             }
           }
-          team_member {
-            data {
-              id
-              attributes {
-                firstName
-                lastName
-                avatar {
-                  data {
-                    id
-                    attributes {
-                      alternativeText
-                      url
-                    }
+        }
+        team_member {
+          data {
+            id
+            attributes {
+              firstName
+              lastName
+              avatar {
+                data {
+                  id
+                  attributes {
+                    alternativeText
+                    url
                   }
                 }
               }
             }
           }
-          slug
-          updatedAt
         }
+        slug
+        updatedAt
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useArticlesQuery__
@@ -1892,54 +1587,36 @@ export const ArticlesDocument = gql`
  *   },
  * });
  */
-export function useArticlesQuery(
-  baseOptions?: Apollo.QueryHookOptions<ArticlesQuery, ArticlesQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<ArticlesQuery, ArticlesQueryVariables>(
-    ArticlesDocument,
-    options
-  );
-}
-export function useArticlesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    ArticlesQuery,
-    ArticlesQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<ArticlesQuery, ArticlesQueryVariables>(
-    ArticlesDocument,
-    options
-  );
-}
+export function useArticlesQuery(baseOptions?: Apollo.QueryHookOptions<ArticlesQuery, ArticlesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ArticlesQuery, ArticlesQueryVariables>(ArticlesDocument, options);
+      }
+export function useArticlesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ArticlesQuery, ArticlesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ArticlesQuery, ArticlesQueryVariables>(ArticlesDocument, options);
+        }
 export type ArticlesQueryHookResult = ReturnType<typeof useArticlesQuery>;
-export type ArticlesLazyQueryHookResult = ReturnType<
-  typeof useArticlesLazyQuery
->;
-export type ArticlesQueryResult = Apollo.QueryResult<
-  ArticlesQuery,
-  ArticlesQueryVariables
->;
+export type ArticlesLazyQueryHookResult = ReturnType<typeof useArticlesLazyQuery>;
+export type ArticlesQueryResult = Apollo.QueryResult<ArticlesQuery, ArticlesQueryVariables>;
 export const BlogDocument = gql`
-  query Blog {
-    blog {
-      data {
-        id
-        attributes {
-          blogTitle
-          blogIntroduction
-          createdAt
-          blogMeta {
-            metaName
-            metaContent
-            metaProperty
-          }
+    query Blog {
+  blog {
+    data {
+      id
+      attributes {
+        blogTitle
+        blogIntroduction
+        createdAt
+        blogMeta {
+          metaName
+          metaContent
+          metaProperty
         }
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useBlogQuery__
@@ -1956,43 +1633,35 @@ export const BlogDocument = gql`
  *   },
  * });
  */
-export function useBlogQuery(
-  baseOptions?: Apollo.QueryHookOptions<BlogQuery, BlogQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<BlogQuery, BlogQueryVariables>(BlogDocument, options);
-}
-export function useBlogLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<BlogQuery, BlogQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<BlogQuery, BlogQueryVariables>(
-    BlogDocument,
-    options
-  );
-}
+export function useBlogQuery(baseOptions?: Apollo.QueryHookOptions<BlogQuery, BlogQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogQuery, BlogQueryVariables>(BlogDocument, options);
+      }
+export function useBlogLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogQuery, BlogQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogQuery, BlogQueryVariables>(BlogDocument, options);
+        }
 export type BlogQueryHookResult = ReturnType<typeof useBlogQuery>;
 export type BlogLazyQueryHookResult = ReturnType<typeof useBlogLazyQuery>;
 export type BlogQueryResult = Apollo.QueryResult<BlogQuery, BlogQueryVariables>;
 export const GetArticleAuthorDataDocument = gql`
-  query GetArticleAuthorData {
-    blogArticles {
-      data {
-        id
-        attributes {
-          team_member {
-            data {
-              id
-              attributes {
-                firstName
-                lastName
-                avatar {
-                  data {
-                    id
-                    attributes {
-                      alternativeText
-                      url
-                    }
+    query GetArticleAuthorData {
+  blogArticles {
+    data {
+      id
+      attributes {
+        team_member {
+          data {
+            id
+            attributes {
+              firstName
+              lastName
+              avatar {
+                data {
+                  id
+                  attributes {
+                    alternativeText
+                    url
                   }
                 }
               }
@@ -2002,7 +1671,8 @@ export const GetArticleAuthorDataDocument = gql`
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetArticleAuthorDataQuery__
@@ -2019,117 +1689,94 @@ export const GetArticleAuthorDataDocument = gql`
  *   },
  * });
  */
-export function useGetArticleAuthorDataQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetArticleAuthorDataQuery,
-    GetArticleAuthorDataQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    GetArticleAuthorDataQuery,
-    GetArticleAuthorDataQueryVariables
-  >(GetArticleAuthorDataDocument, options);
-}
-export function useGetArticleAuthorDataLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetArticleAuthorDataQuery,
-    GetArticleAuthorDataQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetArticleAuthorDataQuery,
-    GetArticleAuthorDataQueryVariables
-  >(GetArticleAuthorDataDocument, options);
-}
-export type GetArticleAuthorDataQueryHookResult = ReturnType<
-  typeof useGetArticleAuthorDataQuery
->;
-export type GetArticleAuthorDataLazyQueryHookResult = ReturnType<
-  typeof useGetArticleAuthorDataLazyQuery
->;
-export type GetArticleAuthorDataQueryResult = Apollo.QueryResult<
-  GetArticleAuthorDataQuery,
-  GetArticleAuthorDataQueryVariables
->;
+export function useGetArticleAuthorDataQuery(baseOptions?: Apollo.QueryHookOptions<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>(GetArticleAuthorDataDocument, options);
+      }
+export function useGetArticleAuthorDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>(GetArticleAuthorDataDocument, options);
+        }
+export type GetArticleAuthorDataQueryHookResult = ReturnType<typeof useGetArticleAuthorDataQuery>;
+export type GetArticleAuthorDataLazyQueryHookResult = ReturnType<typeof useGetArticleAuthorDataLazyQuery>;
+export type GetArticleAuthorDataQueryResult = Apollo.QueryResult<GetArticleAuthorDataQuery, GetArticleAuthorDataQueryVariables>;
 export const GetDynamicZoneDataDocument = gql`
-  query GetDynamicZoneData {
-    pages {
-      data {
-        id
-        attributes {
+    query GetDynamicZoneData {
+  pages {
+    data {
+      id
+      attributes {
+        __typename
+        pageSlug
+        pageMeta {
+          id
+          metaProperty
+          metaName
+          metaContent
+        }
+        pageDynamicZone {
           __typename
-          pageSlug
-          pageMeta {
+          ... on ComponentNewsletterNewsletter {
             id
-            metaProperty
-            metaName
-            metaContent
+            newsletterTitle
+            newsletterDescription
+            inputLabel
+            inputPlaceholder
+            submitLabel
+            checkboxLabel
           }
-          pageDynamicZone {
-            __typename
-            ... on ComponentHeroHero {
-              id
-              heroTitle
-              heroDescription
-              heroImage {
-                data {
-                  id
-                  attributes {
-                    alternativeText
-                    url
-                    name
-                  }
+          __typename
+          ... on ComponentHeroHero {
+            id
+            heroImage {
+              data {
+                id
+                attributes {
+                  name
+                  alternativeText
+                  url
                 }
               }
-              buttonTitle
             }
-            __typename
-            ... on ComponentNewsletterNewsletter {
-              id
-              newsletterTitle
-              newsletterDescription
-              inputLabel
-              inputPlaceholder
-              submitLabel
-              checkboxLabel
-            }
-            __typename
-            ... on ComponentTestimonyTestimony {
-              id
-              testimonyTitle
-              companyLogo {
-                data {
-                  attributes {
-                    name
-                    url
-                    alternativeText
-                  }
+            heroTitle
+            heroDescription
+            buttonTitle
+          }
+          __typename
+          ... on ComponentTestimonyTestimony {
+            id
+            testimonyTitle
+            companyLogo {
+              data {
+                attributes {
+                  name
+                  url
+                  alternativeText
                 }
               }
-              testimonyContent
-              testimonyFirstName
-              testimonyLastName
-              testimonyAvatar {
-                data {
-                  id
-                  attributes {
-                    name
-                    alternativeText
-                    url
-                  }
+            }
+            testimonyContent
+            testimonyFirstName
+            testimonyLastName
+            testimonyAvatar {
+              data {
+                id
+                attributes {
+                  name
+                  alternativeText
+                  url
                 }
               }
-              testimonyCompanyName
-              testimonyJob
             }
+            testimonyCompanyName
+            testimonyJob
           }
         }
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetDynamicZoneDataQuery__
@@ -2146,91 +1793,68 @@ export const GetDynamicZoneDataDocument = gql`
  *   },
  * });
  */
-export function useGetDynamicZoneDataQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetDynamicZoneDataQuery,
-    GetDynamicZoneDataQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    GetDynamicZoneDataQuery,
-    GetDynamicZoneDataQueryVariables
-  >(GetDynamicZoneDataDocument, options);
-}
-export function useGetDynamicZoneDataLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetDynamicZoneDataQuery,
-    GetDynamicZoneDataQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetDynamicZoneDataQuery,
-    GetDynamicZoneDataQueryVariables
-  >(GetDynamicZoneDataDocument, options);
-}
-export type GetDynamicZoneDataQueryHookResult = ReturnType<
-  typeof useGetDynamicZoneDataQuery
->;
-export type GetDynamicZoneDataLazyQueryHookResult = ReturnType<
-  typeof useGetDynamicZoneDataLazyQuery
->;
-export type GetDynamicZoneDataQueryResult = Apollo.QueryResult<
-  GetDynamicZoneDataQuery,
-  GetDynamicZoneDataQueryVariables
->;
+export function useGetDynamicZoneDataQuery(baseOptions?: Apollo.QueryHookOptions<GetDynamicZoneDataQuery, GetDynamicZoneDataQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetDynamicZoneDataQuery, GetDynamicZoneDataQueryVariables>(GetDynamicZoneDataDocument, options);
+      }
+export function useGetDynamicZoneDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDynamicZoneDataQuery, GetDynamicZoneDataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetDynamicZoneDataQuery, GetDynamicZoneDataQueryVariables>(GetDynamicZoneDataDocument, options);
+        }
+export type GetDynamicZoneDataQueryHookResult = ReturnType<typeof useGetDynamicZoneDataQuery>;
+export type GetDynamicZoneDataLazyQueryHookResult = ReturnType<typeof useGetDynamicZoneDataLazyQuery>;
+export type GetDynamicZoneDataQueryResult = Apollo.QueryResult<GetDynamicZoneDataQuery, GetDynamicZoneDataQueryVariables>;
 export const GetLayoutDocument = gql`
-  query GetLayout {
-    layout {
-      data {
-        id
-        attributes {
-          logo {
-            data {
-              id
-              attributes {
-                name
-                url
-              }
+    query GetLayout {
+  layout {
+    data {
+      id
+      attributes {
+        logo {
+          data {
+            id
+            attributes {
+              name
+              url
             }
           }
-          headerMainNavigation {
+        }
+        headerMainNavigation {
+          id
+          label
+          href
+        }
+        footerNavigation {
+          id
+          title
+          subNavigation {
             id
             label
             href
           }
-          footerNavigation {
+        }
+        socials {
+          id
+          href
+          type
+        }
+        headerSecondaryNavigationTitle
+        isDisplayed
+        headerSecondaryNavigation {
+          id
+          title
+          href
+          subNavigation {
             id
-            title
-            subNavigation {
-              id
-              label
-              href
-            }
-          }
-          socials {
-            id
+            label
             href
-            type
-          }
-          headerSecondaryNavigationTitle
-          isDisplayed
-          headerSecondaryNavigation {
-            id
-            title
-            href
-            subNavigation {
-              id
-              label
-              href
-            }
           }
         }
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetLayoutQuery__
@@ -2247,53 +1871,35 @@ export const GetLayoutDocument = gql`
  *   },
  * });
  */
-export function useGetLayoutQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetLayoutQuery, GetLayoutQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetLayoutQuery, GetLayoutQueryVariables>(
-    GetLayoutDocument,
-    options
-  );
-}
-export function useGetLayoutLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetLayoutQuery,
-    GetLayoutQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetLayoutQuery, GetLayoutQueryVariables>(
-    GetLayoutDocument,
-    options
-  );
-}
+export function useGetLayoutQuery(baseOptions?: Apollo.QueryHookOptions<GetLayoutQuery, GetLayoutQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetLayoutQuery, GetLayoutQueryVariables>(GetLayoutDocument, options);
+      }
+export function useGetLayoutLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLayoutQuery, GetLayoutQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetLayoutQuery, GetLayoutQueryVariables>(GetLayoutDocument, options);
+        }
 export type GetLayoutQueryHookResult = ReturnType<typeof useGetLayoutQuery>;
-export type GetLayoutLazyQueryHookResult = ReturnType<
-  typeof useGetLayoutLazyQuery
->;
-export type GetLayoutQueryResult = Apollo.QueryResult<
-  GetLayoutQuery,
-  GetLayoutQueryVariables
->;
+export type GetLayoutLazyQueryHookResult = ReturnType<typeof useGetLayoutLazyQuery>;
+export type GetLayoutQueryResult = Apollo.QueryResult<GetLayoutQuery, GetLayoutQueryVariables>;
 export const TeamPageDocument = gql`
-  query TeamPage {
-    teamPage {
-      data {
-        id
-        attributes {
-          teamTitle
-          teamParagraph
-          teamMeta {
-            metaName
-            metaProperty
-            metaContent
-          }
+    query TeamPage {
+  teamPage {
+    data {
+      id
+      attributes {
+        teamTitle
+        teamParagraph
+        teamMeta {
+          metaName
+          metaProperty
+          metaContent
         }
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useTeamPageQuery__
@@ -2310,63 +1916,45 @@ export const TeamPageDocument = gql`
  *   },
  * });
  */
-export function useTeamPageQuery(
-  baseOptions?: Apollo.QueryHookOptions<TeamPageQuery, TeamPageQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TeamPageQuery, TeamPageQueryVariables>(
-    TeamPageDocument,
-    options
-  );
-}
-export function useTeamPageLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    TeamPageQuery,
-    TeamPageQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TeamPageQuery, TeamPageQueryVariables>(
-    TeamPageDocument,
-    options
-  );
-}
+export function useTeamPageQuery(baseOptions?: Apollo.QueryHookOptions<TeamPageQuery, TeamPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TeamPageQuery, TeamPageQueryVariables>(TeamPageDocument, options);
+      }
+export function useTeamPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TeamPageQuery, TeamPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TeamPageQuery, TeamPageQueryVariables>(TeamPageDocument, options);
+        }
 export type TeamPageQueryHookResult = ReturnType<typeof useTeamPageQuery>;
-export type TeamPageLazyQueryHookResult = ReturnType<
-  typeof useTeamPageLazyQuery
->;
-export type TeamPageQueryResult = Apollo.QueryResult<
-  TeamPageQuery,
-  TeamPageQueryVariables
->;
+export type TeamPageLazyQueryHookResult = ReturnType<typeof useTeamPageLazyQuery>;
+export type TeamPageQueryResult = Apollo.QueryResult<TeamPageQuery, TeamPageQueryVariables>;
 export const TeamMemberDocument = gql`
-  query TeamMember {
-    teamMembers {
-      data {
-        id
-        attributes {
-          firstName
-          lastName
-          bio
-          socialNetworks {
-            socialNetworkName
-            link
-            id
-          }
-          avatar {
-            data {
-              attributes {
-                url
-                alternativeText
-                name
-              }
+    query TeamMember {
+  teamMembers {
+    data {
+      id
+      attributes {
+        firstName
+        lastName
+        bio
+        socialNetworks {
+          socialNetworkName
+          link
+          id
+        }
+        avatar {
+          data {
+            attributes {
+              url
+              alternativeText
+              name
             }
           }
         }
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useTeamMemberQuery__
@@ -2383,35 +1971,14 @@ export const TeamMemberDocument = gql`
  *   },
  * });
  */
-export function useTeamMemberQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    TeamMemberQuery,
-    TeamMemberQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TeamMemberQuery, TeamMemberQueryVariables>(
-    TeamMemberDocument,
-    options
-  );
-}
-export function useTeamMemberLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    TeamMemberQuery,
-    TeamMemberQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TeamMemberQuery, TeamMemberQueryVariables>(
-    TeamMemberDocument,
-    options
-  );
-}
+export function useTeamMemberQuery(baseOptions?: Apollo.QueryHookOptions<TeamMemberQuery, TeamMemberQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TeamMemberQuery, TeamMemberQueryVariables>(TeamMemberDocument, options);
+      }
+export function useTeamMemberLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TeamMemberQuery, TeamMemberQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TeamMemberQuery, TeamMemberQueryVariables>(TeamMemberDocument, options);
+        }
 export type TeamMemberQueryHookResult = ReturnType<typeof useTeamMemberQuery>;
-export type TeamMemberLazyQueryHookResult = ReturnType<
-  typeof useTeamMemberLazyQuery
->;
-export type TeamMemberQueryResult = Apollo.QueryResult<
-  TeamMemberQuery,
-  TeamMemberQueryVariables
->;
+export type TeamMemberLazyQueryHookResult = ReturnType<typeof useTeamMemberLazyQuery>;
+export type TeamMemberQueryResult = Apollo.QueryResult<TeamMemberQuery, TeamMemberQueryVariables>;

@@ -38,7 +38,7 @@ const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
                   <div key={hero?.__typename}>
                     {hero?.__typename === 'ComponentHeroHero' ? (
                       <Hero
-                        title={hero?.buttonTitle || ''}
+                        title={hero?.heroTitle || ''}
                         description={hero?.heroDescription || ''}
                         buttonTitle={hero?.buttonTitle || ''}
                         image={
