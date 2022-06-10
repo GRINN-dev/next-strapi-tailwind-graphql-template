@@ -21,8 +21,11 @@
         "audios"
       ]
     },
-    "statContent": {
-      "type": "richtext"
+    "statDescriptionTitle": {
+      "type": "string"
+    },
+    "statDescriptionDetail": {
+      "type": "string"
     }
   }
 }

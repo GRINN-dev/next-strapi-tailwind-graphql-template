@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
-import { Hero } from '../../components';
+import { Hero, Statistics } from '../../components';
 import Meta from '../../components/Meta/Meta';
 import { Newsletter } from '../../components/Newsletter';
 import { Testimony } from '../../components/Testimony';
@@ -94,6 +94,24 @@ const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
                       inputPlaceholder={news?.inputPlaceholder || ''}
                       submitLabel={news?.submitLabel || ''}
                       checkboxLabel={news?.checkboxLabel || ''}
+                    />
+                  ) : (
+                    ''
+                  )}
+                </div>
+              );
+            })}
+            {p?.attributes?.pageDynamicZone?.map((stat) => {
+              return (
+                <div key={stat?.__typename}>
+                  {stat?.__typename === 'ComponentStatisticsStatistics' ? (
+                    <Statistics
+                      content={[
+                        { descriptionDetail: 'xx', descriptionTitle: 'x' },
+                        { descriptionDetail: 'xx', descriptionTitle: 'x' },
+                        { descriptionDetail: 'xx', descriptionTitle: 'x' },
+                      ]}
+                      title={'Stat'}
                     />
                   ) : (
                     ''
