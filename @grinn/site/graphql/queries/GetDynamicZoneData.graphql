@@ -13,6 +13,23 @@ query GetDynamicZoneData {
         }
         pageDynamicZone {
           __typename
+          ... on ComponentStatisticsStatistics {
+            id
+            statTitle
+            statImage {
+              data {
+                id
+                attributes {
+                  name
+                  url
+                  alternativeText
+                }
+              }
+            }
+            statDescriptionTitle
+            statDescriptionDetail
+          }
+          __typename
           ... on ComponentNewsletterNewsletter {
             id
             newsletterTitle

@@ -107,11 +107,12 @@ const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
                   {stat?.__typename === 'ComponentStatisticsStatistics' ? (
                     <Statistics
                       content={[
-                        { descriptionDetail: 'xx', descriptionTitle: 'x' },
-                        { descriptionDetail: 'xx', descriptionTitle: 'x' },
-                        { descriptionDetail: 'xx', descriptionTitle: 'x' },
+                        {
+                          descriptionDetail: stat?.statDescriptionDetail || '',
+                          descriptionTitle: stat?.statDescriptionTitle || '',
+                        },
                       ]}
-                      title={'Stat'}
+                      title={stat?.statTitle || ''}
                     />
                   ) : (
                     ''
