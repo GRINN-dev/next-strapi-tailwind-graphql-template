@@ -10,7 +10,7 @@ export const Hero: FC<HeroProps> = ({
   image,
 }) => {
   return (
-    <div className='relative bg-gray-200 rounded-md'>
+    <div className='relative m-2 bg-gray-200 rounded-md'>
       <div className='h-56 sm:h-72 md:absolute md:right-0 md:h-full md:w-1/2'>
         <Image
           src={
@@ -27,7 +27,7 @@ export const Hero: FC<HeroProps> = ({
           <h1 className='mt-2 text-3xl font-extrabold tracking-tight text-black sm:text-4xl'>
             {title}
           </h1>
-          <p className='text-lg text-gray-600'>{description}</p>
+          <p className='text-lg text-gray-600'>{description || ''}</p>
           <Cta title={buttonTitle || ''} />
         </div>
       </div>

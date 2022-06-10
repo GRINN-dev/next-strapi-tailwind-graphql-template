@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
-import { Hero } from '../../components/Hero';
+import { Hero, Statistics } from '../../components';
 import Meta from '../../components/Meta/Meta';
 import { Newsletter } from '../../components/Newsletter';
 import { Testimony } from '../../components/Testimony';
@@ -8,7 +8,6 @@ import {
   GetDynamicZoneDataQuery,
 } from '../../graphql';
 import { client } from '../../lib';
-import article1 from '../../public/article1.jpg';
 
 const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
   return (
@@ -34,19 +33,19 @@ const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
               />
             </div>
             <div>
-              {p?.attributes?.pageDynamicZone?.map((hero) => {
+              {p.attributes?.pageDynamicZone?.map((hero) => {
                 return (
                   <div key={hero?.__typename}>
                     {hero?.__typename === 'ComponentHeroHero' ? (
                       <Hero
                         title={hero?.heroTitle || ''}
                         description={hero?.heroDescription || ''}
+                        buttonTitle={hero?.buttonTitle || ''}
                         image={
                           hero?.heroImage?.data?.attributes?.url
                             ? hero?.heroImage?.data?.attributes?.url
                             : ''
                         }
-                        buttonTitle={hero?.buttonTitle || ''}
                       />
                     ) : (
                       ''
@@ -69,7 +68,7 @@ const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
                         avatar={
                           dyn?.testimonyAvatar?.data?.attributes?.url
                             ? `http://localhost:1337${dyn?.testimonyAvatar?.data?.attributes?.url}`
-                            : 'https://unsplash.com/photos/kostsFVW59s'
+                            : `https://picsum.photos/200/300`
                         }
                         companyLogo={
                           dyn?.companyLogo?.data?.attributes?.url
@@ -95,6 +94,25 @@ const Blank: NextPage<GetDynamicZoneDataQuery> = ({ pages }) => {
                       inputPlaceholder={news?.inputPlaceholder || ''}
                       submitLabel={news?.submitLabel || ''}
                       checkboxLabel={news?.checkboxLabel || ''}
+                    />
+                  ) : (
+                    ''
+                  )}
+                </div>
+              );
+            })}
+            {p?.attributes?.pageDynamicZone?.map((stat) => {
+              return (
+                <div key={stat?.__typename}>
+                  {stat?.__typename === 'ComponentStatisticsStatistics' ? (
+                    <Statistics
+                      content={[
+                        {
+                          descriptionDetail: stat?.statDescriptionDetail || '',
+                          descriptionTitle: stat?.statDescriptionTitle || '',
+                        },
+                      ]}
+                      title={stat?.statTitle || ''}
                     />
                   ) : (
                     ''

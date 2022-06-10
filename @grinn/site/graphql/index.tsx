@@ -294,6 +294,15 @@ export type ComponentSpotlightArticleSpotlight = {
   titleSpotlight?: Maybe<Scalars['String']>;
 };
 
+export type ComponentStatisticsStatistics = {
+  __typename?: 'ComponentStatisticsStatistics';
+  id: Scalars['ID'];
+  statDescriptionDetail?: Maybe<Scalars['String']>;
+  statDescriptionTitle?: Maybe<Scalars['String']>;
+  statImage?: Maybe<UploadFileEntityResponse>;
+  statTitle?: Maybe<Scalars['String']>;
+};
+
 export type ComponentTestimonyTestimony = {
   __typename?: 'ComponentTestimonyTestimony';
   companyLogo?: Maybe<UploadFileEntityResponse>;
@@ -403,7 +412,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Blog | BlogArticle | ComponentHeroHero | ComponentLayoutFooterNavigation | ComponentLayoutSocials | ComponentLayoutSubFooterNavigation | ComponentMetaMeta | ComponentNewsletterNewsletter | ComponentSocialNetworkFacebook | ComponentSpotlightArticleSpotlight | ComponentTestimonyTestimony | I18NLocale | Label | Layout | Page | TeamMember | TeamPage | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Blog | BlogArticle | ComponentHeroHero | ComponentLayoutFooterNavigation | ComponentLayoutSocials | ComponentLayoutSubFooterNavigation | ComponentMetaMeta | ComponentNewsletterNewsletter | ComponentSocialNetworkFacebook | ComponentSpotlightArticleSpotlight | ComponentStatisticsStatistics | ComponentTestimonyTestimony | I18NLocale | Label | Layout | Page | TeamMember | TeamPage | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -908,7 +917,7 @@ export type PageInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
-export type PagePageDynamicZoneDynamicZone = ComponentHeroHero | ComponentNewsletterNewsletter | ComponentTestimonyTestimony | Error;
+export type PagePageDynamicZoneDynamicZone = ComponentHeroHero | ComponentNewsletterNewsletter | ComponentStatisticsStatistics | ComponentTestimonyTestimony | Error;
 
 export type Pagination = {
   __typename?: 'Pagination';
@@ -1496,7 +1505,7 @@ export type GetArticleAuthorDataQuery = { __typename?: 'Query', blogArticles?: {
 export type GetDynamicZoneDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetDynamicZoneDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename: 'Page', pageSlug?: string | null, pageMeta?: { __typename?: 'ComponentMetaMeta', id: string, metaProperty?: string | null, metaName?: string | null, metaContent?: string | null } | null, pageDynamicZone?: Array<{ __typename: 'ComponentHeroHero', id: string, heroTitle?: string | null, heroDescription?: string | null, buttonTitle?: string | null, heroImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, name: string } | null } | null } | null } | { __typename: 'ComponentNewsletterNewsletter', id: string, newsletterTitle?: string | null, newsletterDescription?: string | null, inputLabel?: string | null, inputPlaceholder?: string | null, submitLabel?: string | null, checkboxLabel?: string | null } | { __typename: 'ComponentTestimonyTestimony', id: string, testimonyTitle?: string | null, testimonyContent?: string | null, testimonyFirstName?: string | null, testimonyLastName?: string | null, testimonyCompanyName?: string | null, testimonyJob?: string | null, companyLogo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null, testimonyAvatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null } | null } | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
+export type GetDynamicZoneDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename: 'Page', pageSlug?: string | null, pageMeta?: { __typename?: 'ComponentMetaMeta', id: string, metaProperty?: string | null, metaName?: string | null, metaContent?: string | null } | null, pageDynamicZone?: Array<{ __typename: 'ComponentHeroHero', id: string, heroTitle?: string | null, heroDescription?: string | null, buttonTitle?: string | null, heroImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null } | null } | null } | { __typename: 'ComponentNewsletterNewsletter', id: string, newsletterTitle?: string | null, newsletterDescription?: string | null, inputLabel?: string | null, inputPlaceholder?: string | null, submitLabel?: string | null, checkboxLabel?: string | null } | { __typename: 'ComponentStatisticsStatistics', id: string, statTitle?: string | null, statDescriptionTitle?: string | null, statDescriptionDetail?: string | null, statImage?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null } | { __typename: 'ComponentTestimonyTestimony', id: string, testimonyTitle?: string | null, testimonyContent?: string | null, testimonyFirstName?: string | null, testimonyLastName?: string | null, testimonyCompanyName?: string | null, testimonyJob?: string | null, companyLogo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string, alternativeText?: string | null } | null } | null } | null, testimonyAvatar?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', name: string, alternativeText?: string | null, url: string } | null } | null } | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
 
 export type GetLayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1708,21 +1717,21 @@ export const GetDynamicZoneDataDocument = gql`
         }
         pageDynamicZone {
           __typename
-          ... on ComponentHeroHero {
+          ... on ComponentStatisticsStatistics {
             id
-            heroTitle
-            heroDescription
-            heroImage {
+            statTitle
+            statImage {
               data {
                 id
                 attributes {
-                  alternativeText
-                  url
                   name
+                  url
+                  alternativeText
                 }
               }
             }
-            buttonTitle
+            statDescriptionTitle
+            statDescriptionDetail
           }
           __typename
           ... on ComponentNewsletterNewsletter {
@@ -1733,6 +1742,23 @@ export const GetDynamicZoneDataDocument = gql`
             inputPlaceholder
             submitLabel
             checkboxLabel
+          }
+          __typename
+          ... on ComponentHeroHero {
+            id
+            heroImage {
+              data {
+                id
+                attributes {
+                  name
+                  alternativeText
+                  url
+                }
+              }
+            }
+            heroTitle
+            heroDescription
+            buttonTitle
           }
           __typename
           ... on ComponentTestimonyTestimony {

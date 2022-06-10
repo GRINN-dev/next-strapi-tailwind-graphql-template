@@ -33,8 +33,7 @@ export const Testimony: FC<TestimonyProps> = ({
             height={20}
           />
           <span className='relative ml-2'>
-            {firstName} {''}
-            {lastName} <span className='ml-1'>/</span>
+            {firstName} {lastName} <span className='ml-1'>/</span>
           </span>
           <div className='text-gray-400'>
             <span className='ml-1'>{job}, </span>
