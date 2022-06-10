@@ -22,8 +22,5 @@
     "dev": "concurrently --names \"SITE,STRAPI,STORYBOOK\" --prefix \"({name})\" --prefix-colors \"cyan.bold,yellow.bold,green.bold\"  \"yarn workspace @grinn/site dev\" \"yarn workspace @grinn/strapi develop\" \"yarn workspace @grinn/site storybook\"",
     "build": "yarn strapi build",
     "start": "yarn strapi start"
-  },
-  "resolutions": {
-    "react": "17"
   }
 }
